@@ -1,0 +1,51 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white
+}
+
+.article-header {
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 100svh;
+  overflow-x: clip;
+  padding-block: 7rem;
+  margin-block-end: 3rem;
+}
+
+.header-content {
+  animation: fade-out linear;
+  animation-timeline: view();
+  animation-range: exit -200px;
+  border: 2px yellow solid;
+}
+
+.header-image {
+  grid-column: 1 / -1;
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  object-fit: cover;
+  z-index: -1;
+  transform-origin: bottom;
+
+  animation: header-image-animation linear forwards;
+  animation-timeline: view();
+  animation-range: exit -200px;
+}
+
+@keyframes fade-out {
+  to {opacity: 0;}
+}
+
+@keyframes header-image-animation {
+  25% { opacity: 1; }
+  85%, 100% { opacity: 0; transform: scale(2)}
+}
