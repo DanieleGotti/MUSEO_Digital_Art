@@ -1,0 +1,51 @@
+.navbar {
+  width: 6.5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: #f26419;
+  transition: width 200ms ease;
+  right: 0;
+}
+
+.navbarNav {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  text-decoration: none;
+  transition: width 600ms;
+  margin: 0 auto;
+}
+
+.navLink:hover {
+  background-color: #f6a02d;
+  margin: center;
+}
+
+.linkText {
+  display: none;
+  vertical-align: center;
+  margin-left: 2rem;
+  color: white;
+}
+
+.navLink img {
+  width: auto;
+  height: 100%;
+}
+
+.navbar:hover {
+  width: 16rem;
+}
+
+.navbar:hover .linkText {
+  display: block;
+}
