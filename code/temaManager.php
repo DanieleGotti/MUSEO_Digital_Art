@@ -20,8 +20,6 @@ function getTemaQry($codice, $descrizione, $numeroSale): string {
     if ($descrizione != "")
         $qry .= " AND TEMA.descrizione  LIKE '%" . $descrizione . "%'" ;
 
-    if ($titolo != "")
-        $qry .= " AND TEMA.numeroSale  LIKE '%" . $numeroSale . "%'";
 
     return $qry;
 }

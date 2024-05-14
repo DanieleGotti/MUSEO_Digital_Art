@@ -22,8 +22,9 @@
     <form name="myform" method="POST">
       <input id="codice" name="codice" type="text" placeholder="Codice"/>
       <input id="descrizione" name="descrizione" type="text" placeholder="Descrizione"/>
-      <input id="numeroSale" name="numeroSale" type="text" placeholder="Numero Sale "/>
+
         <input type="submit" value="Search"/>
+        <input type="submit" value="RESET"/> //miao
 
     </form>
 
