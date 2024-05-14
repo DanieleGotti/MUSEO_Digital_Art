@@ -62,7 +62,7 @@ function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeo
                   SALA
               JOIN
                   TEMA ON SALA.temaSala = TEMA.codice
-              JOIN (OPERA 
+              JOIN (OPERA
               JOIN AUTORE on AUTORE.codice=OPERA.autore) on OPERA.espostaInSala=SALA.numero
               WHERE
                   1=1 AND  AUTORE.nome LIKE '%" . $cercaautore . "%'" );

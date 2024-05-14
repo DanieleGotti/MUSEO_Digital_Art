@@ -26,6 +26,7 @@
       <input id="temaSala" name="temaSala" type="text" placeholder="Tema"/>
       <input id="descrizione" name="descrizione" type="text" placeholder="Descrizione"/>
       <input type="submit" value="Search"/>
+      <input type="submit" value="RESET"/>
     </form>
 
 

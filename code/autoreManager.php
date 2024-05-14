@@ -2,7 +2,7 @@
 
 require_once 'connDb.php';
 
-function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere): string {
+function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera): string {
     global $conn;
 
     $qry = "SELECT
@@ -27,7 +27,7 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
 
     if ($cognome != "")
         $qry .= " AND AUTORE.cognome  LIKE '%" . $cognome . "%'";
-        
+
     if ($nazione != "")
         $qry .= " AND AUTORE.nazione  LIKE '%" . $nazione . "%'";
     if ($dataNascita != "")
@@ -41,6 +41,25 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
 
     if ($numeroOpere != "")
         $qry.= " AND AUTORE.numeroOpere = $numeroOpere";
+
+        if ($nomeopera != "")
+            $qry = "SELECT
+                        AUTORE.codice,
+                        AUTORE.nome,
+                        AUTORE.cognome,
+                        AUTORE.nazione,
+                        AUTORE.dataNascita,
+                        AUTORE.dataMorte,
+                        AUTORE.tipo,
+                        AUTORE.numeroOpere,
+                        OPERA.titolo AS nomeopera
+                    FROM
+                        AUTORE
+                        join
+                        OPERA on OPERA.autore= AUTORE.codice
+                    WHERE
+                        1=1 AND  OPERA.titolo LIKE '%" . $nomeopera . "%'";
+
 
     return $qry;
 }

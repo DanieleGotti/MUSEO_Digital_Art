@@ -2,12 +2,14 @@
 
 require_once 'connDb.php';
 
-function getOperaQry($opera, $autore, $titolo, $annoAcquisto, $annoRealizzazione, $tipo, $espostaInSala): string {
+function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $annoRealizzazione, $tipo, $espostaInSala): string {
     global $conn;
 
     $qry = "SELECT
                 OPERA.opera,
                 OPERA.autore,
+                AUTORE.nome,
+                AUTORE.cognome,
                 OPERA.titolo,
                 OPERA.annoAcquisto,
                 OPERA.annoRealizzazione,
@@ -27,7 +29,10 @@ function getOperaQry($opera, $autore, $titolo, $annoAcquisto, $annoRealizzazione
 
     if ($autore != "")
         $qry .= " AND AUTORE.codice =  $autore " ;
-
+    if ($nome != "")
+        $qry .= " AND AUTORE.nome  LIKE '%" . $nome . "%'";
+    if ($cognome != "")
+        $qry .= " AND AUTORE.cognome LIKE '%" . $cognome . "%'";
     if ($titolo != "")
         $qry .= " AND OPERA.titolo  LIKE '%" . $titolo . "%'";
     if ($annoAcquisto != "")

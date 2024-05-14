@@ -13,7 +13,7 @@
 <body>
 
   <?php
-  include 'header.html';
+
   include 'nav.html';
   include 'footer.html'
   ?>
@@ -26,13 +26,18 @@
       <input id="nazione" name="nazione" type="text" placeholder="Nazione"/>
       <input id="dataNascita" name="dataNascita" type="text" placeholder="data Nascita"/>
       <input id="dataMorte" name="dataMorte" type="text" placeholder="data Morte"/>
-      <input id="tipo" name="tipo" type="text" placeholder="Stato"/>
+
       <input id="numeroOpere" name="numeroOpere" type="text" placeholder="Numero Opere"/>
+      <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
+      <label for="tipo_vivo">Vivo</label>
+      <input id="tipo_morto" name="tipo" type="radio" value="morto">
+      <label for="tipo_morto">Morto</label>
       <input type="submit" value="Search"/>
+      <input type="submit" value="RESET"/>
     </form>
 
-    <form action="" method="post">
-    <input type="text" name="opera" placeholder="Titolo dell'opera">
+      <form name="myform2" method="post">
+    <input id="opera" name="nomeopera" type="text" placeholder="Titolo dell'opera">
     <input type="submit" value="Cerca per opera">
 </form>
 
@@ -47,6 +52,7 @@
       $dataMorte = "";
         $tipo = "";
       $numeroOpere  = "";
+      $nomeopera="";
 
       if(count($_POST)>0) {
         $codice = $_POST["codice"];
@@ -57,6 +63,7 @@
         $dataMorte = $_POST["dataMorte"];
         $tipo = $_POST["tipo"];
         $numeroOpere  = $_POST["numeroOpere"];
+        $nomeopera  = $_POST["nomeopera"];
       }
       else if(count($_GET)>0) {
         $codice = $_GET["codice"];
@@ -67,13 +74,14 @@
         $dataMorte = $_GET["dataMorte"];
         $tipo = $_GET["tipo"];
         $numeroOpere  = $_GET["numeroOpere"];
+        $nomeopera  = $_GET["nomeopera"];
       }
       include 'autoreManager.php';
       $error = false; // Inizializza la variabile $error a false
 
       require_once 'connDb.php';
-      $query = getAutoreQry ($codice,	$nome, $cognome ,$nazione,$dataNascita, $dataMorte,$tipo, $numeroOpere);
-      echo "<p>codiceQuery: " . $query . "</p>";
+      $query = getAutoreQry ($codice,	$nome, $cognome ,$nazione,$dataNascita, $dataMorte,$tipo, $numeroOpere, $nomeopera);
+
 
 
 
@@ -84,7 +92,58 @@
         $error = true;
       }
 
-      if(!$error) {
+      if(!$error && $nomeopera!="") {
+        ?>
+
+        <table class="table">
+          <tr class="header">
+            <!--th>id </th-->
+            <th>Codice</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Nazione</th>
+            <th>Data Nascita</th>
+            <th>Data Morte</th>
+            <th>Tipo</th>
+            <th>Numero Opere</th>
+            <th>Titolo Opera</th>
+          </tr>
+          <?php
+          $i=0;
+
+          foreach($result as $riga) {
+            $i=$i+1;
+            $classRiga='class="rowOdd"';
+            if($i%2==0) {
+              $classRiga='class="rowEven"';
+            }
+            $codice = $riga["codice"];
+            $nome = $riga["nome"];
+            $cognome  = $riga["cognome"];
+            $nazione = $riga["nazione"];
+            $dataNascita  = $riga["dataNascita"];
+            $dataMorte = $riga["dataMorte"];
+            $tipo = $riga["tipo"];
+            $numeroOpere  = $riga["numeroOpere"];
+            $nomeopera  = $riga["nomeopera"];
+
+            ?>
+            <tr <?php	echo $classRiga; ?> >
+
+              <td > <?php echo $codice; ?> </td>
+              <td > <?php echo $nome; ?> </td>
+              <td > <?php echo $cognome; ?> </td>
+              <td > <?php echo $nazione; ?> </td>
+              <td > <?php echo $dataNascita; ?> </td>
+              <td > <?php echo $dataMorte; ?> </td>
+              <td > <?php echo $tipo; ?> </td>
+              <td > <?php echo $numeroOpere; ?> </td>
+              <td > <?php echo $nomeopera; ?> </td>
+            </tr>
+          <?php } ?>
+        </table>
+      <?php }
+      if(!$error && $nomeopera=="") {
         ?>
 
         <table class="table">
