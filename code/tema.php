@@ -4,10 +4,6 @@
   <title>MUSEO START</title>
   <link rel="stylesheet" href="./css/cssStyle.css">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
-<!--  <script type="text/javascript" src="./js/codices.js"></script>-->
-  <!--<link rel="stylesheet" href="./css/videoclips.css">-->
-  <!--<script type="text/javascript" src="./js/jquery-2.0.0.js"></script>-->
-  <!--<script type="text/javascript" src="./js/videoclips.js"></script>-->
 </head>
 
 <body>
@@ -24,7 +20,7 @@
       <input id="descrizione" name="descrizione" type="text" placeholder="Descrizione"/>
 
         <input type="submit" value="Search"/>
-        <input type="submit" value="RESET"/>  //miao
+        <input type="submit" value="RESET"/> //miao
 
     </form>
 
