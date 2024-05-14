@@ -23,12 +23,13 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
         $qry .= " AND AUTORE.codice =  $codice" ; // Aggiungi apici singoli intorno al valore
 
     if ($nome != "")
-        $qry .= " AND AUTORE.codice =  $nome" ;
+        $qry .= " AND AUTORE.nome  LIKE '%" . $nome . "%'" ;
 
     if ($cognome != "")
         $qry .= " AND AUTORE.cognome  LIKE '%" . $cognome . "%'";
+        
     if ($nazione != "")
-        $qry .= $nazione;
+        $qry .= " AND AUTORE.nazione  LIKE '%" . $nazione . "%'";
     if ($dataNascita != "")
         $qry .= " AND AUTORE.dataNascita LIKE '%" . $dataNascita . "%'";
 

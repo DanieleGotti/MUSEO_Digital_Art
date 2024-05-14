@@ -2,14 +2,15 @@
 
 require_once 'connDb.php';
 
-function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeopera): string {
+function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeopera, $cercaautore ): string {
     global $conn;
 
     $qry = "SELECT DISTINCT
                 SALA.numero,
                 SALA.nome,
                 SALA.superficie,
-                SALA.temaSala
+                SALA.temaSala,
+                TEMA.descrizione
             FROM
                 SALA
             LEFT JOIN
@@ -38,6 +39,7 @@ function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeo
                     SALA.nome,
                     SALA.superficie,
                     SALA.temaSala,
+                    TEMA.descrizione,
                     OPERA.titolo AS nomeopera
                 FROM
                     SALA
@@ -47,6 +49,25 @@ function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeo
                 WHERE
                     1=1 AND OPERA.titolo LIKE '%" . $nomeopera . "%'";
 }
+
+  if($cercaautore !=""){
+      $qry =( " SELECT DISTINCT
+                  SALA.numero,
+                  SALA.nome,
+                  SALA.superficie,
+                  SALA.temaSala,
+                  TEMA.descrizione,
+                  AUTORE.nome,
+                  AUTORE.cognome
+                  SALA
+              JOIN
+                  TEMA ON SALA.temaSala = TEMA.codice
+              JOIN (OPERA 
+              JOIN AUTORE on AUTORE.codice=OPERA.autore) on OPERA.espostaInSala=SALA.numero
+              WHERE
+                  1=1 AND  AUTORE.nome LIKE '%" . $cercaautore . "%'" );
+}
+
     return $qry;
 }
 

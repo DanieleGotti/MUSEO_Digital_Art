@@ -24,12 +24,17 @@
       <input id="nome" name="nome" type="text" placeholder="Nome"/>
       <input id="cognome" name="cognome" type="text" placeholder="Cognome"/>
       <input id="nazione" name="nazione" type="text" placeholder="Nazione"/>
-      <input id="annoNascita" name="annoNascita" type="text" placeholder="Anno Nascita"/>
-      <input id="annoMorte" name="annoMorte" type="text" placeholder="Anno Morte"/>
-        <input id="tipo" name="tipo" type="text" placeholder="Stato"/>
+      <input id="dataNascita" name="dataNascita" type="text" placeholder="data Nascita"/>
+      <input id="dataMorte" name="dataMorte" type="text" placeholder="data Morte"/>
+      <input id="tipo" name="tipo" type="text" placeholder="Stato"/>
       <input id="numeroOpere" name="numeroOpere" type="text" placeholder="Numero Opere"/>
       <input type="submit" value="Search"/>
     </form>
+
+    <form action="" method="post">
+    <input type="text" name="opera" placeholder="Titolo dell'opera">
+    <input type="submit" value="Cerca per opera">
+</form>
 
     <div id="result">
       <?php
@@ -38,8 +43,8 @@
       $nome = "";
       $cognome  = "";
       $nazione = "";
-      $annoNascita  = "";
-      $annoMorte = "";
+      $dataNascita  = "";
+      $dataMorte = "";
         $tipo = "";
       $numeroOpere  = "";
 
@@ -48,8 +53,8 @@
         $nome = $_POST["nome"];
         $cognome  = $_POST["cognome"];
         $nazione = $_POST["nazione"];
-        $annoNascita  = $_POST["annoNascita"];
-        $annoMorte = $_POST["annoMorte"];
+        $dataNascita  = $_POST["dataNascita"];
+        $dataMorte = $_POST["dataMorte"];
         $tipo = $_POST["tipo"];
         $numeroOpere  = $_POST["numeroOpere"];
       }
@@ -58,8 +63,8 @@
         $nome = $_GET["nome"];
         $cognome  = $_GET["cognome"];
         $nazione = $_GET["nazione"];
-        $annoNascita  = $_GET["annoNascita"];
-        $annoMorte = $_GET["annoMorte"];
+        $dataNascita  = $_GET["dataNascita"];
+        $dataMorte = $_GET["dataMorte"];
         $tipo = $_GET["tipo"];
         $numeroOpere  = $_GET["numeroOpere"];
       }
@@ -67,7 +72,7 @@
       $error = false; // Inizializza la variabile $error a false
 
       require_once 'connDb.php';
-      $query = getAutoreQry ($codice,	$nome, $cognome ,$nazione,$annoNascita, $annoMorte,$tipo, $numeroOpere);
+      $query = getAutoreQry ($codice,	$nome, $cognome ,$nazione,$dataNascita, $dataMorte,$tipo, $numeroOpere);
       echo "<p>codiceQuery: " . $query . "</p>";
 
 
@@ -89,10 +94,10 @@
             <th>Nome</th>
             <th>Cognome</th>
             <th>Nazione</th>
-            <th>Anno Nascitae</th>
-            <th>Anno Morte</th>
+            <th>Data Nascita</th>
+            <th>Data Morte</th>
             <th>Tipo</th>
-            <th>Numermo Opere</th>
+            <th>Numero Opere</th>
           </tr>
           <?php
           $i=0;
@@ -107,8 +112,8 @@
             $nome = $riga["nome"];
             $cognome  = $riga["cognome"];
             $nazione = $riga["nazione"];
-            $annoNascita  = $riga["annoNascita"];
-            $annoMorte = $riga["annoMorte"];
+            $dataNascita  = $riga["dataNascita"];
+            $dataMorte = $riga["dataMorte"];
             $tipo = $riga["tipo"];
             $numeroOpere  = $riga["numeroOpere"];
 
@@ -119,9 +124,9 @@
               <td > <?php echo $nome; ?> </td>
               <td > <?php echo $cognome; ?> </td>
               <td > <?php echo $nazione; ?> </td>
-              <td > <?php echo $annoNascita; ?> </td>
-              <td > <?php echo $annoMorte; ?> </td>
-                <td > <?php echo $tipo; ?> </td>
+              <td > <?php echo $dataNascita; ?> </td>
+              <td > <?php echo $dataMorte; ?> </td>
+              <td > <?php echo $tipo; ?> </td>
               <td > <?php echo $numeroOpere; ?> </td>
             </tr>
           <?php } ?>
