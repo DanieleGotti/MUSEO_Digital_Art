@@ -53,17 +53,17 @@
 <h2>Inserimento nuovo autore</h2>
 <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
   <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
-  <input id="codice" name="codice" type="text" placeholder="Codice">
-  <input id="nome" name="nome" type="text" placeholder="Nome">
-  <input id="cognome" name="cognome" type="text" placeholder="Cognome">
-  <input id="nazione" name="nazione" type="text" placeholder="Nazione">
-  <input id="dataNascita" name="dataNascita" type="text" placeholder="Data Nascita">
-  <input id="dataMorte" name="dataMorte" type="text" placeholder="Data Morte">
+  <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
+  <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
+  <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
+  <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
+  <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
+  <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
   <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
   <label for="tipo_vivo">Vivo</label>
   <input id="tipo_morto" name="tipo" type="radio" value="morto">
   <label for="tipo_morto">Morto</label>
-  <input type="submit" value="Inserisci">
+  <input type="submit" name="insert" value="Inserisci">
 </form>
 </div>
 
