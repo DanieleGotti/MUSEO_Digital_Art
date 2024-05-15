@@ -94,18 +94,20 @@ body {
 }
 
 .panelTitle a:hover {
-  background-color: #FEF0E7;
+  color: #F98B41;
+  border: 2px solid #F98B41;
 }
 
 .horizontalScroll {
   display: grid;
-  gap: 5%;
+  gap: 20px;
   grid-auto-flow: column;
-  grid-auto-columns: 40%;
+  grid-auto-columns: 400px;
   background-color: white;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   margin: 2% 5%;
+  flex-shrink: 0;
 }
 
 ::-webkit-scrollbar {
@@ -136,9 +138,8 @@ body {
 
 .card {
   background-color: white;
-  min-width: 200px;
-  height: 20vw;
-  width: 30vw;
+  height: 200px;
+  width: 350px;
   margin-bottom: 5%;
   border-radius: 10px;
   border: 2px solid #F76E11;

@@ -16,6 +16,8 @@
   right: 0;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
 }
 
 .navbarNav {
@@ -28,18 +30,15 @@
 }
 
 .navLink {
-  height: 100%;
-  width: auto;
+  height: 3rem;
+  width: 100%;
   display: flex;
   align-items: center;
   text-decoration: none;
   transition: width 600ms;
-  margin: 2rem 2rem;
-}
-
-.navLink {
+  padding: 0.5rem;
+  box-sizing: border-box;
   max-width: 100%;
-  height: 3rem;
   margin: 0 auto;
 }
 
@@ -65,12 +64,23 @@
 .navLink img {
   width: auto;
   height: 100%;
+  margin: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar:hover {
   width: 12rem;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .navbar:hover .linkText {
   display: block;
+}
+
+.navbar:hover .navLink img {
+  margin-left: 0;
+  margin-right: 0;
 }

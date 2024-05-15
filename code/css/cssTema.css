@@ -4,3 +4,75 @@
   list-style: none;
   text-decoration: none;
 }
+
+.filters {
+  width: 13rem;
+  height: calc(100% - 4rem);
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #F98B41;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.filterContainer {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.filterItem {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: width 600ms;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.filterItem input {
+  background-color:
+  margin: center;
+}
+
+.filterItem input:hover {
+  border-radius: 10px;
+  border: 2px solid #FFB68D;
+}
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: .5em;
+  background-color: white
+}
+
+::-webkit-scrollbar-track {
+  background-color:#FEF0E7;
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F76E11;
+  border: 2px solid #FEF0E7;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F98B41;
+}
