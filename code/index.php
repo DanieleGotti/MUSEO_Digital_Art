@@ -5,11 +5,13 @@
   <link rel="stylesheet" href="./css/cssStart.css">
 </head>
 
-<?php
-  include 'nav.html';
- ?>
-
 <body>
+
+  <?php
+  include 'header.html';
+  include 'nav.html';
+  ?>
+
   <div class="indexIntro">
     <div class="indexLogo">
       <img class="logoImage" src="./img/logo.png">

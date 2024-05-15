@@ -1,35 +1,18 @@
-body, html {
+* {
   margin: 0;
   padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 
 body {
-  background-color: #f6a02d;
+  background-color: #white;
 }
 
 .panelTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-h1, h3 {
-  color: #00063d;
-}
-
-h3, a {
-  display: inline-block;
-  padding: 10px;
-  margin: 5px;
-}
-
-h3 {
-  flex: 1;
-}
-
-a {
-  color: #0a6acb;
-  margin-left: auto;
 }
 
 .indexIntro {
@@ -62,8 +45,6 @@ a {
   width: 100vw;
   height: 100%;
   object-fit: cover;
-  opacity: 1;
-  object-fit: cover;
   z-index: -1;
   transform-origin: bottom;
 
@@ -78,22 +59,49 @@ a {
 
 @keyframes header-image-animation {
   0% { transform: scale(1); }
-  25% { transform: scale(2); }
-  85%, 100% { transform: scale(3); }
+  25% { transform: scale(1.2); }
+  85%, 100% { transform: scale(2); }
 }
 
 .panel {
-  width: calc(100% - 6.5rem - 20px);
+  width: calc(100% - 4rem - 20px);
   background-color: white;
   margin: 0px 10px;
-  border-bottom: 10px solid #f6a02d;
+}
+
+.panelTitle h3 {
+  color: black;
+  flex: 1;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  font-family: "Open sans";
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.panelTitle a {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  color: #F76E11;
+  border-radius: 10px;
+  border: 2px solid #F76E11;
+  margin-left: auto;
+  font-family: "Open sans";
+  font-weight: 400;
+  font-size: .75rem;
+}
+
+.panelTitle a:hover {
+  background-color: #FEF0E7;
 }
 
 .horizontalScroll {
   display: grid;
   gap: 5%;
   grid-auto-flow: column;
-  grid-auto-columns: 25%;
+  grid-auto-columns: 40%;
   background-color: white;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
@@ -102,38 +110,40 @@ a {
 
 ::-webkit-scrollbar {
   width: 1em;
-  height: .75em;
+  height: .5em;
   background-color: white
 }
 
 ::-webkit-scrollbar:vertical {
   width: 0.5em;
-  background-color: #f26419
 }
 
 ::-webkit-scrollbar-track {
-  background-color:#ebebeb;
+  background-color:#FEF0E7;
   border-radius: 100vw;
   margin-block: .5em;
 }
 
-::-webkit-scrollbar-track:horizontal {
-  border-top: 10% solid #f26419;
-}
-
 ::-webkit-scrollbar-thumb {
-  background: #f6a02d;
-  border: 2px solid #ebebeb;
+  background: #F76E11;
+  border: 2px solid #FEF0E7;
   border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f26419;
+  background: #F98B41;
 }
 
 .card {
-  background: #ebebeb;
-  height: 15vw;
-  width: 20vw;
+  background-color: white;
+  min-width: 200px;
+  height: 20vw;
+  width: 30vw;
   margin-bottom: 5%;
+  border-radius: 10px;
+  border: 2px solid #F76E11;
+}
+
+.card:hover {
+  background-color: #FEF0E7;
 }

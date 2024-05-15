@@ -1,17 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>MUSEO START</title>
-  <link rel="stylesheet" href="./css/cssStyle.css">
+  <title>temi</title>
+  <link rel="stylesheet" href="./css/cssTema.css">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
 </head>
 
 <body>
-
+  
   <?php
   include 'header.html';
   include 'nav.html';
-  include 'footer.html'
   ?>
 
   <div id="filtri">
@@ -64,7 +63,7 @@
         ?>
 
         <table class="table">
-          <tr class="header">
+          <tr class="tableHeader">
             <!--th>id </th-->
             <th>idcodice</th>
             <th>descrizione</th>
