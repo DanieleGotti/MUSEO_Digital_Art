@@ -36,9 +36,8 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
     if ($dataMorte != "")
         $qry .= " AND AUTORE.dataMorte LIKE '%" . $dataMorte . "%'"; // Aggiungi apici singoli intorno al valore
 
-    if ($tipo != "")
-        $qry .= " AND AUTORE.tipo = $tipo";
-
+        if ($tipo != "")
+            $qry .= " AND AUTORE.tipo LIKE '%" . $tipo . "%'";
     if ($numeroOpere != "")
         $qry.= " AND AUTORE.numeroOpere = $numeroOpere";
 
@@ -66,4 +65,14 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
 
 
 
+
+function getInserisciQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo): string {
+    global $conn;
+
+    // Assicurati che i valori di stringa siano racchiusi tra virgolette singole
+    $qry = "INSERT INTO AUTORE (codice, nome, cognome, nazione, datanascita, dataMorte, numeroOpere, tipo, nomeopera)
+           VALUES ('$codice', '$nome', '$cognome', '$nazione', '$dataNascita', '$dataMorte', '$tipo')";
+
+    return $qry;
+}
 ?>

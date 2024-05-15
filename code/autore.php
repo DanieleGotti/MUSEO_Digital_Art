@@ -4,10 +4,7 @@
   <title>MUSEO START</title>
   <link rel="stylesheet" href="./css/cssStyle.css">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
-  <script type="text/javascript" src="./js/codices.js"></script>
-  <!--<link rel="stylesheet" href="./css/videoclips.css">-->
-  <!--<script type="text/javascript" src="./js/jquery-2.0.0.js"></script>-->
-  <!--<script type="text/javascript" src="./js/videoclips.js"></script>-->
+  <script type="text/javascript" src="./js/jsAutore.js"></script>
 </head>
 
 <body>
@@ -36,21 +33,50 @@
       <input type="submit" value="RESET"/>
     </form>
 
-      <form name="myform2" method="post">
+    <form name="myform2" method="post">
     <input id="opera" name="nomeopera" type="text" placeholder="Titolo dell'opera">
     <input type="submit" value="Cerca per opera">
+    </form>
+
+    <form name="myformCRUD" method="post">
+    <input id="CRUD" name="CRUD" type="radio" value="CRUD" onclick="showOptions()">
+    <label for="CRUD">CRUD</label>
+  </form>
+
+
+<div id="options" style="display:none;">
+  <button id="createButton" onclick="showCreateForm()">Creare</button>
+  <button>Leggere</button>
+</div>
+
+<div id="createForm" style="display:none;">
+<h2>Inserimento nuovo autore</h2>
+<form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
+  <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
+  <input id="codice" name="codice" type="text" placeholder="Codice">
+  <input id="nome" name="nome" type="text" placeholder="Nome">
+  <input id="cognome" name="cognome" type="text" placeholder="Cognome">
+  <input id="nazione" name="nazione" type="text" placeholder="Nazione">
+  <input id="dataNascita" name="dataNascita" type="text" placeholder="Data Nascita">
+  <input id="dataMorte" name="dataMorte" type="text" placeholder="Data Morte">
+  <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
+  <label for="tipo_vivo">Vivo</label>
+  <input id="tipo_morto" name="tipo" type="radio" value="morto">
+  <label for="tipo_morto">Morto</label>
+  <input type="submit" value="Inserisci">
 </form>
+</div>
+
 
     <div id="result">
       <?php
-
       $codice = "";
       $nome = "";
       $cognome  = "";
       $nazione = "";
       $dataNascita  = "";
       $dataMorte = "";
-        $tipo = "";
+      $tipo = "";
       $numeroOpere  = "";
       $nomeopera="";
 
@@ -77,13 +103,10 @@
         $nomeopera  = $_GET["nomeopera"];
       }
       include 'autoreManager.php';
-      $error = false; // Inizializza la variabile $error a false
+      $error = false;
 
       require_once 'connDb.php';
-      $query = getAutoreQry ($codice,	$nome, $cognome ,$nazione,$dataNascita, $dataMorte,$tipo, $numeroOpere, $nomeopera);
-
-
-
+      $query = getAutoreQry ($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera);
 
       try {
         $result = $conn->query($query);
@@ -92,12 +115,13 @@
         $error = true;
       }
 
+
+
+
       if(!$error && $nomeopera!="") {
         ?>
-
         <table class="table">
           <tr class="header">
-            <!--th>id </th-->
             <th>Codice</th>
             <th>Nome</th>
             <th>Cognome</th>
@@ -110,7 +134,6 @@
           </tr>
           <?php
           $i=0;
-
           foreach($result as $riga) {
             $i=$i+1;
             $classRiga='class="rowOdd"';
@@ -126,10 +149,8 @@
             $tipo = $riga["tipo"];
             $numeroOpere  = $riga["numeroOpere"];
             $nomeopera  = $riga["nomeopera"];
-
             ?>
             <tr <?php	echo $classRiga; ?> >
-
               <td > <?php echo $codice; ?> </td>
               <td > <?php echo $nome; ?> </td>
               <td > <?php echo $cognome; ?> </td>
@@ -145,10 +166,8 @@
       <?php }
       if(!$error && $nomeopera=="") {
         ?>
-
         <table class="table">
           <tr class="header">
-            <!--th>id </th-->
             <th>Codice</th>
             <th>Nome</th>
             <th>Cognome</th>
@@ -160,7 +179,6 @@
           </tr>
           <?php
           $i=0;
-
           foreach($result as $riga) {
             $i=$i+1;
             $classRiga='class="rowOdd"';
@@ -175,10 +193,8 @@
             $dataMorte = $riga["dataMorte"];
             $tipo = $riga["tipo"];
             $numeroOpere  = $riga["numeroOpere"];
-
             ?>
             <tr <?php	echo $classRiga; ?> >
-
               <td > <?php echo $codice; ?> </td>
               <td > <?php echo $nome; ?> </td>
               <td > <?php echo $cognome; ?> </td>
@@ -191,8 +207,8 @@
           <?php } ?>
         </table>
       <?php }  ?>
-
     </div>
   </div>
+
 </body>
 </html>
