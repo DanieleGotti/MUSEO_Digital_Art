@@ -1,13 +1,31 @@
+// Funzione per mostrare il pulsante "Creare"
+function showCreateButton() {
+  var createButton = document.getElementById("createButton");
+  createButton.style.display = "block";
+}
+
+// Funzione per nascondere il pulsante "Creare"
+function hideCreateButton() {
+  var createButton = document.getElementById("createButton");
+  createButton.style.display = "none";
+}
+
+// Funzione per gestire la visibilità delle opzioni
 function showOptions() {
   var optionsDiv = document.getElementById("options");
-  var CRUDRadio = document.getElementById("CRUD");
+
   if (optionsDiv.style.display === "none") {
     optionsDiv.style.display = "block";
+    showCreateButton(); // Mostra il pulsante "Creare"
   } else {
     optionsDiv.style.display = "none";
-    CRUDRadio.checked = false; // reimposta il pulsante radio su non selezionato
-    hideCreateForm(); // nascondi il form di creazione quando si nascondono le opzioni CRUD
+    hideCreateButton(); // Nasconde il pulsante "Creare"
   }
+}
+
+// Funzione per gestire il pulsante "Back"
+function handleBackButton() {
+  hideCreateButton(); // Nasconde il pulsante "Creare" quando viene premuto il pulsante "Back"
 }
 
 function showCreateForm() {
@@ -28,10 +46,23 @@ function modificaAutore(codice) {
 }
 
 function cancellaAutore(codice) {
-  // Implementa qui la logica per la cancellazione dell'autore con il codice specificato
-  console.log("Cancella autore con codice: " + codice);
+    if (confirm("Sei sicuro di voler cancellare questo autore?")) {
+        // Se l'utente conferma, invia una richiesta AJAX per cancellare l'autore dal database
+        $.ajax({
+            type: "POST",
+            url: "deleteAuthor.php", // Sostituisci con il percorso del tuo script PHP per eliminare l'autore
+            data: { codice: codice },
+            success: function(response) {
+                // Gestisci la risposta qui, ad esempio aggiornando la tabella dei risultati
+                console.log("Autore eliminato con successo!");
+            },
+            error: function(xhr, status, error) {
+                // Gestisci gli errori qui
+                console.error("Errore durante la cancellazione dell'autore:", error);
+            }
+        });
+    }
 }
-
 
   function validateForm() {
       var codicecreate = document.getElementById("codicecreate").value.trim();

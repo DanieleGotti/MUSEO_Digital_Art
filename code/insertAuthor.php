@@ -13,6 +13,14 @@ $dataMortecreate = isset($_POST['dataMortecreate']) ? $_POST['dataMortecreate'] 
 // Impostazione del tipo in base alla presenza della data di morte
 $tipo = empty($dataMortecreate) ? 'vivo' : 'morto';
 
+// Verifica se le date hanno il formato corretto
+$formatoDataValido = "/^\d{2}\/\d{2}\/\d{4}$/"; // Formato gg/mm/aaaa
+if (!preg_match($formatoDataValido, $dataNascitacreate) || (!empty($dataMortecreate) && !preg_match($formatoDataValido, $dataMortecreate))) {
+    echo "<script>alert('Il formato della data di nascita o di morte non è valido. Utilizzare il formato gg/mm/aaaa.'); window.history.back();</script>";
+    exit;
+}
+
+// Altri controlli di validità dei campi
 if (empty($codicecreate) || empty($nomecreate) || empty($cognomecreate) || empty($nazionecreate) || empty($dataNascitacreate)) {
     echo "<script>alert('Per favore, compila tutti i campi.'); window.history.back();</script>";
     exit;
