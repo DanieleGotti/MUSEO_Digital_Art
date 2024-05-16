@@ -94,8 +94,8 @@ body {
 }
 
 .panelTitle a:hover {
-  color: #F98B41;
-  border: 2px solid #F98B41;
+  color: #FFB68D;
+  border: 2px solid #FFB68D;
 }
 
 .horizontalScroll {
@@ -133,7 +133,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F98B41;
+  background: #FFB68D;
 }
 
 .card {
@@ -147,4 +147,5 @@ body {
 
 .card:hover {
   background-color: #FEF0E7;
+  border-color: #FFB68D;
 }

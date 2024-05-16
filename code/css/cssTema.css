@@ -7,13 +7,14 @@
 
 .filters {
   width: 13rem;
-  height: calc(100% - 4rem);
+  height: calc(100vh - 6rem);
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 5rem;
   background-color: #F98B41;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  //padding-top: 2rem;
 }
 
 .filterContainer {
@@ -32,28 +33,60 @@
   align-items: center;
   text-decoration: none;
   transition: width 600ms;
-  padding: 0.5rem;
+  padding: 10px 5px;
   box-sizing: border-box;
-  max-width: 100%;
-  margin: 0 auto;
+  margin: .25rem 0;
+  position: relative;
 }
 
-.filterItem input {
-  background-color:
-  margin: center;
-}
-
-.filterItem input:hover {
+.input {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
   border-radius: 10px;
-  border: 2px solid #FFB68D;
+  border: 1px solid #FEF0E7;
+  background-color: #F98B41;
+  color: white;
+  margin: center;
+  font-family: "Open sans";
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
 }
 
+.placeHolder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  padding: 0px 5px;
+  color: #FEF0E7;
+  transition: 0.3s;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background-color: #F98B41;
+  font-family: "Open sans";
+  font-weight: 300;
+  font-size: 12px;
+  font-style: italic;
+}
 
+.input:hover {
+  border: 2px solid white;
+}
 
+.input:focus + .placeHolder {
+  top: 25%;
+  transform: translateY(-100%);
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 12px;
+  font-style: normal;
+}
 
-
-
-
+.main{
+  margin-left: 20rem;
+}
 
 ::-webkit-scrollbar {
   width: 0.5em;

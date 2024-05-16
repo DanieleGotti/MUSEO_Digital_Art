@@ -14,90 +14,95 @@
   include 'nav.html';
   ?>
 
-  <div id="filtri" class="filters">
-    <form name="myform" method="POST">
-      <ul class="filterContainer">
-        <li class="filterItem">
-          <input id="codice" name="codice" type="text" placeholder="Codice"/>
-        </li>
-        <li class="filterItem">
-          <input id="descrizione" name="descrizione" type="text" placeholder="Descrizione"/>
-        </li>
-        <li class="filterItem">
-          <input type="submit" value="Search"/>
-        </li>
-        <li class="filterItem">
-          <input type="submit" value="RESET"/>
-        </li>
-      </ul>
-    </form>
-  </div>
+  <div class="back">
+    <div id="filtri" class="filters">
+      <form name="myform" method="POST">
+        <ul class="filterContainer">
+          <li class="filterItem">
+            <input id="codice" class="input" name="codice" type="text" placeholder=""/>
+            <label class="placeHolder">Codice</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input type="submit" value="Search"/>
+          </li>
+          <li class="filterItem">
+            <input type="submit" value="RESET"/>
+          </li>
+        </ul>
+      </form>
+    </div>
 
-  <div id="result">
-    <?php
+    <div id="result" class="main">
+      <?php
 
-    $codice = "";
-    $descrizione = "";
-    $numeroSale  = "";
+      $codice = "";
+      $descrizione = "";
+      $numeroSale  = "";
 
-    if(count($_POST)>0) {
-      $codice = $_POST["codice"];
-      $descrizione = $_POST["descrizione"];
-      $numeroSale  = $_POST["numeroSale"];
-    }
-    else if(count($_GET)>0) {
-      $codice = $_GET["codice"];
-      $descrizione = $_GET["descrizione"];
-      $numeroSale  = $_GET["numeroSale"];
-    }
-    include 'temaManager.php';
-    $error = false;
+      if(count($_POST)>0) {
+        $codice = $_POST["codice"];
+        $descrizione = $_POST["descrizione"];
+        $numeroSale  = $_POST["numeroSale"];
+      }
+      else if(count($_GET)>0) {
+        $codice = $_GET["codice"];
+        $descrizione = $_GET["descrizione"];
+        $numeroSale  = $_GET["numeroSale"];
+      }
+      include 'temaManager.php';
+      $error = false;
 
-    require_once 'connDb.php';
-    $query = getTemaQry ($codice,	$descrizione, $numeroSale );
+      require_once 'connDb.php';
+      $query = getTemaQry ($codice,	$descrizione, $numeroSale );
 
-    try {
-      $result = $conn->query($query);
-    } catch(PDOException $e) {
-      echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-      $error = true;
-    }
+      try {
+        $result = $conn->query($query);
+      } catch(PDOException $e) {
+        echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+        $error = true;
+      }
 
-    if(!$error) {
-      ?>
+      if(!$error) {
+        ?>
 
-      <table class="table">
-        <tr class="tableHeader">
-          <!--th>id </th-->
-          <th>idcodice</th>
-          <th>descrizione</th>
-          <th>numeroSale</th>
-        </tr>
-
-        <?php
-        $i=0;
-
-        foreach($result as $riga) {
-          $i=$i+1;
-          $classRiga='class="rowOdd"';
-          if($i%2==0) {
-            $classRiga='class="rowEven"';
-          }
-          $codice = $riga["codice"];
-          $descrizione = $riga["descrizione"];
-          $numeroSale  = $riga["numeroSale"];
-          ?>
-
-          <tr <?php	echo $classRiga; ?> >
-            <td > <?php echo $codice; ?> </td>
-            <td > <?php echo $descrizione; ?> </td>
-            <td > <?php echo $numeroSale; ?> </td>
+        <table class="table">
+          <tr class="tableHeader">
+            <!--th>id </th-->
+            <th>idcodice</th>
+            <th>descrizione</th>
+            <th>numeroSale</th>
           </tr>
-        <?php } ?>
-      </table>
 
-    <?php }  ?>
+          <?php
+          $i=0;
+
+          foreach($result as $riga) {
+            $i=$i+1;
+            $classRiga='class="rowOdd"';
+            if($i%2==0) {
+              $classRiga='class="rowEven"';
+            }
+            $codice = $riga["codice"];
+            $descrizione = $riga["descrizione"];
+            $numeroSale  = $riga["numeroSale"];
+            ?>
+
+            <tr <?php	echo $classRiga; ?> >
+              <td > <?php echo $codice; ?> </td>
+              <td > <?php echo $descrizione; ?> </td>
+              <td > <?php echo $numeroSale; ?> </td>
+            </tr>
+          <?php } ?>
+        </table>
+
+      <?php }  ?>
+    </div>
   </div>
+
 
 </body>
 </html>
