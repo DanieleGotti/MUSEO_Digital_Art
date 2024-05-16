@@ -35,15 +35,28 @@ function showCreateForm() {
   }
 }
 
+function showEditForm() {
+  var createFormDiv = document.getElementById("editForm");
+  if (createFormDiv.style.display === "none") {
+    createFormDiv.style.display = "block";
+  }
+}
+
+
+function salvaModifiche(codice) {
+    var editForm = document.getElementById('editForm' + codice);
+    // Ottieni i valori modificati dagli input del form
+    var nuovoNome = editForm.elements['editNome'].value;
+    // Invia i dati al server per salvare le modifiche
+    // Qui dovresti usare AJAX o un metodo simile per inviare i dati al server
+}
+
 function hideCreateForm() {
   var createFormDiv = document.getElementById("createForm");
   createFormDiv.style.display = "none";
 }
 
-function modificaAutore(codice) {
-  // Implementa qui la logica per la modifica dell'autore con il codice specificato
-  console.log("Modifica autore con codice: " + codice);
-}
+
 
 function cancellaAutore(codice) {
     if (confirm("Sei sicuro di voler cancellare questo autore?")) {
@@ -106,11 +119,7 @@ function cancellaAutore(codice) {
       return true;
   }
 
-  function editAutore(codice) {
-    // Qui devi implementare la logica per l'operazione di modifica dell'autore
-    // Potresti ad esempio reindirizzare l'utente a una nuova pagina o mostrare un modulo di modifica in una finestra modale
-    // Dovresti passare il codice dell'autore come parametro per identificarlo
-}
+
 
 function deleteAutore(codice) {
     // Chiedi conferma all'utente prima di procedere con l'eliminazione

@@ -50,24 +50,6 @@
       <button id="createButton" onclick="showCreateForm()">Creare</button>
     </div>
 
-    <div id="createForm" style="display:none;">
-      <h2>Inserimento nuovo autore</h2>
-      <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
-        <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
-        <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
-        <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
-        <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
-        <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
-        <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
-        <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
-        <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
-        <label for="tipo_vivo">Vivo</label>
-        <input id="tipo_morto" name="tipo" type="radio" value="morto">
-        <label for="tipo_morto">Morto</label>
-        <input type="submit" name="insert" value="Inserisci">
-      </form>
-    </div>
-
     <div id="result">
       <?php
 
@@ -236,9 +218,26 @@
                       <td><?php echo $tipo; ?></td>
                       <td><?php echo $numeroOpere; ?></td>
                       <td><?php echo $nomeopera; ?></td>
-                      <td><button class="modifica-button" onclick="modificaAutore(<?php echo $codice; ?>)">Modifica</button></td>
+                      <td><button class="modifica-button" onclick="showEditForm(<?php echo $codice; ?>)">Modifica</button></td>
                       <td><button class="cancella-button" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
                   </tr>
+                  <tr id="editFormRow<?php echo $codice; ?>" style="display: none;">
+                  <td colspan="9">
+                      <form id="editForm" method="post" action="editAuthor.php" onsubmit="return validateForm()">
+                          <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
+                          <input type="hidden" name="codice" value="<?php echo $codice; ?>"> <!-- Campo nascosto per il codice -->
+                          <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
+                          <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
+                          <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
+                          <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
+                          <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
+
+                          <input type="submit" name="edit" value="Modifica">
+                      </form>
+                      <h2></h2>
+                  </td>
+              </tr>
+
               <?php } ?>
           </table>
       <?php } else {
