@@ -48,6 +48,7 @@
   border: 1px solid #FEF0E7;
   background-color: #F98B41;
   color: white;
+  caret-color: white;
   margin: center;
   font-family: "Open sans";
   font-weight: 500;
@@ -82,6 +83,15 @@
   font-weight: 800;
   font-size: 12px;
   font-style: normal;
+}
+
+.input:-webkit-autofill, .input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus, .input:-webkit-autofill:active {
+  background-color: #F98B41 !important;
+  color: white !important;
+  border: 1px solid #FEF0E7 !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .main{
