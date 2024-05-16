@@ -10,40 +10,68 @@ $nazionecreate = isset($_POST['nazionecreate']) ? $_POST['nazionecreate'] : '';
 $dataNascitacreate = isset($_POST['dataNascitacreate']) ? $_POST['dataNascitacreate'] : '';
 $dataMortecreate = isset($_POST['dataMortecreate']) ? $_POST['dataMortecreate'] : '';
 
-// Verifica se tutti i campi sono stati inviati
-if (empty($codicecreate) || empty($nomecreate) || empty($cognomecreate) || empty($nazionecreate) || empty($dataNascitacreate) {
-    echo "Per favore, compila tutti i campi.";
-    exit; // Controlla che questa istruzione sia correttamente posizionata e non vi siano parentesi mancanti sopra
+// Impostazione del tipo in base alla presenza della data di morte
+$tipo = empty($dataMortecreate) ? 'vivo' : 'morto';
+
+if (empty($codicecreate) || empty($nomecreate) || empty($cognomecreate) || empty($nazionecreate) || empty($dataNascitacreate)) {
+    echo "<script>alert('Per favore, compila tutti i campi.'); window.history.back();</script>";
+    exit;
 }
 
-
 try {
-    // Query per l'inserimento dei dati nella tabella AUTORE
-    $queryInsert = "INSERT INTO AUTORE (codice, nome, cognome, nazione, dataNascita, dataMorte, numeroOpere, tipo)
-                    VALUES (:codicecreate, :nomecreate, :cognomecreate, :nazionecreate, :dataNascitacreate, :dataMortecreate, NULL, NULL)";
+    // Controllo del codice
+    $queryCodiceExists = "SELECT COUNT(*) FROM AUTORE WHERE codice = :codice";
+    $stmtCodiceExists = $conn->prepare($queryCodiceExists);
+    $stmtCodiceExists->execute(array(':codice' => $codicecreate));
+    $codiceExists = $stmtCodiceExists->fetchColumn();
 
-    // Preparazione della query
-    $stmt = $conn->prepare($queryInsert);
+    // Controllo di nome e cognome
+    $queryNomeCognomeExists = "SELECT COUNT(*) FROM AUTORE WHERE nome = :nome AND cognome = :cognome";
+    $stmtNomeCognomeExists = $conn->prepare($queryNomeCognomeExists);
+    $stmtNomeCognomeExists->execute(array(':nome' => $nomecreate, ':cognome' => $cognomecreate));
+    $nomeCognomeExists = $stmtNomeCognomeExists->fetchColumn();
 
-    // Esecuzione della query di inserimento
-    $stmt->execute(array(
-        ':codicecreate' => $codicecreate,
-        ':nomecreate' => $nomecreate,
-        ':cognomecreate' => $cognomecreate,
-        ':nazionecreate' => $nazionecreate,
-        ':dataNascitacreate' => $dataNascitacreate,
-        ':dataMortecreate' => $dataMortecreate
-    ));
-
-    // Verifica se l'inserimento è avvenuto con successo
-    if ($stmt->rowCount() > 0) {
-        echo "Inserimento riuscito!";
+    // Verifica dei risultati dei controlli
+    if ($codiceExists > 0) {
+        echo "<script>alert('Il codice esiste già nel database.'); window.history.back();</script>";
+    } elseif ($nomeCognomeExists > 0) {
+        echo "<script>alert('Esiste già un autore con lo stesso nome e cognome nel database.'); window.history.back();</script>";
     } else {
-        echo "Si è verificato un errore durante l'inserimento nel database.";
+        // Chiedi conferma all'utente
+        $confirmation = "<script>var confirmation = confirm('Sei sicuro di voler procedere con l\'inserimento?'); if (!confirmation) { window.history.back(); }</script>";
+        echo $confirmation;
+
+        // Se l'utente conferma, procedi con l'inserimento
+        if ($confirmation) {
+            // Query per l'inserimento dei dati nella tabella AUTORE
+            $queryInsert = "INSERT INTO AUTORE (codice, nome, cognome, nazione, dataNascita, dataMorte, tipo)
+                            VALUES (:codicecreate, :nomecreate, :cognomecreate, :nazionecreate, :dataNascitacreate, :dataMortecreate, :tipo)";
+
+            // Preparazione della query
+            $stmt = $conn->prepare($queryInsert);
+
+            // Esecuzione della query di inserimento
+            $stmt->execute(array(
+                ':codicecreate' => $codicecreate,
+                ':nomecreate' => $nomecreate,
+                ':cognomecreate' => $cognomecreate,
+                ':nazionecreate' => $nazionecreate,
+                ':dataNascitacreate' => $dataNascitacreate,
+                ':dataMortecreate' => $dataMortecreate,
+                ':tipo' => $tipo
+            ));
+
+            // Verifica se l'inserimento è avvenuto con successo
+            if ($stmt->rowCount() > 0) {
+                echo "<script>alert('Inserimento riuscito!'); window.location.href = 'autore.php';</script>";
+            } else {
+                echo "<script>alert('Si è verificato un errore durante inserimento nel database.'); window.history.back();</script>";
+            }
+        }
     }
 } catch (PDOException $e) {
     // Gestione degli errori
-    echo "Si è verificato un errore durante l'inserimento nel database: " . $e->getMessage();
+    echo "<script>alert('Si è verificato un errore durante inserimento nel database: " . $e->getMessage() . "'); window.history.back();</script>";
 }
 
 // Chiudi la connessione al database

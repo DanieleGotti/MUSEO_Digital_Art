@@ -63,16 +63,39 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
     return $qry;
 }
 
-
-
-
-function getInserisciQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo): string {
-    global $conn;
-
-    // Assicurati che i valori di stringa siano racchiusi tra virgolette singole
-    $qry = "INSERT INTO AUTORE (codice, nome, cognome, nazione, datanascita, dataMorte, numeroOpere, tipo, nomeopera)
-           VALUES ('$codice', '$nome', '$cognome', '$nazione', '$dataNascita', '$dataMorte', '$tipo')";
-
-    return $qry;
+function printAutoreRow($riga) {
+    // Stampa i dati dell'autore e i bottoni Cancella e Modifica
+    // Utilizza le informazioni della riga passata come parametro
+    echo "<td >" . $riga["codice"] . "</td>";
+    echo "<td >" . $riga["nome"] . "</td>";
+    echo "<td >" . $riga["cognome"] . "</td>";
+    echo "<td >" . $riga["nazione"] . "</td>";
+    echo "<td >" . $riga["dataNascita"] . "</td>";
+    echo "<td >" . $riga["dataMorte"] . "</td>";
+    echo "<td >" . $riga["tipo"] . "</td>";
+    echo "<td >" . $riga["numeroOpere"] . "</td>";
+    echo '<td><button onclick="editAutore(' . $riga["codice"] . ')">Modifica</button></td>';
+    echo '<td><button onclick="deleteAutore(' . $riga["codice"] . ')">Cancella</button></td>';
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_codice'])) {
+    $codice = $_POST['delete_codice'];
+
+    // Esegui l'operazione di eliminazione
+    $queryDelete = "DELETE FROM AUTORE WHERE codice = :codice";
+    $stmt = $conn->prepare($queryDelete);
+    $stmt->execute(array(':codice' => $codice));
+
+    // Verifica se l'operazione è stata eseguita con successo
+    if ($stmt->rowCount() > 0) {
+        echo "Autore eliminato con successo!";
+    } else {
+        echo "Si è verificato un errore durante l'eliminazione dell'autore.";
+    }
+
+    // Termina lo script dopo aver gestito la richiesta di eliminazione
+    exit;
+}
+
+
 ?>

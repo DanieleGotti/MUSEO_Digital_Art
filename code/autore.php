@@ -10,9 +10,8 @@
 <body>
 
   <?php
-
   include 'nav.html';
-  include 'footer.html'
+  include 'footer.html';
   ?>
 
   <div id="filtri">
@@ -23,7 +22,6 @@
       <input id="nazione" name="nazione" type="text" placeholder="Nazione"/>
       <input id="dataNascita" name="dataNascita" type="text" placeholder="data Nascita"/>
       <input id="dataMorte" name="dataMorte" type="text" placeholder="data Morte"/>
-
       <input id="numeroOpere" name="numeroOpere" type="text" placeholder="Numero Opere"/>
       <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
       <label for="tipo_vivo">Vivo</label>
@@ -39,34 +37,31 @@
     </form>
 
     <form name="myformCRUD" method="post">
-    <input id="CRUD" name="CRUD" type="radio" value="CRUD" onclick="showOptions()">
-    <label for="CRUD">CRUD</label>
-  </form>
+      <input id="CRUD" name="CRUD" type="radio" value="CRUD" onclick="showOptions()">
+      <label for="CRUD">CRUD</label>
+    </form>
 
+    <div id="options" style="display:none;">
+      <button id="createButton" onclick="showCreateForm()">Creare</button>
+    </div>
 
-<div id="options" style="display:none;">
-  <button id="createButton" onclick="showCreateForm()">Creare</button>
-  <button>Leggere</button>
-</div>
-
-<div id="createForm" style="display:none;">
-<h2>Inserimento nuovo autore</h2>
-<form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
-  <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
-  <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
-  <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
-  <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
-  <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
-  <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
-  <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
-  <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
-  <label for="tipo_vivo">Vivo</label>
-  <input id="tipo_morto" name="tipo" type="radio" value="morto">
-  <label for="tipo_morto">Morto</label>
-  <input type="submit" name="insert" value="Inserisci">
-</form>
-</div>
-
+    <div id="createForm" style="display:none;">
+      <h2>Inserimento nuovo autore</h2>
+      <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
+        <!-- Aggiungi qui gli input per ogni colonna della tabella AUTORE -->
+        <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
+        <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
+        <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
+        <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
+        <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
+        <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
+        <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
+        <label for="tipo_vivo">Vivo</label>
+        <input id="tipo_morto" name="tipo" type="radio" value="morto">
+        <label for="tipo_morto">Morto</label>
+        <input type="submit" name="insert" value="Inserisci">
+      </form>
+    </div>
 
     <div id="result">
       <?php
@@ -115,10 +110,7 @@
         $error = true;
       }
 
-
-
-
-      if(!$error && $nomeopera!="") {
+      if(!$error && $result->rowCount() > 0) {
         ?>
         <table class="table">
           <tr class="header">
@@ -131,15 +123,11 @@
             <th>Tipo</th>
             <th>Numero Opere</th>
             <th>Titolo Opera</th>
+            <th>Modifica</th>
+            <th>Cancella</th>
           </tr>
           <?php
-          $i=0;
           foreach($result as $riga) {
-            $i=$i+1;
-            $classRiga='class="rowOdd"';
-            if($i%2==0) {
-              $classRiga='class="rowEven"';
-            }
             $codice = $riga["codice"];
             $nome = $riga["nome"];
             $cognome  = $riga["cognome"];
@@ -150,65 +138,25 @@
             $numeroOpere  = $riga["numeroOpere"];
             $nomeopera  = $riga["nomeopera"];
             ?>
-            <tr <?php	echo $classRiga; ?> >
-              <td > <?php echo $codice; ?> </td>
-              <td > <?php echo $nome; ?> </td>
-              <td > <?php echo $cognome; ?> </td>
-              <td > <?php echo $nazione; ?> </td>
-              <td > <?php echo $dataNascita; ?> </td>
-              <td > <?php echo $dataMorte; ?> </td>
-              <td > <?php echo $tipo; ?> </td>
-              <td > <?php echo $numeroOpere; ?> </td>
-              <td > <?php echo $nomeopera; ?> </td>
+            <tr>
+              <td><?php echo $codice; ?></td>
+              <td><?php echo $nome; ?></td>
+              <td><?php echo $cognome; ?></td>
+              <td><?php echo $nazione; ?></td>
+              <td><?php echo $dataNascita; ?></td>
+              <td><?php echo $dataMorte; ?></td>
+              <td><?php echo $tipo; ?></td>
+              <td><?php echo $numeroOpere; ?></td>
+              <td><?php echo $nomeopera; ?></td>
+              <td><button class="modifica-button" onclick="modificaAutore(<?php echo $codice; ?>)">Modifica</button></td>
+              <td><button class="cancella-button" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
             </tr>
           <?php } ?>
         </table>
-      <?php }
-      if(!$error && $nomeopera=="") {
-        ?>
-        <table class="table">
-          <tr class="header">
-            <th>Codice</th>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Nazione</th>
-            <th>Data Nascita</th>
-            <th>Data Morte</th>
-            <th>Tipo</th>
-            <th>Numero Opere</th>
-          </tr>
-          <?php
-          $i=0;
-          foreach($result as $riga) {
-            $i=$i+1;
-            $classRiga='class="rowOdd"';
-            if($i%2==0) {
-              $classRiga='class="rowEven"';
-            }
-            $codice = $riga["codice"];
-            $nome = $riga["nome"];
-            $cognome  = $riga["cognome"];
-            $nazione = $riga["nazione"];
-            $dataNascita  = $riga["dataNascita"];
-            $dataMorte = $riga["dataMorte"];
-            $tipo = $riga["tipo"];
-            $numeroOpere  = $riga["numeroOpere"];
-            ?>
-            <tr <?php	echo $classRiga; ?> >
-              <td > <?php echo $codice; ?> </td>
-              <td > <?php echo $nome; ?> </td>
-              <td > <?php echo $cognome; ?> </td>
-              <td > <?php echo $nazione; ?> </td>
-              <td > <?php echo $dataNascita; ?> </td>
-              <td > <?php echo $dataMorte; ?> </td>
-              <td > <?php echo $tipo; ?> </td>
-              <td > <?php echo $numeroOpere; ?> </td>
-            </tr>
-          <?php } ?>
-        </table>
-      <?php }  ?>
+      <?php } else {
+        echo "<p>Nessun risultato trovato.</p>";
+      } ?>
     </div>
   </div>
-
 </body>
 </html>
