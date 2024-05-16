@@ -23,10 +23,7 @@
       <input id="dataNascita" name="dataNascita" type="text" placeholder="data Nascita"/>
       <input id="dataMorte" name="dataMorte" type="text" placeholder="data Morte"/>
       <input id="numeroOpere" name="numeroOpere" type="text" placeholder="Numero Opere"/>
-      <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
-      <label for="tipo_vivo">Vivo</label>
-      <input id="tipo_morto" name="tipo" type="radio" value="morto">
-      <label for="tipo_morto">Morto</label>
+      
       <input type="submit" value="Search"/>
       <input type="submit" value="RESET"/>
     </form>

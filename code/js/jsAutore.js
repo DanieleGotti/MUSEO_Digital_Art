@@ -68,6 +68,8 @@ function cancellaAutore(codice) {
             success: function(response) {
                 // Gestisci la risposta qui, ad esempio aggiornando la tabella dei risultati
                 console.log("Autore eliminato con successo!");
+                // Ricarica la pagina dopo aver eliminato l'autore
+                window.location.href = 'autore.php';
             },
             error: function(xhr, status, error) {
                 // Gestisci gli errori qui
@@ -76,6 +78,7 @@ function cancellaAutore(codice) {
         });
     }
 }
+
 
   function validateForm() {
       var codicecreate = document.getElementById("codicecreate").value.trim();
@@ -118,27 +121,3 @@ function cancellaAutore(codice) {
 
       return true;
   }
-
-
-
-function deleteAutore(codice) {
-    // Chiedi conferma all'utente prima di procedere con l'eliminazione
-    var conferma = confirm('Sei sicuro di voler eliminare questo autore?');
-
-    if (conferma) {
-        // Se l'utente conferma, esegui la richiesta di eliminazione tramite AJAX
-        $.ajax({
-            url: 'autoreManager.php',
-            method: 'POST',
-            data: { delete_codice: codice },
-            success: function(response) {
-                alert(response); // Mostra un messaggio di conferma o errore
-                // Aggiorna l'interfaccia utente se necessario
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('Si è verificato un errore durante la richiesta di eliminazione.');
-            }
-        });
-    }
-}
