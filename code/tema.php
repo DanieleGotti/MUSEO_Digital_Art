@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="./css/cssTema.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
+  <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
 </head>
 
 <body>
@@ -15,9 +16,31 @@
   ?>
 
   <div class="back">
+
+    <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
+      <img src="../img/filtroStatica.png">
+    </button>
+
     <div id="filtri" class="filters">
       <form name="myform" method="POST">
         <ul class="filterContainer">
+          <li class="filterHeader">
+            <span class="filterTitle"></span>
+          </li>
+          <li class="filterItem">
+            <button type="submit" class="button">
+              <span class="buttonText">Cerca</span>
+              <span class="buttonIcon">
+                <img src="../img/cerca.png">
+              </span>
+            </button>
+            <button type="submit" class="button">
+              <span class="buttonText">Reset</span>
+              <span class="buttonIcon">
+                <img src="../img/reset.png">
+              </span>
+            </button>
+          </li>
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text" placeholder=""/>
             <label class="placeHolder">Codice</label>
@@ -25,12 +48,6 @@
           <li class="filterItem">
             <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
             <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input type="submit" value="Search"/>
-          </li>
-          <li class="filterItem">
-            <input type="submit" value="RESET"/>
           </li>
         </ul>
       </form>

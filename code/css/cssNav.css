@@ -68,6 +68,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  filter: contrast(0%) brightness(200%);
 }
 
 .navbar:hover {
@@ -83,4 +84,5 @@
 .navbar:hover .navLink img {
   margin-left: 0;
   margin-right: 0;
+  filter: contrast(0%) brightness(200%);
 }
