@@ -6,41 +6,30 @@
 }
 
 .filterButton {
-  height: 4rem;
-  width: 4rem;
-  top: 5rem;
-  left: 1rem;
+  height: 2rem;
+  width: 2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
   border: none;
   background-color: #F76E11;
   border-radius: 10px;
 }
 
 .filterButton img {
-  height: 3rem;
+  height: 1rem;
   filter: contrast(0%) brightness(200%);
 }
 
 .filterButton:hover {
   background-color: #FFB68D;
+  border: 2px solid #F98B41;
 }
 
 .filters {
-  width: 1rem;
+  width: 0rem;
   height: calc(100vh - 11rem);
   position: fixed;
-  top: 10rem;
-  background-color: #F98B41;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  overflow: hidden;
-  transition: width 200ms ease;
-}
-
-.filterExpanded {
-  width: 14rem;
-  height: calc(100vh - 11rem);
-  position: fixed;
-  top: 10rem;
+  top: 8rem;
   background-color: #F98B41;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -58,7 +47,7 @@
 }
 
 .filterItem {
-  height: 3rem;
+  height: 2.5rem;
   width: 100%;
   display: flex;
   align-items: center;
