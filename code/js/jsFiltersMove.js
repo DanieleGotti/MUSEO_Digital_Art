@@ -1,4 +1,4 @@
-let isExpanded = false;
+let isExpanded = true;
 
 function moveFilters() {
   const box = document.getElementById('filtri');

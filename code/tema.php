@@ -25,7 +25,7 @@
       <form name="myform" method="POST">
         <ul class="filterContainer">
           <li class="filterHeader">
-            <span class="filterTitle"></span>
+            <span class="filterTitle">Filtri</span>
           </li>
           <li class="filterItem">
             <button type="submit" class="button">
@@ -44,6 +44,34 @@
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text" placeholder=""/>
             <label class="placeHolder">Codice</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
+          </li>
+          <li class="filterItem">
+            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <label class="placeHolder">Descrizione</label>
           </li>
           <li class="filterItem">
             <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>

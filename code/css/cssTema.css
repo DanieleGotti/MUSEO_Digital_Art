@@ -3,6 +3,7 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .filterButton {
@@ -11,7 +12,7 @@
   margin-top: 1rem;
   margin-left: 1rem;
   border: none;
-  background-color: #F76E11;
+  background-color: #F26419;
   border-radius: 10px;
 }
 
@@ -26,15 +27,38 @@
 }
 
 .filters {
-  width: 0rem;
+  width: 14rem;
   height: calc(100vh - 11rem);
   position: fixed;
-  top: 8rem;
   background-color: #F98B41;
+  top: 8rem;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  overflow: hidden;
+  overflow-y: auto;
   transition: width 200ms ease;
+}
+
+
+.filters::-webkit-scrollbar {
+  width: 0.5em;
+  height: .5em;
+  background-color: #F98B41;
+}
+
+.filters::-webkit-scrollbar-track {
+  background-color: #FFB68D;
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background: #F76E11;
+  border: 2px solid #FFB68D;
+  border-radius: 100vw;
+}
+
+.filters::-webkit-scrollbar-thumb:hover {
+  background: #F98B41;
 }
 
 .filterContainer {
@@ -44,10 +68,36 @@
   display: flex;
   flex-direction: column;
   align-items: left;
+  height: calc(100vh - 14rem);
+}
+
+.filterHeader {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  background-color: #F26419;
+  align-items: center;
+  text-decoration: none;
+  transition: width 600ms;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 0px;
+  position: relative;
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.filterTitle {
+  padding-left: 20px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
 .filterItem {
-  height: 2.5rem;
+  height: 3rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -55,7 +105,7 @@
   transition: width 600ms;
   padding: 10px 5px;
   box-sizing: border-box;
-  margin: 0.2rem 0rem;
+  margin: 0.25rem 0rem;
   position: relative;
 }
 
@@ -117,6 +167,7 @@
 .button {
   padding: 10px;
   width: 100%;
+  height: 2rem;
   box-sizing: border-box;
   outline: none;
   border: none;
