@@ -15,137 +15,108 @@
   include 'nav.html';
   ?>
 
-  <div class="back">
+  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
+    <img src="../img/filtroStatica.png">
+  </button>
 
-    <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
-      <img src="../img/filtroStatica.png">
-    </button>
-
-    <div id="filtri" class="filters">
-      <form name="myform" method="POST">
-        <ul class="filterContainer">
-          <li class="filterHeader">
-            <span class="filterTitle">Filtri</span>
-          </li>
+  <div id="filtri" class="filters">
+    <form name="myform" class="form" method="POST">
+      <ul class="filterContainer">
+        <li class="filterHeader">
+          <span class="filterTitle">Filtri</span>
+        </li>
+        <li class="filterItem">
+          <button type="submit" class="button">
+            <span class="buttonText">Cerca</span>
+            <span class="buttonIcon">
+              <img src="../img/cerca.png">
+            </span>
+          </button>
+          <button type="submit" class="button">
+            <span class="buttonText">Reset</span>
+            <span class="buttonIcon">
+              <img src="../img/reset.png">
+            </span>
+          </button>
+        </li>
+        <div class="filterScroll">
           <li class="filterItem">
-            <button type="submit" class="button">
-              <span class="buttonText">Cerca</span>
-              <span class="buttonIcon">
-                <img src="../img/cerca.png">
-              </span>
-            </button>
-            <button type="submit" class="button">
-              <span class="buttonText">Reset</span>
-              <span class="buttonIcon">
-                <img src="../img/reset.png">
-              </span>
-            </button>
-          </li>
-          <li class="filterItem">
-            <input id="codice" class="input" name="codice" type="text" placeholder=""/>
+            <input id="codice" class="input" name="codice" type="text"/>
             <label class="placeHolder">Codice</label>
           </li>
           <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
+            <input id="descrizione" class="input" name="descrizione" type="text"/>
             <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text" placeholder=""/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-        </ul>
-      </form>
-    </div>
+        </div>
+      </ul>
+    </form>
+  </div>
 
-    <div id="result" class="main">
-      <?php
+  <div id="result" class="main">
+    <?php
 
-      $codice = "";
-      $descrizione = "";
-      $numeroSale  = "";
+    $codice = "";
+    $descrizione = "";
+    $numeroSale  = "";
 
-      if(count($_POST)>0) {
-        $codice = $_POST["codice"];
-        $descrizione = $_POST["descrizione"];
-        $numeroSale  = $_POST["numeroSale"];
-      }
-      else if(count($_GET)>0) {
-        $codice = $_GET["codice"];
-        $descrizione = $_GET["descrizione"];
-        $numeroSale  = $_GET["numeroSale"];
-      }
-      include 'temaManager.php';
-      $error = false;
+    if(count($_POST)>0) {
+      $codice = $_POST["codice"];
+      $descrizione = $_POST["descrizione"];
+      $numeroSale  = $_POST["numeroSale"];
+    }
+    else if(count($_GET)>0) {
+      $codice = $_GET["codice"];
+      $descrizione = $_GET["descrizione"];
+      $numeroSale  = $_GET["numeroSale"];
+    }
+    include 'temaManager.php';
+    $error = false;
 
-      require_once 'connDb.php';
-      $query = getTemaQry ($codice,	$descrizione, $numeroSale );
+    require_once 'connDb.php';
+    $query = getTemaQry ($codice,	$descrizione, $numeroSale );
 
-      try {
-        $result = $conn->query($query);
-      } catch(PDOException $e) {
-        echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-        $error = true;
-      }
+    try {
+      $result = $conn->query($query);
+    } catch(PDOException $e) {
+      echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+      $error = true;
+    }
 
-      if(!$error) {
-        ?>
+    if(!$error) {
+      ?>
 
-        <table class="table">
-          <tr class="tableHeader">
-            <!--th>id </th-->
-            <th>idcodice</th>
-            <th>descrizione</th>
-            <th>numeroSale</th>
+      <table class="table">
+        <tr class="tableHeader">
+          <!--th>id </th-->
+          <th>idcodice</th>
+          <th>descrizione</th>
+          <th>numeroSale</th>
+        </tr>
+
+        <?php
+        $i=0;
+
+        foreach($result as $riga) {
+          $i=$i+1;
+          $classRiga='class="rowOdd"';
+          if($i%2==0) {
+            $classRiga='class="rowEven"';
+          }
+          $codice = $riga["codice"];
+          $descrizione = $riga["descrizione"];
+          $numeroSale  = $riga["numeroSale"];
+          ?>
+
+          <tr <?php	echo $classRiga; ?> >
+            <td > <?php echo $codice; ?> </td>
+            <td > <?php echo $descrizione; ?> </td>
+            <td > <?php echo $numeroSale; ?> </td>
           </tr>
+        <?php } ?>
+      </table>
 
-          <?php
-          $i=0;
+    <?php }  ?>
 
-          foreach($result as $riga) {
-            $i=$i+1;
-            $classRiga='class="rowOdd"';
-            if($i%2==0) {
-              $classRiga='class="rowEven"';
-            }
-            $codice = $riga["codice"];
-            $descrizione = $riga["descrizione"];
-            $numeroSale  = $riga["numeroSale"];
-            ?>
-
-            <tr <?php	echo $classRiga; ?> >
-              <td > <?php echo $codice; ?> </td>
-              <td > <?php echo $descrizione; ?> </td>
-              <td > <?php echo $numeroSale; ?> </td>
-            </tr>
-          <?php } ?>
-        </table>
-
-      <?php }  ?>
-    </div>
   </div>
 
 
