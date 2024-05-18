@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>home</title>
-  <link rel="stylesheet" href="./css/cssStart.css">
+  <title>Museo - Digital Art</title>
+  <link rel="stylesheet" href="./css/cssHome.css">
 </head>
 
 <body>

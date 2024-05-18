@@ -5,6 +5,10 @@
   text-decoration: none;
 }
 
+body {
+  background-color: #FEF0E7;
+}
+
 .filterButton {
   height: 2rem;
   width: 2rem;
@@ -22,11 +26,11 @@
 
 .filterButton:hover {
   background-color: #FFB68D;
-  border: 2px solid #F98B41;
+  border: 2px solid white;
 }
 
 .filters {
-  width: 14rem;
+  width: 12rem;
   height: calc(100vh - 11rem);
   position: fixed;
   background-color: #F98B41;
@@ -97,7 +101,6 @@
   position: relative;
 }
 
-
 .button {
   padding: 10px;
   width: 100%;
@@ -142,7 +145,6 @@
   height: 12px;
   transform: scale(1.5);
 }
-
 
 .filterScroll {
   margin: 0;
@@ -227,11 +229,6 @@
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.main{
-  margin-left: 20rem;
-  z-index: 1;
-}
-
 ::-webkit-scrollbar {
   width: 0.5em;
   height: .5em;
@@ -252,4 +249,87 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #F98B41;
+}
+
+.tableBody {
+  margin: 1rem;
+  margin-left: 14rem;
+  margin-right: 6rem;
+  height: calc(100vh - 11rem);
+  transition: width 200ms ease;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+.tableBody thead {
+  position: sticky;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  background-color: #F98B41;
+}
+
+.tableBody thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.tableBody thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.tableBody tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.tableBody tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+table {
+  width: 100%;
+  height: calc(100vh - 10rem);
+}
+
+thead {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0px;
+}
+
+th {
+  background-color: #F98B41;
+  min-height: 3rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+tbody {
+  display: table-row-group;
+  max-height: calc(100vh - 18rem);
+}
+
+td {
+  background-color: white;
+  padding: 0;
+  height: 4rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.iconArrow {
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1.4px solid #F76E11;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1rem;
+  margin-left: .5rem;
+}
+
+.iconArrow img{
+  height: 1.3rem;
+  border-radius: 50%;
 }
