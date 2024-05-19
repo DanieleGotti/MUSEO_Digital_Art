@@ -47,38 +47,6 @@
             <input id="descrizione" class="input" name="descrizione" type="text"/>
             <label class="placeHolder">Descrizione</label>
           </li>
-
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
-          <li class="filterItem">
-            <input id="descrizione" class="input" name="descrizione" type="text"/>
-            <label class="placeHolder">Descrizione</label>
-          </li>
-
         </div>
       </ul>
     </form>

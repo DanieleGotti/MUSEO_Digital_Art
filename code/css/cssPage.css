@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #FEF0E7;
+  background-color: white;
 }
 
 .filterButton {
@@ -15,7 +15,7 @@ body {
   margin-top: 1rem;
   margin-left: 1rem;
   border: none;
-  background-color: #F26419;
+  background-color: #F76E11;
   border-radius: 10px;
 }
 
@@ -62,10 +62,10 @@ body {
 }
 
 .filterHeader {
-  height: 3rem;
+  height: 2rem;
   width: 100%;
   display: flex;
-  background-color: #F26419;
+  background-color: #F76E11;
   align-items: center;
   text-decoration: none;
   transition: width 600ms;
@@ -252,23 +252,27 @@ body {
 }
 
 .tableBody {
-  margin: 1rem;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
   margin-left: 14rem;
   margin-right: 6rem;
-  height: calc(100vh - 11rem);
+  height: calc(100vh - 8rem);
   transition: width 200ms ease;
   overflow-y: auto;
   overflow-x: auto;
   border-radius: 10px;
+  border: 2px solid #FEF0E7;
+  background-color: #FEF0E7;
+  display: flex;
+  flex-direction: column;
 }
 
 .tableBody thead {
   position: sticky;
-  height: 100%;
+  height: 2rem;
   width: 100%;
   top: 0;
   z-index: 2;
-  background-color: #F98B41;
 }
 
 .tableBody thead th:first-child {
@@ -279,50 +283,105 @@ body {
   border-top-right-radius: 10px;
 }
 
-.tableBody tbody tr:last-child td:first-child {
+.tableBody tbody tr:last-child td{
+  border-bottom: none;
+}
+
+.tableBody tbody tr td:first-child {
+  border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.tableBody tbody tr:last-child td:last-child {
+.tableBody tbody tr td:last-child {
+  border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.tableBody::-webkit-scrollbar {
+  width: .5em;
+  height: .5em;
+  background-color: #FEF0E7;
+  border-radius: 100%;
+}
+
+.tableBody::-webkit-scrollbar-track {
+  background-color: #FEF0E7;
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+.tableBody::-webkit-scrollbar-thumb {
+  background: #F76E11;
+  border: 2px solid  #FEF0E7;
+  border-radius: 100vw;
+}
+
+.tableBody::-webkit-scrollbar-thumb:hover {
+  background: #F98B41;
 }
 
 table {
   width: 100%;
+  height: 100%;
   height: calc(100vh - 10rem);
+  background-color: #FEF0E7;
+  border-collapse: collapse;
+  flex: 1;
+  table-layout: fixed;
 }
 
 thead {
   width: 100%;
-  height: 100%;
+  height: 2rem;
   padding: 10px 0px;
+  background-color: #FEF0E7;
+  flex: 0 0 auto;
 }
 
 th {
-  background-color: #F98B41;
-  min-height: 3rem;
+  background-color: #F76E11;
+  height: 2rem;
   vertical-align: middle;
   text-align: center;
+  padding: 0px 10px;
+  color: white;
+  line-height: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 12px;
+  box-sizing: border-box;
 }
 
 tbody {
   display: table-row-group;
-  max-height: calc(100vh - 18rem);
+  background-color: #FEF0E7;
+  flex: 1;
+}
+
+tbody tr {
+  height: 4rem;
 }
 
 td {
   background-color: white;
   padding: 0;
-  height: 4rem;
   vertical-align: middle;
   text-align: center;
+  font-family: "Open sans";
+  font-weight: 400;
+  font-size: 12px;
+  border-top: 2px solid #FEF0E7;
+  border-bottom: 2px solid #FEF0E7;
+  box-sizing: border-box;
 }
 
 .iconArrow {
   display: inline-block;
-  width: 1.3rem;
-  height: 1.3rem;
-  border: 1.4px solid #F76E11;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #F76E11;
   border-radius: 50%;
   text-align: center;
   font-size: 1rem;
@@ -330,6 +389,6 @@ td {
 }
 
 .iconArrow img{
-  height: 1.3rem;
+  height: 16px;
   border-radius: 50%;
 }
