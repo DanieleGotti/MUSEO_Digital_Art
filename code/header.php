@@ -12,8 +12,11 @@
         <img class="logoImage" src="./img/logo.png">
       </div>
       <ul class="headerLinks">
-        <a><li>Miao</li></a>
-        <a><li>Miaoooo</li></a>
+        <a>
+          <li>
+<?php echo htmlspecialchars($page); ?>
+          </li>
+        </a>
       </ul>
     </div>
   </div>

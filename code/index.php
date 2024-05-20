@@ -8,7 +8,8 @@
 <body>
 
   <?php
-  include 'header.html';
+  $page = 'Home';
+  include 'header.php';
   include 'nav.html';
   ?>
 

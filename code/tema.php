@@ -10,7 +10,8 @@
 
 <body>
 <?php
-  include 'header.html';
+  $page = 'Temi';
+  include 'header.php';
   include 'nav.html';
 ?>
 
@@ -85,20 +86,20 @@
     <table>
         <thead>
           <tr>
-            <th>ID TEMA
-              <span class="iconArrow">
+            <th>CODICE TEMA
+              <button class="iconArrow">
                 <img src="./img/freccia.png">
-              </span>
+              </button>
             </th>
             <th>DESCRIZIONE
-              <span class="iconArrow">
+              <button class="iconArrow">
                 <img src="./img/freccia.png">
               </span>
             </th>
             <th>NUMERO SALE
-              <span class="iconArrow">
+              <button class="iconArrow">
                 <img src="./img/freccia.png">
-              </span>
+              </button>
             </th>
           </tr>
         </thead>

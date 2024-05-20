@@ -13,9 +13,8 @@
 <body>
 
   <?php
-
   include 'nav.html';
-  include 'footer.html'
+  include 'footer.html';
   ?>
 
   <div id="filtri">

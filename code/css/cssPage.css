@@ -327,7 +327,8 @@ table {
   background-color: #FEF0E7;
   border-collapse: collapse;
   flex: 1;
-  table-layout: fixed;
+  table-layout: auto;
+  overflow-x: auto;
 }
 
 thead {
@@ -339,6 +340,7 @@ thead {
 }
 
 th {
+  min-width: 120px;
   background-color: #F76E11;
   height: 2rem;
   vertical-align: middle;
@@ -361,34 +363,66 @@ tbody {
 }
 
 tbody tr {
-  height: 4rem;
+  height: 6rem;
 }
 
 td {
   background-color: white;
   padding: 0;
+  min-width: 120px;
   vertical-align: middle;
   text-align: center;
   font-family: "Open sans";
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 500;
+  font-size: 14px;
   border-top: 2px solid #FEF0E7;
   border-bottom: 2px solid #FEF0E7;
   box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  th:nth-child(5), td:nth-child(5) {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  th:nth-child(4), td:nth-child(4) {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  th:nth-child(3), td:nth-child(3) {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  th:nth-child(2), td:nth-child(2) {
+    min-width: 0;
+  }
 }
 
 .iconArrow {
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 1px solid #F76E11;
   border-radius: 50%;
-  text-align: center;
+  vertical-align: middle;
   font-size: 1rem;
   margin-left: .5rem;
+  background-color: #F76E11;
+  border: none;
 }
 
 .iconArrow img{
   height: 16px;
   border-radius: 50%;
+  display: flex;
+  vertical-align: center;
+}
+
+.iconArrow:hover {
+  background-color: #FFB68D;
 }

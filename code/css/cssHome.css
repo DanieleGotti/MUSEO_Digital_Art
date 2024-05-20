@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #white;
+  background-color: white;
 }
 
 .panelTitle {
@@ -28,10 +28,9 @@ body {
 .indexLogo {
   animation: fade-out linear;
   animation-timeline: view();
-  animation-range: exit;
+  animation-range: exit -200px;
   width: 50vw;
   height: auto;
-  background: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
@@ -60,15 +59,16 @@ body {
 }
 
 @keyframes header-image-animation {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.2); }
-  85%, 100% { transform: scale(2); }
+  0% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.2) translateY(50px); }
+  85%, 100% { transform: scale(2) translateY(150px); }
 }
 
 .panel {
   width: calc(100% - 4rem - 20px);
   background-color: white;
   margin: 0px 10px;
+  border-radius: 10px;
 }
 
 .panelTitle h3 {
@@ -90,6 +90,7 @@ body {
   border-radius: 10px;
   border: 2px solid #F76E11;
   margin-left: auto;
+  margin-right: 10px;
   font-family: "Open sans";
   font-weight: 400;
   font-size: .75rem;
@@ -148,6 +149,5 @@ body {
 }
 
 .card:hover {
-  background-color: #FEF0E7;
   border-color: #FFB68D;
 }
