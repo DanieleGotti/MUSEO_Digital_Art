@@ -27,52 +27,65 @@ if (!empty($dataMortecreate) && !preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $dataMort
 // Impostazione del tipo in base alla presenza della data di morte
 $tipo = empty($dataMortecreate) ? 'vivo' : 'morto';
 
-// Verifica se la data di morte è stata modificata in modo da essere vuota e cambia il tipo di conseguenza
-if (!empty($dataMortecreate) && $tipo === 'morto') {
-    $tipo = 'morto';
-} else {
-    $tipo = 'vivo';
-}
-
 // Costruzione della query di aggiornamento
-$queryUpdate = "UPDATE AUTORE SET ";
-$bindParams = array();
+$fieldsToUpdate = [];
+$bindParams = [];
 
 // Aggiunta dei campi da aggiornare alla query
 if (!empty($nomecreate)) {
-    $queryUpdate .= "nome = :nomecreate, ";
+    $fieldsToUpdate[] = "nome = :nomecreate";
     $bindParams[':nomecreate'] = $nomecreate;
 }
 if (!empty($cognomecreate)) {
-    $queryUpdate .= "cognome = :cognomecreate, ";
+    $fieldsToUpdate[] = "cognome = :cognomecreate";
     $bindParams[':cognomecreate'] = $cognomecreate;
 }
 if (!empty($nazionecreate)) {
-    $queryUpdate .= "nazione = :nazionecreate, ";
+    $fieldsToUpdate[] = "nazione = :nazionecreate";
     $bindParams[':nazionecreate'] = $nazionecreate;
 }
 if (!empty($dataNascitacreate)) {
-    $queryUpdate .= "dataNascita = :dataNascitacreate, ";
+    $fieldsToUpdate[] = "dataNascita = :dataNascitacreate";
     $bindParams[':dataNascitacreate'] = $dataNascitacreate;
 }
 if (!empty($dataMortecreate)) {
-    $queryUpdate .= "dataMorte = :dataMortecreate, ";
+    $fieldsToUpdate[] = "dataMorte = :dataMortecreate";
     $bindParams[':dataMortecreate'] = $dataMortecreate;
 }
-$queryUpdate .= "tipo = :tipo WHERE codice = :codice";
 
 // Verifica se è stato inserito almeno un campo da aggiornare
-if (count($bindParams) == 0) {
+if (empty($fieldsToUpdate)) {
     echo "<script>alert('Nessun dato da aggiornare.'); window.history.back();</script>";
     exit;
+}
+
+$fieldsToUpdate[] = "tipo = :tipo";
+$bindParams[':tipo'] = $tipo;
+$bindParams[':codice'] = $codice;
+
+// Costruzione della query finale
+$queryUpdate = "UPDATE AUTORE SET " . implode(", ", $fieldsToUpdate) . " WHERE codice = :codice";
+
+// Debug: Verifica la query finale e i parametri di binding
+error_log("Query Update: $queryUpdate");
+foreach ($bindParams as $key => $value) {
+    error_log("Binding param $key: $value");
 }
 
 try {
     // Preparazione della query
     $stmt = $conn->prepare($queryUpdate);
 
+    // Bind dei parametri
+    foreach ($bindParams as $key => $value) {
+        $stmt->bindValue($key, $value);
+    }
+
     // Esecuzione della query di aggiornamento
-    $stmt->execute(array_merge($bindParams, array(':tipo' => $tipo, ':codice' => $codice)));
+    $stmt->execute();
+
+    // Debug: Verifica il numero di righe modificate
+    error_log("Row count: " . $stmt->rowCount());
 
     // Verifica se l'aggiornamento è avvenuto con successo
     if ($stmt->rowCount() > 0) {
@@ -83,6 +96,7 @@ try {
 } catch (PDOException $e) {
     // Gestione degli errori
     echo "<script>alert('Si è verificato un errore durante l\'aggiornamento nel database: " . $e->getMessage() . "'); window.history.back();</script>";
+    error_log("Errore PDO: " . $e->getMessage());
 }
 
 // Chiudi la connessione al database
