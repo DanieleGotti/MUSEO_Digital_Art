@@ -94,12 +94,7 @@
             <tr <?php	echo $classRiga; ?> >
               <td > <?php echo $codice; ?> </td>
               <td > <?php echo $descrizione; ?> </td>
-              <td>
-    <a href="sala.php?temaSala=<?php echo urlencode($codice); ?>">
-      <?php echo $numeroSale; ?>
-    </a>
-  </td>
-            
+              <td > <?php echo $numeroSale; ?> </td>
             </tr>
           <?php } ?>
         </table>
