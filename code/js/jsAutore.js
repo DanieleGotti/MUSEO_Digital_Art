@@ -28,6 +28,8 @@ function handleBackButton() {
   hideCreateButton(); // Nasconde il pulsante "Creare" quando viene premuto il pulsante "Back"
 }
 
+
+
 function showCreateForm() {
   var createFormDiv = document.getElementById("createForm");
   if (createFormDiv.style.display === "none") {
@@ -35,12 +37,7 @@ function showCreateForm() {
   }
 }
 
-function showEditForm() {
-  var createFormDiv = document.getElementById("editForm");
-  if (createFormDiv.style.display === "none") {
-    createFormDiv.style.display = "block";
-  }
-}
+
 
 
 function salvaModifiche(codice) {
@@ -121,3 +118,12 @@ function cancellaAutore(codice) {
 
       return true;
   }
+
+    function showEditForm(codice) {
+      var formRow = document.getElementById('editFormRow' + codice);
+      if (formRow.style.display === 'none' || formRow.style.display === '') {
+        formRow.style.display = 'table-row';
+      } else {
+        formRow.style.display = 'none';
+      }
+    }

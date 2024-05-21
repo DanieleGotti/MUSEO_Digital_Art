@@ -246,7 +246,7 @@
                       <td><button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
                   </tr>
                   <tr id="editFormRow<?php echo $codice; ?>" style="display: none;">
-                      <td>
+                      <td colspan="11">
                           <form id="editForm<?php echo $codice; ?>" method="post" action="editAuthor.php" onsubmit="return validateForm()">
                             <input type="hidden" name="codice" value="<?php echo $codice; ?>"> <!-- Campo nascosto per il codice -->
                         <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
