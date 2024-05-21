@@ -7,7 +7,6 @@
 
 body {
   background-color: white;
-  z-index: -10;
 }
 
 .filterButton {
@@ -41,8 +40,6 @@ body {
   overflow: hidden;
   transition: width 200ms ease;
   z-index: 1;
-
-  float: left;
 }
 
 .form {
@@ -52,10 +49,10 @@ body {
   weight: 100%;
   border-bottom-right-radius: 10px;
   display: inline-flex;
-  border: 1px solid white;
+  padding-bottom: 10px;
 }
 
-.filterContainer {
+.filterContainer, .filterContainer2 {
   list-style: none;
   padding-left: 0;
   margin: 0 auto;
@@ -63,23 +60,18 @@ body {
   flex-direction: column;
   align-items: left;
   height: calc(100vh - 12rem);
-  padding-bottom: 0px;
   display: inline-flex;
-  border: 1px solid white;
-
 }
 
 .filterContainer2 {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  height: calc(100vh - 12rem);
-  padding-bottom: 0px;
+  padding-top: 5px;
+  height: 6rem;
   display: inline-flex;
-  border: 1px solid white;
+  border-top: 1px solid #FEF0E7;
+}
+
+.filterContainer2 .filterItem:first-child {
+  margin-bottom: -5px;
 }
 
 .filterHeader {
@@ -109,7 +101,7 @@ body {
   color: white;
 }
 
-.filterItem {
+.filterItem, .filterItemLast {
   height: 3rem;
   width: 100%;
   display: flex;
@@ -120,6 +112,10 @@ body {
   box-sizing: border-box;
   margin: 0.25rem 0rem;
   position: relative;
+}
+
+.filterItemLast {
+  margin-bottom: 10px;
 }
 
 .button {
@@ -287,9 +283,6 @@ body {
   background-color: #FEF0E7;
   display: flex;
   flex-direction: column;
-
-  margin-left: 14rem; /* Assicurati che questo margine sia sufficiente per posizionare la tabella accanto ai filtri */
-  transition: margin-left 200ms ease; /* Modifica per aggiungere un'animazione quando il margine cambia */
 }
 
 .tableBody thead {
@@ -413,7 +406,6 @@ td {
 
 @media (max-width: 992px) {
   th:nth-child(4), td:nth-child(4) {
-    margin-left: 0; /* Per schermi più piccoli, la tabella sarà centrata sotto i filtri */
     min-width: 0;
   }
 }
@@ -432,18 +424,18 @@ td {
 
 .iconArrow {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   vertical-align: middle;
   font-size: 1rem;
-  margin-left: .5rem;
+  margin-left: .25rem;
   background-color: #F76E11;
   border: none;
 }
 
 .iconArrow img{
-  height: 16px;
+  height: 12px;
   border-radius: 50%;
   display: flex;
   vertical-align: center;

@@ -108,7 +108,7 @@
         <div class="panel">
           <div class="panelTitle">
             <h3>Ammira le nostre opere</h3>
-            <a href="./opere.php">Scopri di più</a>
+            <a href="./opera.php">Scopri di più</a>
           </div>
           <div class="horizontalScroll">
             <div class="card">

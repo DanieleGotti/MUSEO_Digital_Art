@@ -13,6 +13,7 @@
   $page = 'Sale';
   include 'header.php';
   include 'nav.html';
+  include 'footer.html';
 ?>
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
@@ -56,7 +57,7 @@
             <input id="temaSala" class="input" name="temaSala" type="text">
             <label class="placeHolder">Tema</label>
           </li>
-          <li class="filterItem">
+          <li class="filterItemLast">
             <input id="descrizione" class="input" name="descrizione" type="text"/>
             <label class="placeHolder">Descrizione</label>
           </li>
@@ -81,89 +82,87 @@
         </div>
       </ul>
     </form>
+  </div>
 
-    <div id="result" class="tableBody">
-  <?php
-    $numero = "";
-    $nome = "";
-    $superficie  = "";
-    $temaSala= "";
-    $descrizione= "";
-    $nomeopera= "";
-    $cercaautore= "";
+  <div id="result" class="tableBody">
+<?php
+  $numero = "";
+  $nome = "";
+  $superficie  = "";
+  $temaSala= "";
+  $descrizione= "";
+  $nomeopera= "";
+  $cercaautore= "";
 
-    if(count($_POST)>0) {
-      $numero = $_POST["numero"];
-      $nome = $_POST["nome"];
-      $superficie  = $_POST["superficie"];
-      $temaSala  = $_POST["temaSala"];
-      $descrizione  = $_POST["descrizione"];
-      $nomeopera  = $_POST["nomeopera"];
-      $cercaautore  = $_POST["cercaautore"];
-    }
-    else if(count($_GET)>0) {
-      $numero = $_GET["numero"];
-      $nome = $_GET["nome"];
-      $superficie  = $_GET["superficie"];
-      $temaSala  = $_GET["temaSala"];
-      $descrizione  = $_GET["descrizione"];
-      $nomeopera  = $_GET["nomeopera"];
-      $cercaautore  = $_GET["cercaautore"];
-    }
-    include 'salaManager.php';
-    $error = false;
+  if(count($_POST)>0) {
+    $numero = $_POST["numero"];
+    $nome = $_POST["nome"];
+    $superficie  = $_POST["superficie"];
+    $temaSala  = $_POST["temaSala"];
+    $descrizione  = $_POST["descrizione"];
+    $nomeopera  = $_POST["nomeopera"];
+    $cercaautore  = $_POST["cercaautore"];
+  }
+  else if(count($_GET)>0) {
+    $numero = $_GET["numero"];
+    $nome = $_GET["nome"];
+    $superficie  = $_GET["superficie"];
+    $temaSala  = $_GET["temaSala"];
+    $descrizione  = $_GET["descrizione"];
+    $nomeopera  = $_GET["nomeopera"];
+    $cercaautore  = $_GET["cercaautore"];
+  }
+  include 'salaManager.php';
+  $error = false;
 
-    require_once 'connDb.php';
-    $query = getSalaQry ($numero,	$nome, $superficie ,$temaSala, $descrizione, $nomeopera, $cercaautore);
+  require_once 'connDb.php';
+  $query = getSalaQry ($numero,	$nome, $superficie ,$temaSala, $descrizione, $nomeopera, $cercaautore);
 
-    try {
-      $result = $conn->query($query);
-      if ($result->rowCount() == 0) {
-        echo "<p>No results found</p>";
-      }
-    } catch(PDOException $e) {
-      echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-      $error = true;
-    }
-    if(!$error&& $nomeopera!="") {
-  ?>
+  try {
+    $result = $conn->query($query);
+  } catch(PDOException $e) {
+    echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+    $error = true;
+  }
+  if(!$error&& $nomeopera!="") {
+?>
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Nome
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Superficie
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Tema Sala
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Descrizione
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Nome Opera
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+    <table>
+      <thead>
+        <tr>
+          <th>NUMERO SALA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>NOME
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>SUPERFICIE
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>TEMA SALA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>DESCRIZIONE TEMA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>TITOLO OPERA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 <?php
   $i=0;
   foreach($result as $riga) {
@@ -179,52 +178,52 @@
   $descrizione = $riga["descrizione"];
   $nomeopera = $riga["nomeopera"];
 ?>
-          <tr <?php	echo $classRiga; ?> >
-            <td > <?php echo $numero; ?> </td>
-            <td > <?php echo $nome; ?> </td>
-            <td > <?php echo $superficie; ?> </td>
-            <td > <?php echo $temaSala; ?> </td>
-            <td > <?php echo $descrizione; ?> </td>
-            <td > <?php echo $nomeopera; ?> </td>
-          </tr>
+        <tr <?php	echo $classRiga; ?> >
+          <td > <?php echo $numero; ?> </td>
+          <td > <?php echo $nome; ?> </td>
+          <td > <?php echo $superficie; ?> </td>
+          <td > <?php echo $temaSala; ?> </td>
+          <td > <?php echo $descrizione; ?> </td>
+          <td > <?php echo $nomeopera; ?> </td>
+        </tr>
 <?php } ?>
-          </tbody>
-        </table>
+      </tbody>
+    </table>
 <?php }
 
       if(!$error && $nomeopera=="") {
 ?>
-      <table>
-        <thead>
-          <tr>
-            <th>ID
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Nome
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Superficie
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Tema Sala
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-            <th>Descrizione
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+    <table>
+      <thead>
+        <tr>
+          <th>NUMERO SALA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>NOME
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>SUPERFICIE
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>TEMA SALA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>DESCRIZIONE TEMA
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 <?php
   $i=0;
   foreach($result as $riga) {
@@ -239,13 +238,13 @@
   $temaSala = $riga["temaSala"];
   $descrizione = $riga["descrizione"];
 ?>
-      <tr <?php	echo $classRiga; ?> >
-        <td > <?php echo $numero; ?> </td>
-        <td > <?php echo $nome; ?> </td>
-        <td > <?php echo $superficie; ?> </td>
-        <td > <?php echo $temaSala; ?> </td>
-        <td > <?php echo $descrizione; ?> </td>
-      </tr>
+        <tr <?php	echo $classRiga; ?> >
+          <td > <?php echo $numero; ?> </td>
+          <td > <?php echo $nome; ?> </td>
+          <td > <?php echo $superficie; ?> </td>
+          <td > <?php echo $temaSala; ?> </td>
+          <td > <?php echo $descrizione; ?> </td>
+        </tr>
 <?php } ?>
       </tbody>
     </table>
