@@ -28,7 +28,7 @@ function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeo
         $qry .= " AND SALA.superficie LIKE '%" . $superficie . "%'";
 
     if ($temaSala != "")
-        $qry .= " AND SALA.temaSala LIKE '%" . $temaSala . "%'";
+        $qry .= " AND SALA.temaSala = ' $temaSala '";
 
     if ($descrizione != "")
         $qry .= " AND TEMA.descrizione LIKE '%" . $descrizione . "%'";

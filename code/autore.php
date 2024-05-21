@@ -100,6 +100,8 @@
       }
 
       if(!$mostra && !$error && $result->rowCount() > 0) {
+
+        if($nomeopera==""){
           ?>
           <table class="table">
               <tr class="header">
@@ -111,7 +113,6 @@
                   <th>Data Morte</th>
                   <th>Tipo</th>
                   <th>Numero Opere</th>
-                  <th>Titolo Opera</th>
               </tr>
               <?php
               foreach($result as $riga) {
@@ -123,7 +124,6 @@
                   $dataMorte = $riga["dataMorte"];
                   $tipo = $riga["tipo"];
                   $numeroOpere  = $riga["numeroOpere"];
-                  $nomeopera  = $riga["nomeopera"];
                   ?>
                   <tr>
                       <td><?php echo $codice; ?></td>
@@ -134,11 +134,54 @@
                       <td><?php echo $dataMorte; ?></td>
                       <td><?php echo $tipo; ?></td>
                       <td><?php echo $numeroOpere; ?></td>
-                      <td><?php echo $nomeopera; ?></td>
                   </tr>
               <?php } ?>
           </table>
-      <?php } else if($mostra && !$error && $result->rowCount() > 0) { ?>
+      <?php }
+      elseif ($nomeopera!="") {
+        ?>
+        <table class="table">
+            <tr class="header">
+                <th>Codice</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Nazione</th>
+                <th>Data Nascita</th>
+                <th>Data Morte</th>
+                <th>Tipo</th>
+                <th>Numero Opere</th>
+                <th>Titolo Opera</th>
+            </tr>
+            <?php
+            foreach($result as $riga) {
+                $codice = $riga["codice"];
+                $nome = $riga["nome"];
+                $cognome  = $riga["cognome"];
+                $nazione = $riga["nazione"];
+                $dataNascita  = $riga["dataNascita"];
+                $dataMorte = $riga["dataMorte"];
+                $tipo = $riga["tipo"];
+                $numeroOpere  = $riga["numeroOpere"];
+                $nomeopera  = $riga["nomeopera"];
+                ?>
+                <tr>
+                    <td><?php echo $codice; ?></td>
+                    <td><?php echo $nome; ?></td>
+                    <td><?php echo $cognome; ?></td>
+                    <td><?php echo $nazione; ?></td>
+                    <td><?php echo $dataNascita; ?></td>
+                    <td><?php echo $dataMorte; ?></td>
+                    <td><?php echo $tipo; ?></td>
+                    <td><?php echo $numeroOpere; ?></td>
+                    <td><a href="opera.php?titolo=<?php echo urlencode($nomeopera); ?>"><?php echo $nomeopera; ?></a></td>
+
+                    <td><?php echo $nomeopera; ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+    <?php
+      }
+    } else if($mostra && !$error && $result->rowCount() > 0) { ?>
           <div>
             <button id="createButton" onclick="showCreateForm()">Creare</button>
           </div>
@@ -170,7 +213,7 @@
                   <th>Data Morte</th>
                   <th>Tipo</th>
                   <th>Numero Opere</th>
-                  <th>Titolo Opera</th>
+
                   <th>Modifica</th>
                   <th>Cancella</th>
               </tr>
@@ -184,7 +227,7 @@
                   $dataMorte = $riga["dataMorte"];
                   $tipo = $riga["tipo"];
                   $numeroOpere  = $riga["numeroOpere"];
-                  $nomeopera  = $riga["nomeopera"];
+
                   ?>
                   <tr>
                       <td><?php echo $codice; ?></td>
@@ -194,13 +237,16 @@
                       <td><?php echo $dataNascita; ?></td>
                       <td><?php echo $dataMorte; ?></td>
                       <td><?php echo $tipo; ?></td>
+                      <td><a href="opera.php?autore=<?php echo urlencode($codice); ?>"><?php echo $numeroOpere; ?></a></td>
+
                       <td><?php echo $numeroOpere; ?></td>
-                      <td><?php echo $nomeopera; ?></td>
+
+
                       <td><button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">Modifica</button></td>
                       <td><button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
                   </tr>
                   <tr id="editFormRow<?php echo $codice; ?>" style="display: none;">
-                      <td colspan="11">
+                      <td>
                           <form id="editForm<?php echo $codice; ?>" method="post" action="editAuthor.php" onsubmit="return validateForm()">
                             <input type="hidden" name="codice" value="<?php echo $codice; ?>"> <!-- Campo nascosto per il codice -->
                         <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
@@ -219,27 +265,7 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    function showEditForm(codice) {
-      var formRow = document.getElementById('editFormRow' + codice);
-      if (formRow.style.display === 'none' || formRow.style.display === '') {
-        formRow.style.display = 'table-row';
-      } else {
-        formRow.style.display = 'none';
-      }
-    }
 
-    function validateForm() {
-      // Implementa la tua logica di validazione qui
-      return true;
-    }
-
-    function cancellaAutore(codice) {
-      if (confirm('Sei sicuro di voler cancellare questo autore?')) {
-        // Implementa la tua logica di cancellazione qui
-      }
-    }
-  </script>
 
 </body>
 </html>
