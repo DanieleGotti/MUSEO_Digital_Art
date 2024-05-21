@@ -10,9 +10,8 @@
 <body>
 
   <?php
-
   include 'nav.html';
-  include 'footer.html'
+  include 'footer.html';
   ?>
 
   <div id="filtri">
@@ -37,7 +36,6 @@
 
     <div id="result">
       <?php
-
       $opera = "";
       $autore = "";
       $nome = "";
@@ -48,7 +46,7 @@
       $tipo = "";
       $espostaInSala  = "";
 
-      if(count($_POST)>0) {
+      if (count($_POST) > 0) {
         $opera = $_POST["opera"];
         $autore = $_POST["autore"];
         $nome = $_POST["nome"];
@@ -58,8 +56,7 @@
         $annoRealizzazione  = $_POST["annoRealizzazione"];
         $tipo = $_POST["tipo"];
         $espostaInSala  = $_POST["espostaInSala"];
-      }
-      else if(count($_GET)>0) {
+      } else if (count($_GET) > 0) {
         $opera = $_GET["opera"];
         $autore = $_GET["autore"];
         $nome = $_GET["nome"];
@@ -70,27 +67,25 @@
         $tipo = $_GET["tipo"];
         $espostaInSala  = $_GET["espostaInSala"];
       }
+
       include 'operaManager.php';
       $error = false; // Inizializza la variabile $error a false
 
       require_once 'connDb.php';
-      $query = getOperaQry ($opera,	$autore,$nome, $cognome, $titolo ,$annoAcquisto,$annoRealizzazione, $tipo, $espostaInSala);
-
-
+      $query = getOperaQry($opera, $autore, $nome, $cognome, $titolo, $annoAcquisto, $annoRealizzazione, $tipo, $espostaInSala);
 
       try {
         $result = $conn->query($query);
-      } catch(PDOException $e) {
+      } catch (PDOException $e) {
         echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
         $error = true;
       }
 
-      if(!$error) {
-        ?>
+      if (!$error) {
+      ?>
 
         <table class="table">
           <tr class="header">
-            <!--th>id </th-->
             <th>idOpera</th>
             <th>Autore</th>
             <th>Nome</th>
@@ -102,13 +97,13 @@
             <th>espostaInSala</th>
           </tr>
           <?php
-          $i=0;
+          $i = 0;
 
-          foreach($result as $riga) {
-            $i=$i+1;
-            $classRiga='class="rowOdd"';
-            if($i%2==0) {
-              $classRiga='class="rowEven"';
+          foreach ($result as $riga) {
+            $i++;
+            $classRiga = 'class="rowOdd"';
+            if ($i % 2 == 0) {
+              $classRiga = 'class="rowEven"';
             }
             $opera = $riga["opera"];
             $autore = $riga["autore"];
@@ -119,24 +114,27 @@
             $annoRealizzazione  = $riga["annoRealizzazione"];
             $tipo = $riga["tipo"];
             $espostaInSala  = $riga["espostaInSala"];
+          ?>
+            <tr <?php echo $classRiga; ?> >
+              <td><?php echo $opera; ?></td>
 
-            ?>
-            <tr <?php	echo $classRiga; ?> >
-
-              <td > <?php echo $opera; ?> </td>
-              <td > <?php echo $autore; ?> </td>
-              <td > <?php echo $nome; ?> </td>
-              <td > <?php echo $cognome; ?> </td>
-              <td > <?php echo $titolo; ?> </td>
-              <td > <?php echo $annoAcquisto; ?> </td>
-              <td > <?php echo $annoRealizzazione; ?> </td>
-              <td > <?php echo $tipo; ?> </td>
-              <td > <?php echo $espostaInSala; ?> </td>
+              <td>
+    <a href="autore.php?codice=<?php echo urlencode($autore); ?>&nome=<?php echo urlencode($nome); ?>&cognome=<?php echo urlencode($cognome); ?>">
+      <?php echo $autore; ?>
+    </a>
+  </td>
+              <td><?php echo $nome; ?></td>
+              <td><?php echo $cognome; ?></td>
+              <td><?php echo $titolo; ?></td>
+              <td><?php echo $annoAcquisto; ?></td>
+              <td><?php echo $annoRealizzazione; ?></td>
+              <td><?php echo $tipo; ?></td>
+              <td><a href="sala.php?numero=<?php echo urlencode($espostaInSala); ?>"><?php echo $espostaInSala; ?></a></td>
+            
             </tr>
           <?php } ?>
         </table>
-      <?php }  ?>
-
+      <?php } ?>
     </div>
   </div>
 </body>
