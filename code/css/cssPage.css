@@ -7,6 +7,7 @@
 
 body {
   background-color: white;
+  z-index: -10;
 }
 
 .filterButton {
@@ -40,6 +41,8 @@ body {
   overflow: hidden;
   transition: width 200ms ease;
   z-index: 1;
+
+  float: left;
 }
 
 .form {
@@ -48,6 +51,8 @@ body {
   height: 100%;
   weight: 100%;
   border-bottom-right-radius: 10px;
+  display: inline-flex;
+  border: 1px solid white;
 }
 
 .filterContainer {
@@ -59,6 +64,22 @@ body {
   align-items: left;
   height: calc(100vh - 12rem);
   padding-bottom: 0px;
+  display: inline-flex;
+  border: 1px solid white;
+
+}
+
+.filterContainer2 {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height: calc(100vh - 12rem);
+  padding-bottom: 0px;
+  display: inline-flex;
+  border: 1px solid white;
 }
 
 .filterHeader {
@@ -144,6 +165,7 @@ body {
 .buttonIcon img {
   height: 12px;
   transform: scale(1.5);
+  filter: contrast(0%) brightness(200%);
 }
 
 .filterScroll {
@@ -265,6 +287,9 @@ body {
   background-color: #FEF0E7;
   display: flex;
   flex-direction: column;
+
+  margin-left: 14rem; /* Assicurati che questo margine sia sufficiente per posizionare la tabella accanto ai filtri */
+  transition: margin-left 200ms ease; /* Modifica per aggiungere un'animazione quando il margine cambia */
 }
 
 .tableBody thead {
@@ -388,6 +413,7 @@ td {
 
 @media (max-width: 992px) {
   th:nth-child(4), td:nth-child(4) {
+    margin-left: 0; /* Per schermi più piccoli, la tabella sarà centrata sotto i filtri */
     min-width: 0;
   }
 }

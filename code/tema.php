@@ -3,7 +3,6 @@
 <head>
   <title>Temi</title>
   <link rel="stylesheet" href="./css/cssPage.css">
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
@@ -13,8 +12,6 @@
 <?php
   $page = 'Temi';
   include 'header.php';
-
-
   include 'nav.html';
 ?>
 
@@ -42,7 +39,6 @@
             </span>
           </button>
         </li>
-
         <div class="filterScroll">
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text"/>
@@ -57,7 +53,6 @@
       </ul>
     </form>
   </div>
-
 
   <div id="result" class="tableBody">
 <?php
@@ -104,11 +99,9 @@
             </th>
             <th>NUMERO SALE
               <button class="iconArrow">
-                
                 <img src="./img/freccia.png">
               </button>
             </th>
-
           </tr>
         </thead>
         <tbody>
@@ -124,27 +117,19 @@
   $descrizione = $riga["descrizione"];
   $numeroSale  = $riga["numeroSale"];
 ?>
-
-
-
-            <tr <?php	echo $classRiga; ?> >
-              <td > <?php echo $codice; ?> </td>
-              <td > <?php echo $descrizione; ?> </td>
-
-              <td>
-    <a href="sala.php?temaSala=<?php echo urlencode($codice); ?>">
-      <?php echo $numeroSale; ?>
-    </a>
-  </td>
-
-            </tr>
+          <tr <?php	echo $classRiga; ?> >
+            <td > <?php echo $codice; ?> </td>
+            <td > <?php echo $descrizione; ?> </td>
+            <td>
+              <a href="sala.php?temaSala=<?php echo urlencode($codice); ?>">
+                <?php echo $numeroSale; ?>
+              </a>
+            </td>
+          </tr>
 <?php } ?>
         </tbody>
       </table>
 <?php }  ?>
-
   </div>
-
-
 </body>
 </html>
