@@ -13,6 +13,7 @@
   $page = 'Temi';
   include 'header.php';
   include 'nav.html';
+  include 'footer.html';
 ?>
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
