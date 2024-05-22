@@ -13,10 +13,9 @@
   $page = 'Temi';
   include 'header.php';
   include 'nav.html';
-  include 'footer.html';
 ?>
 
-  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
+  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()" onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
     <img src="../img/filtroStatica.png">
   </button>
 
@@ -59,6 +58,8 @@
   $codice = "";
   $descrizione = "";
   $numeroSale  = "";
+  $sort_by = "codice";  // Impostazione di default
+  $sort_order = "asc";  // Impostazione di default
 
   if(count($_POST)>0) {
     $codice = $_POST["codice"];
@@ -69,12 +70,17 @@
     $codice = $_GET["codice"];
     $descrizione = $_GET["descrizione"];
     $numeroSale  = $_GET["numeroSale"];
+    if (isset($_GET["sort_by"])) {
+      $sort_by = $_GET["sort_by"];
+      $sort_order = $_GET["sort_order"];
+    }
   }
   include 'temaManager.php';
   $error = false;
 
   require_once 'connDb.php';
-  $query = getTemaQry ($codice,	$descrizione, $numeroSale );
+
+  $query = getTemaQry($codice, $descrizione, $numeroSale, $sort_by, $sort_order);
 
   try {
     $result = $conn->query($query);
@@ -85,39 +91,39 @@
   if(!$error) {
 ?>
     <table>
-        <thead>
-          <tr>
-            <th>CODICE TEMA
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
+      <thead>
+        <tr>
+          <th>CODICE TEMA
+            <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codice' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+              <img src="./img/freccia.png">
               </button>
             </th>
-            <th>DESCRIZIONE
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </span>
-            </th>
-            <th>NUMERO SALE
-              <button class="iconArrow">
-                <img src="./img/freccia.png">
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+          <th>DESCRIZIONE
+            <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>NUMERO SALE
+            <button class="iconArrow" onclick="window.location.href='?sort_by=numeroSale&sort_order=<?php echo $sort_by === 'numeroSale' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 <?php
   $i=0;
   foreach($result as $riga) {
     $i=$i+1;
     $classRiga='class="rowOdd"';
     if($i%2==0) {
-    $classRiga='class="rowEven"';
-  }
-  $codice = $riga["codice"];
-  $descrizione = $riga["descrizione"];
-  $numeroSale  = $riga["numeroSale"];
+      $classRiga='class="rowEven"';
+    }
+    $codice = $riga["codice"];
+    $descrizione = $riga["descrizione"];
+    $numeroSale  = $riga["numeroSale"];
 ?>
-          <tr <?php	echo $classRiga; ?> >
+          <tr <?php echo $classRiga; ?> >
             <td > <?php echo $codice; ?> </td>
             <td > <?php echo $descrizione; ?> </td>
             <td>

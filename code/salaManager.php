@@ -2,7 +2,7 @@
 
 require_once 'connDb.php';
 
-function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descrizione, $nomeopera, $cercaautore ): string {
+function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descrizione, $nomeopera, $sort_by = 'numero', $sort_order = 'asc' ): string {
     global $conn;
 
     $qry = "SELECT DISTINCT
@@ -54,22 +54,8 @@ function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descri
                     1=1 AND OPERA.titolo LIKE '%" . $nomeopera . "%'";
 }
 
-  if($cercaautore !=""){
-      $qry =( " SELECT DISTINCT
-                  SALA.numero,
-                  SALA.nome,
-                  SALA.superficie,
-                  SALA.temaSala,
-                  TEMA.descrizione,
-                  AUTORE.nome,
-                  AUTORE.cognome
-                  SALA
-              JOIN
-                  TEMA ON SALA.temaSala = TEMA.codice
-              JOIN (OPERA
-              JOIN AUTORE on AUTORE.codice=OPERA.autore) on OPERA.espostaInSala=SALA.numero
-              WHERE
-                  1=1 AND  AUTORE.nome LIKE '%" . $cercaautore . "%'" );
+if (!empty($sort_by) && !empty($sort_order)) {
+  $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
 }
 
     return $qry;
