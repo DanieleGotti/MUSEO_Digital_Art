@@ -124,6 +124,7 @@
                   $dataMorte = $riga["dataMorte"];
                   $tipo = $riga["tipo"];
                   $numeroOpere  = $riga["numeroOpere"];
+
                   ?>
                   <tr>
                       <td><?php echo $codice; ?></td>
@@ -133,7 +134,12 @@
                       <td><?php echo $dataNascita; ?></td>
                       <td><?php echo $dataMorte; ?></td>
                       <td><?php echo $tipo; ?></td>
-                      <td><?php echo $numeroOpere; ?></td>
+
+                      <td>
+            <a href="opera.php?autore=<?php echo urlencode($codice); ?>">
+              <?php echo $numeroOpere; ?>
+            </a>
+          </td>
                   </tr>
               <?php } ?>
           </table>
