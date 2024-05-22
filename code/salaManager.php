@@ -2,13 +2,14 @@
 
 require_once 'connDb.php';
 
-function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeopera, $cercaautore ): string {
+function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descrizione, $nomeopera, $cercaautore ): string {
     global $conn;
 
     $qry = "SELECT DISTINCT
                 SALA.numero,
                 SALA.nome,
                 SALA.superficie,
+                SALA.numeroOpere,
                 SALA.temaSala,
                 TEMA.descrizione
             FROM
@@ -26,6 +27,9 @@ function getSalaQry($numero, $nome, $superficie, $temaSala, $descrizione, $nomeo
 
     if ($superficie != "")
         $qry .= " AND SALA.superficie LIKE '%" . $superficie . "%'";
+
+    if ($numeroOpere != "")
+        $qry .= " AND SALA.numeroOpere LIKE '%" . $numeroOpere . "%'";
 
     if ($temaSala != "")
         $qry .= " AND SALA.temaSala = ' $temaSala '";

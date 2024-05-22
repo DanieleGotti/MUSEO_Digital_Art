@@ -89,6 +89,7 @@
   $numero = "";
   $nome = "";
   $superficie  = "";
+  $numeroOpere="";
   $temaSala= "";
   $descrizione= "";
   $nomeopera= "";
@@ -98,6 +99,7 @@
     $numero = $_POST["numero"];
     $nome = $_POST["nome"];
     $superficie  = $_POST["superficie"];
+    $numeroOpere=$_POST["numeroOpere"];
     $temaSala  = $_POST["temaSala"];
     $descrizione  = $_POST["descrizione"];
     $nomeopera  = $_POST["nomeopera"];
@@ -107,6 +109,7 @@
     $numero = $_GET["numero"];
     $nome = $_GET["nome"];
     $superficie  = $_GET["superficie"];
+    $numeroOpere=$_GET["numeroOpere"];
     $temaSala  = $_GET["temaSala"];
     $descrizione  = $_GET["descrizione"];
     $nomeopera  = $_GET["nomeopera"];
@@ -116,7 +119,7 @@
   $error = false;
 
   require_once 'connDb.php';
-  $query = getSalaQry ($numero,	$nome, $superficie ,$temaSala, $descrizione, $nomeopera, $cercaautore);
+  $query = getSalaQry ($numero,	$nome, $superficie , $numeroOpere,$temaSala, $descrizione, $nomeopera, $cercaautore);
 
   try {
     $result = $conn->query($query);
@@ -141,6 +144,11 @@
             </button>
           </th>
           <th>SUPERFICIE
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
+          <th>NUMERO OPERE
             <button class="iconArrow">
               <img src="./img/freccia.png">
             </button>
@@ -174,6 +182,7 @@
   $numero = $riga["numero"];
   $nome = $riga["nome"];
   $superficie  = $riga["superficie"];
+  $numeroOpere = $riga["numeroOpere"];
   $temaSala = $riga["temaSala"];
   $descrizione = $riga["descrizione"];
   $nomeopera = $riga["nomeopera"];
@@ -182,7 +191,16 @@
           <td > <?php echo $numero; ?> </td>
           <td > <?php echo $nome; ?> </td>
           <td > <?php echo $superficie; ?> </td>
-          <td > <?php echo $temaSala; ?> </td>
+          <td>
+            <a href="opera.php?espostaInSala=<?php echo urlencode($numero); ?>">
+              <?php echo $numeroOpere; ?>
+            </a>
+          </td>
+          <td>
+            <a href="tema.php?codice=<?php echo urlencode($temaSala); ?>">
+              <?php echo $temaSala; ?>
+            </a>
+          </td>
           <td > <?php echo $descrizione; ?> </td>
           <td > <?php echo $nomeopera; ?> </td>
         </tr>
@@ -211,6 +229,11 @@
               <img src="./img/freccia.png">
             </button>
           </th>
+          <th>NUMERO OPERE
+            <button class="iconArrow">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
           <th>TEMA SALA
             <button class="iconArrow">
               <img src="./img/freccia.png">
@@ -235,6 +258,7 @@
   $numero = $riga["numero"];
   $nome = $riga["nome"];
   $superficie  = $riga["superficie"];
+  $numeroOpere = $riga["numeroOpere"];
   $temaSala = $riga["temaSala"];
   $descrizione = $riga["descrizione"];
 ?>
@@ -242,7 +266,16 @@
           <td > <?php echo $numero; ?> </td>
           <td > <?php echo $nome; ?> </td>
           <td > <?php echo $superficie; ?> </td>
-          <td > <?php echo $temaSala; ?> </td>
+          <td>
+            <a href="opera.php?espostaInSala=<?php echo urlencode($numero); ?>">
+              <?php echo $numeroOpere; ?>
+            </a>
+          </td>
+          <td>
+            <a href="tema.php?codice=<?php echo urlencode($temaSala); ?>">
+              <?php echo $temaSala; ?>
+            </a>
+          </td>
           <td > <?php echo $descrizione; ?> </td>
         </tr>
 <?php } ?>
