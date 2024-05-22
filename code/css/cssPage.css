@@ -192,6 +192,25 @@ body {
   background: #F98B41;
 }
 
+.radio {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #FEF0E7;
+  background-color: #F98B41;
+  color: white;
+  position: relative;
+}
+
+.radioText {
+  color: white;
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 12px;
+}
+
 .input {
   padding: 10px;
   width: 100%;

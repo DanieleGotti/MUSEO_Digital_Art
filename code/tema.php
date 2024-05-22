@@ -43,7 +43,6 @@
         <div class="filterScroll">
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text"/>
-
             <label class="placeHolder">Codice</label>
           </li>
           <li class="filterItem">

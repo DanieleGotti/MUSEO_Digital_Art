@@ -246,7 +246,7 @@
                     <img src="" alt="">
 
                     <td>Codice:<?php echo $codice; ?></td>
-                    <td>Autore:<a href="codicee.php?=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a></td>
+                    <td>Autore:<a href="autore.php?codice=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a></td>
                     <td>Nazione:<?php echo $nazione; ?></td>
                   </div>
                   <?php
