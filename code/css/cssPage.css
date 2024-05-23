@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: #FEF0E7;
 }
 
 .filterButton {
@@ -110,8 +110,8 @@ body {
   transition: width 600ms;
   padding: 10px 5px;
   box-sizing: border-box;
-  margin: 0.25rem 0rem;
   position: relative;
+  margin: 0.25rem 0rem;
 }
 
 .filterItemLast {
@@ -192,23 +192,72 @@ body {
   background: #F98B41;
 }
 
-.radio {
+.radio[type="radio"] {
+  display: none;
+}
+
+.radio + .radioLabel {
+  display: block;
   padding: 10px;
+  padding-left: 36px;
   width: 100%;
-  box-sizing: border-box;
-  outline: none;
   border-radius: 10px;
   border: 1px solid #FEF0E7;
   background-color: #F98B41;
-  color: white;
-  position: relative;
-}
-
-.radioText {
-  color: white;
+  color: #FEF0E7;
   font-family: "Open sans";
   font-weight: 800;
   font-size: 12px;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.radio + .radioLabel::after,
+.radio + .radioLabel::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.radio + .radioLabel::after {
+  height: 12px;
+  width: 12px;
+  border: 2px solid #FEF0E7;
+  left: 10px;
+  top: calc(50% - 7px);
+}
+
+.radio + .radioLabel::before {
+  background-color: white;
+  height: 8px;
+  width: 8px;
+  left: 14px;
+  top: calc(50% - 3px);
+  transform: scale(5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease-in-out 0s;
+}
+
+.radio:checked + .radioLabel {
+  border-color: white;
+}
+
+.radio:checked + .radioLabel::before {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.radio:checked + .radioLabel::after {
+  border-color: white;
+  color: white;
+}
+
+.radioLabel:hover {
+  border: 2px solid white;
+  color: white;
 }
 
 .input {
@@ -415,6 +464,15 @@ td {
   border-top: 2px solid #FEF0E7;
   border-bottom: 2px solid #FEF0E7;
   box-sizing: border-box;
+}
+
+td a {
+  color: #1C77C3;
+  text-decoration: underline;
+}
+
+td a:visited {
+  color: #8B1E3F;
 }
 
 @media (max-width: 1200px) {

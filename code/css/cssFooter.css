@@ -8,7 +8,7 @@
 .footer {
   width: 100%;
   height: 4rem;
-  background-color: #044389;
+  background-color: #f26419;
   display: grid;
   place-items: center;
   justify-content: center;
@@ -20,11 +20,11 @@
 .footer ul {
     list-style: none;
     display: flex;
-    margin: 0;
+    margin-bottom: 3px;
     padding: 0;
 }
 
-.footer ul li {
+.footer li {
   margin: 0 5px;
 }
 

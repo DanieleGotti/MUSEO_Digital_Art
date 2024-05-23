@@ -75,9 +75,11 @@
           </li>
           <li class="filterItem">
             <input id="tipo_scultura" class="radio" name="tipo" type="radio" value="scultura"/>
-            <label for="tipo_scultura" class="radioText">Scultura</label>
+            <label for="tipo_scultura" class="radioLabel">Scultura</label>
+          </li>
+          <li class="filterItem">
             <input id="tipo_quadro" class="radio" name="tipo" type="radio" value="quadro"/>
-            <label for="tipo_quadro" class="radioText">Quadro</label>
+            <label for="tipo_quadro" class="radioLabel">Quadro</label>
           </li>
         </div>
       </ul>
