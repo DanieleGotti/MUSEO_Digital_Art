@@ -23,7 +23,6 @@
 
   <div id="filtri" class="filters">
     <form name="myform" class="form" method="POST">
-
       <ul class="filterContainer">
         <li class="filterHeader">
           <span class="filterTitle">Filtri</span>
@@ -42,6 +41,32 @@
             </span>
           </button>
         </li>
+        <li class="filterItem">
+          <form name="myformCRUD" method="post">
+            <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
+              <span class="buttonText">Gestisci Autori</span>
+              <span class="buttonIcon">
+                <img src="../img/autoreStatica.png">
+              </span>
+            </button>
+          </form>
+        </li>
+        <li class="filterItem">
+          <form name="myformBack" method="post">
+            <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
+              <span class="buttonText">Chiudi Gestisci Autori</span>
+              <span class="buttonIcon">
+                <img src="../img/indietro.png">
+              </span>
+            </button>
+          </form>
+        </li>
+
+
+
+
+
+
         <div class="filterScroll">
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text"/>
@@ -89,37 +114,14 @@
               </ul>
             </form>
           </li>
-          <li>
-            <form name="myformCRUD" method="post">
-              <ul class="filterContainer2">
-                <li class="filterItem">
-                  <button id="CRUD" name="CRUD" type="submit" value="CRUD">
-                    <span class="buttonText">Gestisci Autori </span>
-                    <span class="buttonIcon">
-                      <img src="../img/autoreStatica.png">
-                    </span>
-                  </button>
-                </li>
-              </ul>
-            </form>
-          </li>
         </div>
       </ul>
-
-      </div>
-
     </form>
+  </div>
 
 
-    <form name="myformCRUD" method="post">
-      <input id="CRUD" name="CRUD" type="submit" value="CRUD">
-      <label for="CRUD">CRUD</label>
-    </form>
 
-    <form name="myformBack" method="post">
-      <input id="backButton" name="back" type="submit" value="Back" onclick="hideCreateButton()">
-      <label for="backButton">Back</label>
-    </form>
+
 
     <div id="options" style="display:none;">
       <button id="createButton" onclick="showCreateForm()">Creare</button>
