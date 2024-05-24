@@ -1,37 +1,115 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>MUSEO START</title>
-  <link rel="stylesheet" href="./css/cssStyle.css">
+  <title>Autori</title>
+  <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
+  <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
   <script type="text/javascript" src="./js/jsAutore.js"></script>
 </head>
 
 <body>
-
-  <?php
+<?php
+  $page='Autori';
+  include 'header.php';
   include 'nav.html';
   include 'footer.html';
-  ?>
+?>
 
-  <div id="filtri">
-    <form name="myform" method="POST">
-      <input id="codice" name="codice" type="text" placeholder="codice"/>
-      <input id="nome" name="nome" type="text" placeholder="Nome"/>
-      <input id="cognome" name="cognome" type="text" placeholder="Cognome"/>
-      <input id="nazione" name="nazione" type="text" placeholder="Nazione"/>
-      <input id="dataNascita" name="dataNascita" type="text" placeholder="data Nascita"/>
-      <input id="dataMorte" name="dataMorte" type="text" placeholder="data Morte"/>
-      <input id="numeroOpere" name="numeroOpere" type="text" placeholder="Numero Opere"/>
+  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
+    <img src="../img/filtroStatica.png">
+  </button>
 
-      <input type="submit" value="Search"/>
-      <input type="submit" value="RESET"/>
+  <div id="filtri" class="filters">
+    <form name="myform" class="form" method="POST">
+
+      <ul class="filterContainer">
+        <li class="filterHeader">
+          <span class="filterTitle">Filtri</span>
+        </li>
+        <li class="filterItem">
+          <button type="submit" class="button">
+            <span class="buttonText">Cerca</span>
+            <span class="buttonIcon">
+              <img src="../img/cerca.png">
+            </span>
+          </button>
+          <button type="submit" class="button">
+            <span class="buttonText">Reset</span>
+            <span class="buttonIcon">
+              <img src="../img/reset.png">
+            </span>
+          </button>
+        </li>
+        <div class="filterScroll">
+          <li class="filterItem">
+            <input id="codice" class="input" name="codice" type="text"/>
+            <label class="placeHolder">Codice Autore</label>
+          </li>
+          <li class="filterItem">
+            <input id="nome" class="input" name="nome" type="text"/>
+            <label class="placeHolder">Nome</label>
+          </li>
+          <li class="filterItem">
+            <input id="cognome" class="input" name="cognome" type="text"/>
+            <label class="placeHolder">Cognome</label>
+          </li>
+          <li class="filterItem">
+            <input id="nazione" class="input" name="nazione" type="text"/>
+            <label class="placeHolder">Nazione</label>
+          </li>
+          <li class="filterItem">
+            <input id="dataNascita" class="input" name="dataNascita" type="text"/>
+            <label class="placeHolder">Data Nascita</label>
+          </li>
+          <li class="filterItem">
+            <input id="dataMorte" class="input" name="dataMorte" type="text"/>
+            <label class="placeHolder">Data Morte</label>
+          </li>
+          <li class="filterItemLast">
+            <input id="numeroOpere" class="input" name="numeroOpere" type="text"/>
+            <label class="placeHolder">Numero Opere</label>
+          </li>
+          <li>
+            <form name="myform2" class="form" method="post">
+              <ul class="filterContainer2">
+                <li class="filterItem">
+                  <input id="opera" class="input" name="nomeopera" type="text">
+                  <label class="placeHolder">Titolo dell'opera</label>
+                </li>
+                <li class="filterItem">
+                  <button type="submit" class="button">
+                    <span class="buttonText">Cerca per opera</span>
+                    <span class="buttonIcon">
+                      <img src="../img/operaStatica.png">
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </form>
+          </li>
+          <li>
+            <form name="myformCRUD" method="post">
+              <ul class="filterContainer2">
+                <li class="filterItem">
+                  <button id="CRUD" name="CRUD" type="submit" value="CRUD">
+                    <span class="buttonText">Gestisci Autori </span>
+                    <span class="buttonIcon">
+                      <img src="../img/autoreStatica.png">
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </form>
+          </li>
+        </div>
+      </ul>
+
+      </div>
+
     </form>
 
-    <form name="myform2" method="post">
-      <input id="opera" name="nomeopera" type="text" placeholder="Titolo dell'opera">
-      <input type="submit" value="Cerca per opera">
-    </form>
 
     <form name="myformCRUD" method="post">
       <input id="CRUD" name="CRUD" type="submit" value="CRUD">
