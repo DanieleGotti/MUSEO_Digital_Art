@@ -17,7 +17,7 @@
   include 'footer.html';
 ?>
 
-  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()"  onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
+  <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()">
     <img src="../img/filtroStatica.png">
   </button>
 
@@ -25,6 +25,27 @@
     <form name="myform" class="form" method="POST">
       <ul class="filterContainer">
         <li class="filterHeader">
+          <span class="filterTitle">Gestisci Autori</span>
+        </li>
+        <li class="filterItem">
+          <form name="myformCRUD" class="formCrud" method="post">
+            <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
+              <span class="buttonText">Gest</span>
+              <span class="buttonIcon">
+                <img src="../img/autoreStatica.png">
+              </span>
+            </button>
+          </form>
+          <form name="myformBack" class="formCrud" method="post">
+            <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
+              <span class="buttonText">Chiudi</span>
+              <span class="buttonIcon">
+                <img src="../img/indietro.png">
+              </span>
+            </button>
+          </form>
+        </li>
+        <li class="filterHeader2">
           <span class="filterTitle">Filtri</span>
         </li>
         <li class="filterItem">
@@ -41,30 +62,6 @@
             </span>
           </button>
         </li>
-        <li class="filterItem">
-          <form name="myformCRUD" method="post">
-            <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
-              <span class="buttonText">Gestisci Autori</span>
-              <span class="buttonIcon">
-                <img src="../img/autoreStatica.png">
-              </span>
-            </button>
-          </form>
-        </li>
-        <li class="filterItem">
-          <form name="myformBack" method="post">
-            <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
-              <span class="buttonText">Chiudi Gestisci Autori</span>
-              <span class="buttonIcon">
-                <img src="../img/indietro.png">
-              </span>
-            </button>
-          </form>
-        </li>
-
-
-
-
 
 
         <div class="filterScroll">
@@ -124,10 +121,10 @@
 
 
     <div id="options" style="display:none;">
-      <button id="createButton" onclick="showCreateForm()">Creare</button>
+      <button id="createButton" class="button" onclick="showCreateForm()">Creare</button>
     </div>
 
-    <div id="result">
+    <div id="result" class="tableBody">
       <?php
       $codice = "";
       $nome = "";
@@ -183,17 +180,52 @@
 
         if($nomeopera==""){
           ?>
-          <table class="table">
-              <tr class="header">
-                  <th>Codice</th>
-                  <th>Nome</th>
-                  <th>Cognome</th>
-                  <th>Nazione</th>
-                  <th>Data Nascita</th>
-                  <th>Data Morte</th>
-                  <th>Tipo</th>
-                  <th>Numero Opere</th>
-              </tr>
+    <table>
+    <thead>
+      <tr>
+        <th>CODICE AUTORE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NOME
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>COGNOME
+          <button class="iconArrow" onclick="window.location.href='?sort_by=superficie&sort_order=<?php echo $sort_by === 'superficie' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NAZIONE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>DATA NASCITA
+          <button class="iconArrow" onclick="window.location.href='?sort_by=temaSala&sort_order=<?php echo $sort_by === 'temaSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>DATA MORTE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>TIPO
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NUMERO OPERE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
               <?php
               foreach($result as $riga) {
                   $codice = $riga["codice"];
@@ -222,22 +254,63 @@
           </td>
                   </tr>
               <?php } ?>
+
+              </tbody>
           </table>
       <?php }
       elseif ($nomeopera!="") {
         ?>
-        <table class="table">
-            <tr class="header">
-                <th>Codice</th>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Nazione</th>
-                <th>Data Nascita</th>
-                <th>Data Morte</th>
-                <th>Tipo</th>
-                <th>Numero Opere</th>
-                <th>Titolo Opera</th>
-            </tr>
+        <table>
+            <tr>
+              <th>CODICE AUTORE
+        <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>NOME
+        <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>COGNOME
+        <button class="iconArrow" onclick="window.location.href='?sort_by=superficie&sort_order=<?php echo $sort_by === 'superficie' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>NAZIONE
+        <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>DATA NASCITA
+        <button class="iconArrow" onclick="window.location.href='?sort_by=temaSala&sort_order=<?php echo $sort_by === 'temaSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>DATA MORTE
+        <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>TIPO
+        <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>NUMERO OPERE
+        <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+      <th>TITOLO OPERA
+        <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+          <img src="./img/freccia.png">
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
             <?php
             foreach($result as $riga) {
                 $codice = $riga["codice"];
@@ -264,6 +337,8 @@
                     <td><?php echo $nomeopera; ?></td>
                 </tr>
             <?php } ?>
+
+            </tbody>
         </table>
     <?php
       }
@@ -289,20 +364,60 @@
             </form>
           </div>
 
-          <table class="table">
-              <tr class="header">
-                  <th>Codice</th>
-                  <th>Nome</th>
-                  <th>Cognome</th>
-                  <th>Nazione</th>
-                  <th>Data Nascita</th>
-                  <th>Data Morte</th>
-                  <th>Tipo</th>
-                  <th>Numero Opere</th>
+          <table>
+    <thead>
+      <tr>
+        <th>Modifica</th>
+        <th>Elimina</th>
+        <th>CODICE AUTORE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NOME
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>COGNOME
+          <button class="iconArrow" onclick="window.location.href='?sort_by=superficie&sort_order=<?php echo $sort_by === 'superficie' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NAZIONE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>DATA NASCITA
+          <button class="iconArrow" onclick="window.location.href='?sort_by=temaSala&sort_order=<?php echo $sort_by === 'temaSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>DATA MORTE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>TIPO
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>NUMERO OPERE
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+        <th>TITOLO OPERA
+          <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+            <img src="./img/freccia.png">
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
 
-                  <th>Modifica</th>
-                  <th>Cancella</th>
-              </tr>
               <?php
               foreach($result as $riga) {
                   $codice = $riga["codice"];
@@ -316,6 +431,10 @@
 
                   ?>
                   <tr>
+
+                      <td><button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">Modifica</button></td>
+                      <td><button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
+
                       <td><?php echo $codice; ?></td>
                       <td><?php echo $nome; ?></td>
                       <td><?php echo $cognome; ?></td>
@@ -328,8 +447,6 @@
                       <td><?php echo $numeroOpere; ?></td>
 
 
-                      <td><button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">Modifica</button></td>
-                      <td><button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
                   </tr>
                   <tr id="editFormRow<?php echo $codice; ?>" style="display: none;">
                       <td colspan="11">
@@ -344,12 +461,15 @@
                       </td>
                   </tr>
               <?php } ?>
+
+              </tbody>
           </table>
+
+
       <?php } else {
           echo "<p>Nessun risultato trovato.</p>";
       } ?>
     </div>
-  </div>
 
 
 
