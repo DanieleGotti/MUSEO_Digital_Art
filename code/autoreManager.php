@@ -2,7 +2,7 @@
 
 require_once 'connDb.php';
 
-function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera): string {
+function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera, $sort_by = 'codice', $sort_order = 'asc' ): string {
     global $conn;
 
     $qry = "SELECT
@@ -40,6 +40,11 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
             $qry .= " AND AUTORE.tipo LIKE '%" . $tipo . "%'";
     if ($numeroOpere != "")
         $qry.= " AND AUTORE.numeroOpere = $numeroOpere";
+
+        if (!empty($sort_by) && !empty($sort_order)) {
+          $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
+        }
+
 
         if ($nomeopera != "")
             $qry = "SELECT

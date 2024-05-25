@@ -2,11 +2,11 @@
 
 require_once 'connDb.php';
 
-function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $annoRealizzazione, $tipo, $espostaInSala): string {
+function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $annoRealizzazione, $tipo, $espostaInSala, $sort_by = 'opera', $sort_order = 'asc'): string {
     global $conn;
 
     $qry = "SELECT
-                OPERA.opera,
+                OPERA.opera as opera,
                 OPERA.autore,
                 AUTORE.nome,
                 AUTORE.cognome,
@@ -46,46 +46,15 @@ function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $a
     if ($espostaInSala != "")
         $qry .= " AND OPERA.espostaInSala = $espostaInSala";
 
+        if (!empty($sort_by) && !empty($sort_order)) {
+          $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
+        }
+
+
+
     return $qry;
 }
 
 
-function getPaginatedResults($query, $page, $resultsPerPage) {
-    global $conn;
 
-    $offset = ($page - 1) * $resultsPerPage;
-    $sql = $query . " LIMIT $offset, $resultsPerPage";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row["opera"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["autore"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["titolo"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["annoAcquisto"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["annoRealizzazione"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["tipo"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["espostaInSala"]) . "</td>";
-            echo "</tr>";
-        }
-    } else {
-        echo "<tr><td colspan='7'>No results found.</td></tr>";
-    }
-}
-
-function getTotalResults($query) {
-    global $conn;
-
-    $result = $conn->query($query);
-    return $result->num_rows;
-}
-
-function getPages($totalResults, $resultsPerPage) {
-    $totalPages = ceil($totalResults / $resultsPerPage);
-
-    for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='index.php?page={$i}'>{$i}</a> ";
-    }
-}
 ?>
