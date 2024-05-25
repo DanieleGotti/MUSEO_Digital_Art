@@ -85,91 +85,96 @@
   </div>
 
   <div id="result" class="tableBody">
-<?php
-  $numero = "";
-  $nome = "";
-  $superficie  = "";
-  $numeroOpere="";
-  $temaSala= "";
-  $descrizione= "";
-  $nomeopera= "";
+    <?php
+      $numero = "";
+      $nome = "";
+      $superficie  = "";
+      $numeroOpere = "";
+      $temaSala = "";
+      $descrizione = "";
+      $nomeopera = "";
+
+      $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'numero';
+      $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'asc';
+
+      if(count($_POST) > 0) {
+        $numero = $_POST["numero"];
+        $nome = $_POST["nome"];
+        $superficie = $_POST["superficie"];
+        $numeroOpere = $_POST["numeroOpere"];
+        $temaSala = $_POST["temaSala"];
+        $descrizione = $_POST["descrizione"];
+        $nomeopera = $_POST["nomeopera"];
+      } else if(count($_GET) > 0) {
+        $numero = $_GET["numero"];
+        $nome = $_GET["nome"];
+        $superficie = $_GET["superficie"];
+        $numeroOpere = $_GET["numeroOpere"];
+        $temaSala = $_GET["temaSala"];
+        $descrizione = $_GET["descrizione"];
+        $nomeopera = $_GET["nomeopera"];
+      }
+
+      include 'salaManager.php';
+      $error = false;
+
+      require_once 'connDb.php';
+      $query = getSalaQry($numero, $nome, $superficie, $numeroOpere, $temaSala, $descrizione, $nomeopera, $sort_by, $sort_order);
+
+      try {
+        $result = $conn->query($query);
+      } catch(PDOException $e) {
+        echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+        $error = true;
+      }
 
 
-  if(count($_POST)>0) {
-    $numero = $_POST["numero"];
-    $nome = $_POST["nome"];
-    $superficie  = $_POST["superficie"];
-    $numeroOpere=$_POST["numeroOpere"];
-    $temaSala  = $_POST["temaSala"];
-    $descrizione  = $_POST["descrizione"];
-    $nomeopera  = $_POST["nomeopera"];
-
-  }
-  else if(count($_GET)>0) {
-    $numero = $_GET["numero"];
-    $nome = $_GET["nome"];
-    $superficie  = $_GET["superficie"];
-    $numeroOpere=$_GET["numeroOpere"];
-    $temaSala  = $_GET["temaSala"];
-    $descrizione  = $_GET["descrizione"];
-    $nomeopera  = $_GET["nomeopera"];
-}
-  include 'salaManager.php';
-  $error = false;
-
-  require_once 'connDb.php';
-  $query = getSalaQry ($numero,	$nome, $superficie , $numeroOpere,$temaSala, $descrizione, $nomeopera);
-
-  try {
-    $result = $conn->query($query);
-  } catch(PDOException $e) {
-    echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-    $error = true;
-  }
   if(!$error&& $nomeopera!="") {
 ?>
 
-    <table>
-      <thead>
-        <tr>
-          <th>NUMERO SALA
-            <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>NOME
-            <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>SUPERFICIE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=superficie&sort_order=<?php echo $sort_by === 'superficie' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>NUMERO OPERE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>TEMA SALA
-            <button class="iconArrow" onclick="window.location.href='?sort_by=temaSala&sort_order=<?php echo $sort_by === 'temaSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>DESCRIZIONE TEMA
-            <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>TITOLO OPERA
-            <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>&cercaautore=<?php echo $cercaautore; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
+<table>
+<thead>
+  <tr>
+    <th>NUMERO SALA
+      <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>NOME
+      <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>SUPERFICIE
+      <button class="iconArrow" onclick="window.location.href='?sort_by=superficie&sort_order=<?php echo $sort_by === 'superficie' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>NUMERO OPERE
+      <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>TEMA SALA
+      <button class="iconArrow" onclick="window.location.href='?sort_by=temaSala&sort_order=<?php echo $sort_by === 'temaSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>DESCRIZIONE TEMA
+      <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+    <th>TITOLO OPERA
+      <button class="iconArrow" onclick="window.location.href='?sort_by=nomeopera&sort_order=<?php echo $sort_by === 'nomeopera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+        <img src="./img/freccia.png">
+      </button>
+    </th>
+  </tr>
+</thead>
+<tbody>
+
+
 <?php
   $i=0;
   foreach($result as $riga) {
