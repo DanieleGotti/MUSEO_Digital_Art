@@ -171,6 +171,16 @@
       include 'autoreManager.php';
       $error = false;
 
+      $codice = sanitizeInput($_POST['codice']);
+      $nome = sanitizeInput($_POST['nome']);
+      $cognome = sanitizeInput($_POST['cognome']);
+      $nazione = sanitizeInput($_POST['nazione']);
+      $dataNascita = sanitizeInput($_POST['dataNascita']);
+      $dataMorte = sanitizeInput($_POST['dataMorte']);
+      $tipo = sanitizeInput($_POST['tipo']);
+      $numeroOpere = sanitizeInput($_POST['numeroOpere']);
+      $nomeopera = sanitizeInput($_POST['nomeopera']);
+
       require_once 'connDb.php';
       $query = getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera, $sort_by, $sort_order);
 
