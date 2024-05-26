@@ -38,12 +38,19 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
 
         if ($tipo != "")
             $qry .= " AND AUTORE.tipo LIKE '%" . $tipo . "%'";
+
     if ($numeroOpere != "")
         $qry.= " AND AUTORE.numeroOpere = $numeroOpere";
 
         if (!empty($sort_by) && !empty($sort_order)) {
-          $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
-        }
+    if ($sort_by == 'dataNascita' || $sort_by == 'dataMorte') {
+        $qry .= " ORDER BY STR_TO_DATE(AUTORE." . $sort_by . ", '%d/%m/%Y') " . $sort_order;
+    } elseif ($sort_by == 'numeroOpere') {
+        $qry .= " ORDER BY CAST(AUTORE." . $sort_by . " AS UNSIGNED) " . $sort_order;
+    } else {
+        $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
+    }
+}
 
 
         if ($nomeopera != "")

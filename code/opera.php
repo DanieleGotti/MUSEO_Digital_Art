@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
+  <script type="text/javascript" src="./js/jsOpera.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
         </li>
         <div class="filterScroll">
           <li class="filterItem">
-            <input id="opera" class="input" name="opera" type="text"/>
+            <input id="opera" class="input" name="opera" type="text" oninput="controllaOpera()"/>
             <label class="placeHolder">ID Opera</label>
           </li>
           <li class="filterItem">

@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
+  <script type="text/javascript" src="./js/jsSala.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@
         </li>
         <div class="filterScroll">
           <li class="filterItem">
-            <input id="numero" class="input" name="numero" type="text"/>
+            <input id="numero" class="input" name="numero" type="text" oninput="controllaNumero()"/>
             <label class="placeHolder">ID Sala</label>
           </li>
           <li class="filterItem">
