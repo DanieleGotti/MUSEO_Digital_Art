@@ -12,6 +12,7 @@
   $page = 'Home';
   include 'header.php';
   include 'nav.html';
+  include 'footer.html';
   ?>
 
   <div class="indexIntro">

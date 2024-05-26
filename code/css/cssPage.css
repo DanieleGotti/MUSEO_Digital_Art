@@ -116,22 +116,13 @@ body {
   box-sizing: border-box;
   position: relative;
   margin: 0.25rem 0rem;
-  border: 1px solid green;
 }
 
 .filterItemLast {
   margin-bottom: 10px;
 }
 
-.formCrud {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  margin-left: 10px;
-  border: 1px solid red;
-}
-
-.button {
+.button, .buttonCrea {
   padding: 10px;
   width: 100%;
   height: 2rem;
@@ -143,7 +134,7 @@ body {
   margin: center;
   font-family: "Open sans";
   font-weight: 800;
-  font-size: 12px;
+  font-size: 11px;
   position: relative;
   display: flex;
   align-items: center;
@@ -151,11 +142,18 @@ body {
   margin-left: 10px
 }
 
+.buttonCrea {
+  flex: 0 0 auto;
+  width: 10rem;
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+
 .button:first-of-type{
   margin-left: 0px;
 }
 
-.button:hover {
+.button:hover, .buttonCrea:hover {
   background-color: #FFB68D;
   border: 2px solid white;
 }
@@ -469,7 +467,6 @@ th {
 
 tbody {
   display: table-row-group;
-  background-color: #FEF0E7;
   flex: 1;
 }
 
@@ -491,9 +488,18 @@ td {
   box-sizing: border-box;
 }
 
+tbody tr:hover td {
+  background-color: #FFB68D;
+  color: white;
+}
+
 td a {
   color: #1C77C3;
   text-decoration: underline;
+}
+
+td a:hover {
+  font-size: 16px;
 }
 
 td a:visited {
@@ -544,5 +550,30 @@ td a:visited {
 }
 
 .iconArrow:hover {
+  background-color: #FFB68D;
+}
+
+.modifica-button, .cancella-button {
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.modifica-button img, .cancella-button img {
+  height: 14px;
+  width: 14px;
+}
+
+.modifica-button:hover, .cancella-button:hover {
+    background-color: #FFB68D;
+}
+
+.modifica-button img:hover, .cancella-button img:hover {
+  transform: scale(1.6);
+}
+
+tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   background-color: #FFB68D;
 }

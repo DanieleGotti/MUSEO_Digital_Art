@@ -77,8 +77,8 @@
       $sort_order = $_GET["sort_order"];
     }
   }
-  $codice = sanitizeInput()$_POST["codice"]);
-  $descrizione = sanitizeInput ($_POST["descrizione"]);
+  $codice = sanitizeInput($_POST["codice"]);
+  $descrizione = sanitizeInput($_POST["descrizione"]);
   $numeroSale  = sanitizeInput($_POST["numeroSale"]);
 
   include 'temaManager.php';

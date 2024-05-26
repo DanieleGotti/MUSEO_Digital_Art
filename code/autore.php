@@ -28,22 +28,22 @@
           <span class="filterTitle">Gestisci Autori</span>
         </li>
         <li class="filterItem">
-          <form name="myformCRUD" class="formCrud" method="post">
+          <!--<form name="myformCRUD" method="post">-->
             <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
-              <span class="buttonText">Gest</span>
+              <span class="buttonText">Gestisci</span>
               <span class="buttonIcon">
-                <img src="../img/autoreStatica.png">
+                <img src="../img/crud.png">
               </span>
             </button>
-          </form>
-          <form name="myformBack" class="formCrud" method="post">
+          <!--</form>-->
+          <!--<form name="myformBack" method="post">-->
             <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
               <span class="buttonText">Chiudi</span>
               <span class="buttonIcon">
                 <img src="../img/indietro.png">
               </span>
             </button>
-          </form>
+          <!--</form>-->
         </li>
         <li class="filterHeader2">
           <span class="filterTitle">Filtri</span>
@@ -318,6 +318,11 @@
               <img src="./img/freccia.png">
             </button>
           </th>
+          <th>TITOLO OPERA
+            <button class="iconArrow" onclick="window.location.href='?sort_by=numeroOpere&sort_order=<?php echo $sort_by === 'numeroOpere' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
+              <img src="./img/freccia.png">
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -344,8 +349,6 @@
                     <td><?php echo $tipo; ?></td>
                     <td><?php echo $numeroOpere; ?></td>
                     <td><a href="opera.php?titolo=<?php echo urlencode($nomeopera); ?>"><?php echo $nomeopera; ?></a></td>
-
-                    <td><?php echo $nomeopera; ?></td>
                 </tr>
             <?php } ?>
 
@@ -355,7 +358,12 @@
       }
     } else if($mostra && !$error && $result->rowCount() > 0) { ?>
           <div>
-            <button id="createButton" onclick="showCreateForm()">Creare</button>
+            <button id="createButton" class="buttonCrea" onclick="showCreateForm()">
+              <span class="buttonText">Inserisci Autore</span>
+              <span class="buttonIcon">
+                <img src="../img/inserisci.png">
+              </span>
+            </button>
           </div>
 
           <div id="createForm" style="display:none;">
@@ -377,6 +385,8 @@
           <table>
           <thead>
             <tr>
+              <th>Modifica</th>
+              <th>Elimina</th>
               <th>CODICE AUTORE
                 <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codicee' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
                   <img src="./img/freccia.png">
@@ -435,8 +445,16 @@
                   ?>
                   <tr>
 
-                      <td><button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">Modifica</button></td>
-                      <td><button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">Cancella</button></td>
+                      <td>
+                        <button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">
+                          <img src="../img/modifica.png">
+                        </button>
+                      </td>
+                      <td>
+                        <button class="cancella-button" data-id="<?php echo $codice; ?>" onclick="cancellaAutore(<?php echo $codice; ?>)">
+                          <img src="../img/cancella.png">
+                        </button>
+                      </td>
 
                       <td><?php echo $codice; ?></td>
                       <td><?php echo $nome; ?></td>
@@ -446,8 +464,6 @@
                       <td><?php echo $dataMorte; ?></td>
                       <td><?php echo $tipo; ?></td>
                       <td><a href="opera.php?autore=<?php echo urlencode($codice); ?>"><?php echo $numeroOpere; ?></a></td>
-
-                      <td><?php echo $numeroOpere; ?></td>
 
 
                   </tr>
@@ -477,4 +493,10 @@
 
 
 </body>
+
 </html>
+
+
+<?php
+include 'footer.html';
+?>
