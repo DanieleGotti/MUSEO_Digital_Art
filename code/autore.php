@@ -366,21 +366,36 @@
             </button>
           </div>
 
-          <div id="createForm" style="display:none;">
-            <h2>Inserimento nuovo autore</h2>
-            <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
-              <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
-              <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
-              <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
-              <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
-              <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
-              <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
-              <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
-              <label for="tipo_vivo">Vivo</label>
-              <input id="tipo_morto" name="tipo" type="radio" value="morto">
-              <label for="tipo_morto">Morto</label>
-              <input type="submit" name="insert" value="Inserisci">
-            </form>
+          <div id="createForm" class="popup">
+            <div class="overlay">
+              <div class="content">
+                <div class="closePop" onclick="showCreateForm()">
+                  &times;
+                </div>
+                  <h2>Inserisci nuovo autore</h2>
+                  <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
+                    <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
+                    <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
+                    <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
+                    <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
+                    <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
+                    <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
+                    <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
+                    <label for="tipo_vivo">Vivo</label>
+                    <input id="tipo_morto" name="tipo" type="radio" value="morto">
+                    <label for="tipo_morto">Morto</label>
+                    <!--<input type="submit" name="insert" value="Inserisci">-->
+
+                    <button class="button" type="submit" name="insert" >
+                      <span class="buttonText">Inserisci</span>
+                      <span class="buttonIcon">
+                        <img src="../img/inserisci.png">
+                      </span>
+                    </button>
+                  </form>
+              </div>
+            </div>
+
           </div>
           <table>
           <thead>
@@ -468,16 +483,39 @@
 
                   </tr>
                   <tr id="editFormRow<?php echo $codice; ?>" style="display: none;">
-                      <td colspan="11">
+                      <!--<td colspan="11">-->
                           <form id="editForm<?php echo $codice; ?>" method="post" action="editAuthor.php" onsubmit="return validateForm()">
-                            <input type="hidden" name="codice" value="<?php echo $codice; ?>"> <!-- Campo nascosto per il codice -->
-                        <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
-                        <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
-                        <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
-                        <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
-                        <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte"><input type="submit" name="edit" value="Modifica">
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <input type="hidden" name="codice" value="<?php echo $codice; ?>"> <!-- Campo nascosto per il codice -->
+                            </td>
+                            <td>
+                              <input id="nomecreate" class="inputModify" name="nomecreate" type="text" placeholder="Nome">
+                            </td>
+                            <td>
+                              <input id="cognomecreate" class="inputModify" name="cognomecreate" type="text" placeholder="Cognome">
+                            </td>
+                            <td>
+                              <input id="nazionecreate" class="inputModify" name="nazionecreate" type="text" placeholder="Nazione">
+                            </td>
+                            <td>
+                              <input id="dataNascitacreate" class="inputModify" name="dataNascitacreate" type="text" placeholder="Data Nascita">
+                            </td>
+                            <td>
+                              <input id="dataMortecreate" class="inputModify" name="dataMortecreate" type="text" placeholder="Data Morte">
+                            </td>
+                            <td>
+                              <button type="submit" class="button" name="edit" value="Modifica">
+                                <span class="buttonText">Conferma</span>
+                                <span class="buttonIcon">
+                                  <img src="../img/conferma.png">
+                                </span>
+                              </button>
+                            </td>
+                            <td></td>
                           </form>
-                      </td>
+                      <!--</td>-->
                   </tr>
               <?php } ?>
 
@@ -485,9 +523,7 @@
           </table>
 
 
-      <?php } else {
-          echo "<p>Nessun risultato trovato.</p>";
-      } ?>
+      <?php } ?>
     </div>
 
 

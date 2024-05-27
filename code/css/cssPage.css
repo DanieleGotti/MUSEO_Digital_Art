@@ -577,3 +577,87 @@ td a:visited {
 tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   background-color: #FFB68D;
 }
+
+.inputModify {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+  height: 2rem;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  background-color: #FEF0E7;
+  color:  #F76E11;
+  caret-color:  #F76E11;
+  margin: center;
+  font-family: "Open sans";
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  text-align: center;
+}
+
+.inputModify::placeholder {
+  color: #F98B41;
+  transition: 0.3s;
+  font-family: "Open sans";
+  font-weight: 400;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.inputModify:hover {
+  border: 2px solid white;
+}
+
+.popup .overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: none;
+}
+
+.popup .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: white;
+  width: 450px;
+  height: 350px;
+  z-index: 1001;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.popup .closePop {
+  position:absolute;
+  right: 20px;
+  top:20px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.popup.active .overlay {
+  display: block;
+}
+
+.popup.active .content {
+  transition: all 300ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+}

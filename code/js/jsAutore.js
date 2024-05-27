@@ -31,10 +31,13 @@ function handleBackButton() {
 
 
 function showCreateForm() {
+  document.getElementById("createForm").classList.toggle("active");
+  /*
   var createFormDiv = document.getElementById("createForm");
   if (createFormDiv.style.display === "none") {
     createFormDiv.style.display = "block";
   }
+  */
 }
 
 
@@ -118,7 +121,7 @@ function cancellaAutore(codice) {
 
       return true;
   }
-  
+
   function controllaCodice() {
     var codice = document.getElementById("codice").value;
     // Verifica se il codice contiene solo numeri
