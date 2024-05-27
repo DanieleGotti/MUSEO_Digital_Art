@@ -372,18 +372,41 @@
                 <div class="closePop" onclick="showCreateForm()">
                   &times;
                 </div>
-                  <h2>Inserisci nuovo autore</h2>
+                  <h2 class="titlePop">Inserisci nuovo autore</h2>
                   <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
-                    <input id="codicecreate" name="codicecreate" type="text" placeholder="Codice">
-                    <input id="nomecreate" name="nomecreate" type="text" placeholder="Nome">
-                    <input id="cognomecreate" name="cognomecreate" type="text" placeholder="Cognome">
-                    <input id="nazionecreate" name="nazionecreate" type="text" placeholder="Nazione">
-                    <input id="dataNascitacreate" name="dataNascitacreate" type="text" placeholder="Data Nascita">
-                    <input id="dataMortecreate" name="dataMortecreate" type="text" placeholder="Data Morte">
-                    <input id="tipo_vivo" name="tipo" type="radio" value="vivo">
-                    <label for="tipo_vivo">Vivo</label>
-                    <input id="tipo_morto" name="tipo" type="radio" value="morto">
-                    <label for="tipo_morto">Morto</label>
+                    <ul class="popContainer">
+                      <div class="popScroll">
+
+                        <li id="popItem" class="filterItem">
+                          <input id="codicecreate" class="inputPop" name="codicecreate" type="text">
+                          <label class="placeHolder">Codice</label>
+                        </li>
+                        <li id="popItem" class="filterItem">
+                          <input id="nomecreate" class="inputPop" name="nomecreate" type="text">
+                          <label class="placeHolder">Nome</label>
+                        </li>
+                        <li id="popItem" class="filterItem">
+                          <input id="cognomecreate" class="inputPop" name="cognomecreate" type="text">
+                          <label class="placeHolder">Cognome</label>
+                        </li>
+                        <li id="popItem" class="filterItem">
+                          <input id="nazionecreate" class="inputPop" name="nazionecreate" type="text">
+                          <label class="placeHolder">Nazione</label>
+                        </li>
+                        <li id="popItem" class="filterItem">
+                          <input id="dataNascitacreate" class="inputPop" name="dataNascitacreate" type="text">
+                          <label class="placeHolder">Data Nascita</label>
+                        </li>
+                        <li id="popItem" class="filterItem">
+                          <input id="dataMortecreate" class="input" name="dataMortecreate" type="text">
+                          <label class="placeHolder">Data Morte</label>
+                        </li>
+
+
+                      </div>
+
+                    </ul>
+
                     <!--<input type="submit" name="insert" value="Inserisci">-->
 
                     <button class="button" type="submit" name="insert" >
@@ -518,18 +541,13 @@
                       <!--</td>-->
                   </tr>
               <?php } ?>
-
               </tbody>
           </table>
-
 
       <?php } ?>
     </div>
 
-
-
 </body>
-
 </html>
 
 

@@ -25,7 +25,7 @@ if (!empty($dataMortecreate) && !preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $dataMort
 }
 
 // Impostazione del tipo in base alla presenza della data di morte
-$tipo = empty($dataMortecreate) ? 'vivo' : 'morto';
+$tipo = empty($dataMortecreate) ? 'Vivo' : 'Morto';
 
 // Costruzione della query di aggiornamento
 $fieldsToUpdate = [];

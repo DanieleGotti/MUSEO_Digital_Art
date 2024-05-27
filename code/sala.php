@@ -271,7 +271,7 @@
         <tr <?php	echo $classRiga; ?> >
           <td > <?php echo $numero; ?> </td>
           <td > <?php echo $nome; ?> </td>
-          <td > <?php echo $superficie; ?> </td>
+          <td > <?php echo $superficie; ?> m² </td>
           <td>
             <a href="opera.php?espostaInSala=<?php echo urlencode($numero); ?>">
               <?php echo $numeroOpere; ?>
