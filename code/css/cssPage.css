@@ -308,7 +308,7 @@ body {
   border: 2px solid white;
 }
 
-.input:focus + .placeHolder {
+.input:focus + .placeHolder, .input.notEmpty + .placeHolder {
   top: 25%;
   transform: translateY(-100%);
   font-family: "Open sans";
@@ -324,6 +324,15 @@ body {
   border: 1px solid #FEF0E7 !important;
   -webkit-text-fill-color: white !important;
   transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px #F98B41 inset;
+  box-shadow: 0 0 0px 1000px #F98B41 inset;
+}
+
+.input:autofill {
+  background-color: #F98B41 !important;
+  color: white !important;
+  box-shadow: 0 0 0px 1000px #F98B41 inset;
+
 }
 
 ::-webkit-scrollbar {
@@ -588,7 +597,7 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   border-radius: 10px;
   border: none;
   background-color: #FEF0E7;
-  color:  #F76E11;
+  color:  black;
   caret-color:  #F76E11;
   margin: center;
   font-family: "Open sans";
@@ -609,6 +618,22 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
 
 .inputModify:hover {
   border: 2px solid white;
+}
+
+.inputModify:-webkit-autofill, .inputModify:-webkit-autofill:hover,
+.inputModify:-webkit-autofill:focus, .inputModify:-webkit-autofill:active {
+  background-color: #FEF0E7 !important;
+  color:  #F76E11 !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px #FEF0E7 inset;
+  box-shadow: 0 0 0px 1000px #FEF0E7 inset;
+}
+
+.input:autofill {
+  background-color: #FEF0E7 !important;
+  color:  #F76E11 !important;
+  box-shadow: 0 0 0px 1000px #FEF0E7 inset;
 }
 
 .popup .overlay {
@@ -640,7 +665,7 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
 .popup .closePop {
   position:absolute;
   right: 20px;
-  top:20px;
+  top: 20px;
   width: 30px;
   height: 30px;
   background-color: red;
@@ -671,14 +696,104 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
 }
 
 .popScroll {
-  border: 1px solid green;
   width: 100%;
   height: 100%;
   text-align: center;
   overflow-y: scroll;
-
 }
 
-#popItem {
-  border: 1px solid blue;
+.popScroll::-webkit-scrollbar {
+  background-color: white;
+}
+
+.popItem {
+  height: 3rem;
+  width: 14rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: width 600ms;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0.25rem 0rem;
+}
+
+.titlePop {
+  width: 14rem;
+  height: 2rem;
+  text-align: center;
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 16px;
+  color: black;
+  transform: translateX(50%);
+  display: flex;
+}
+
+.titlePop span {
+  height: auto;
+}
+
+.inputPop {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  caret-color: #F76E11;
+  margin: center;
+  font-family: "Open sans";
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  border: 1px solid #F98B41;
+  transform: translateX(50%);
+}
+
+.placeHolderPop {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 10px);
+  padding: 0px 5px;
+  color: #F76E11;
+  transition: 0.3s;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background-color: white;
+  font-family: "Open sans";
+  font-weight: 400;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.inputPop:hover {
+  border: 2px solid #F76E11;
+}
+
+.inputPop:focus + .placeHolderPop, .inputPop.notEmpty + .placeHolderPop {
+  top: 25%;
+  transform: translateY(-100%);
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.inputPop:-webkit-autofill, .inputPop:-webkit-autofill:hover,
+.inputPop:-webkit-autofill:focus, .inputPop:-webkit-autofill:active {
+  background-color: white !important;
+  color:  #F76E11 !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+}
+
+.input:autofill {
+  background-color: white !important;
+  color:  #F76E11 !important;
+  box-shadow: 0 0 0px 1000px white inset;
 }

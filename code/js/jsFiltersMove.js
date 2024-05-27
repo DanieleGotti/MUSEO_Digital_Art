@@ -13,3 +13,31 @@ function moveFilters() {
   }
   isExpanded = !isExpanded;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const inputs = document.querySelectorAll('.input');
+
+  inputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value !== '') {
+        input.classList.add('notEmpty');
+      } else {
+        input.classList.remove('notEmpty');
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const inputs = document.querySelectorAll('.inputPop');
+
+  inputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value !== '') {
+        input.classList.add('notEmpty');
+      } else {
+        input.classList.remove('notEmpty');
+      }
+    });
+  });
+});

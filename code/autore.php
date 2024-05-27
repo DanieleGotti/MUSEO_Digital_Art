@@ -372,43 +372,38 @@
                 <div class="closePop" onclick="showCreateForm()">
                   &times;
                 </div>
-                  <h2 class="titlePop">Inserisci nuovo autore</h2>
+                  <div class="titlePop">
+                    <span> Inserisci nuovo autore</span>
+                  </div>
                   <form id="createAuthorForm" method="post" action="insertAuthor.php" onsubmit="return validateForm()">
                     <ul class="popContainer">
                       <div class="popScroll">
-
-                        <li id="popItem" class="filterItem">
+                        <li class="popItem">
                           <input id="codicecreate" class="inputPop" name="codicecreate" type="text">
-                          <label class="placeHolder">Codice</label>
+                          <label class="placeHolderPop">Codice</label>
                         </li>
-                        <li id="popItem" class="filterItem">
+                        <li class="popItem">
                           <input id="nomecreate" class="inputPop" name="nomecreate" type="text">
-                          <label class="placeHolder">Nome</label>
+                          <label class="placeHolderPop">Nome</label>
                         </li>
-                        <li id="popItem" class="filterItem">
+                        <li class="popItem">
                           <input id="cognomecreate" class="inputPop" name="cognomecreate" type="text">
-                          <label class="placeHolder">Cognome</label>
+                          <label class="placeHolderPop">Cognome</label>
                         </li>
-                        <li id="popItem" class="filterItem">
+                        <li  class="popItem">
                           <input id="nazionecreate" class="inputPop" name="nazionecreate" type="text">
-                          <label class="placeHolder">Nazione</label>
+                          <label class="placeHolderPop">Nazione</label>
                         </li>
-                        <li id="popItem" class="filterItem">
+                        <li class="popItem">
                           <input id="dataNascitacreate" class="inputPop" name="dataNascitacreate" type="text">
-                          <label class="placeHolder">Data Nascita</label>
+                          <label class="placeHolderPop">Data Nascita</label>
                         </li>
-                        <li id="popItem" class="filterItem">
-                          <input id="dataMortecreate" class="input" name="dataMortecreate" type="text">
-                          <label class="placeHolder">Data Morte</label>
+                        <li class="popItem">
+                          <input id="dataMortecreate" class="inputPop" name="dataMortecreate" type="text">
+                          <label class="placeHolderPop">Data Morte</label>
                         </li>
-
-
                       </div>
-
                     </ul>
-
-                    <!--<input type="submit" name="insert" value="Inserisci">-->
-
                     <button class="button" type="submit" name="insert" >
                       <span class="buttonText">Inserisci</span>
                       <span class="buttonIcon">
@@ -418,7 +413,6 @@
                   </form>
               </div>
             </div>
-
           </div>
           <table>
           <thead>
@@ -482,7 +476,6 @@
 
                   ?>
                   <tr>
-
                       <td>
                         <button class="modifica-button" data-id="<?php echo $codice; ?>" onclick="showEditForm(<?php echo $codice; ?>)">
                           <img src="../img/modifica.png">
