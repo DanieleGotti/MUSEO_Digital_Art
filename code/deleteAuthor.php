@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['codice'])) {
 
         // Esegui l'operazione di eliminazione degli autori
         $queryDeleteAutore = "DELETE FROM AUTORE WHERE codice = :codice";
+
         $stmtAutore = $conn->prepare($queryDeleteAutore);
         $stmtAutore->execute(array(':codice' => $codice));
 
