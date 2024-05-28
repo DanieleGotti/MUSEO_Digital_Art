@@ -3,10 +3,12 @@
 <head>
   <title>Autori</title>
   <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
   <script type="text/javascript" src="./js/jsAutore.js"></script>
+  <script type="text/javascript" src="./js/jsFooter.js"></script>
 </head>
 
 <body>
@@ -28,22 +30,18 @@
           <span class="filterTitle">Gestisci Autori</span>
         </li>
         <li class="filterItem">
-          <!--<form name="myformCRUD" method="post">-->
-            <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
-              <span class="buttonText">Gestisci</span>
-              <span class="buttonIcon">
-                <img src="../img/crud.png">
-              </span>
-            </button>
-          <!--</form>-->
-          <!--<form name="myformBack" method="post">-->
-            <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
-              <span class="buttonText">Chiudi</span>
-              <span class="buttonIcon">
-                <img src="../img/indietro.png">
-              </span>
-            </button>
-          <!--</form>-->
+          <button id="CRUD" name="CRUD" class="button" type="submit" value="CRUD">
+            <span class="buttonText">Gestisci</span>
+            <span class="buttonIcon">
+              <img src="../img/crud.png">
+            </span>
+          </button>
+          <button id="backButton" name="back" class="button" type="submit" value="Back" onclick="hideCreateButton()">
+            <span class="buttonText">Chiudi</span>
+            <span class="buttonIcon">
+              <img src="../img/indietro.png">
+            </span>
+          </button>
         </li>
         <li class="filterHeader2">
           <span class="filterTitle">Filtri</span>
@@ -62,12 +60,10 @@
             </span>
           </button>
         </li>
-
-
         <div class="filterScroll">
           <li class="filterItem">
             <input id="codice" class="input" name="codice" type="text" oninput="controllaCodice()"/>
-            <label class="placeHolder">Codice Autore</label>
+            <label class="placeHolder">Codice</label>
           </li>
           <li class="filterItem">
             <input id="nome" class="input" name="nome" type="text"/>
@@ -115,10 +111,6 @@
       </ul>
     </form>
   </div>
-
-
-
-
 
     <div id="options" style="display:none;">
       <button id="createButton" class="button" onclick="showCreateForm()">Creare</button>
@@ -198,7 +190,7 @@
     <table>
     <thead>
       <tr>
-        <th>CODICE AUTORE
+        <th>CODICE
           <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codice' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
             <img src="./img/freccia.png">
           </button>
@@ -278,7 +270,7 @@
         <table>
         <thead>
           <tr>
-            <th>CODICE AUTORE
+            <th>CODICE
               <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codicee' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
                 <img src="./img/freccia.png">
               </button>
@@ -419,7 +411,7 @@
             <tr>
               <th>Modifica</th>
               <th>Elimina</th>
-              <th>CODICE AUTORE
+              <th>CODICE 
                 <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codicee' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
                   <img src="./img/freccia.png">
                 </button>

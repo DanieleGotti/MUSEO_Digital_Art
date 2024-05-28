@@ -3,7 +3,9 @@
 <head>
   <title>Museo - Digital Art</title>
   <link rel="stylesheet" href="./css/cssHome.css">
-  <script src="jsIndex.js"></script>
+  <link rel="stylesheet" href="./css/cssFooter.css">
+  <!--<script src="jsIndex.js"></script>-->
+  <script type="text/javascript" src="./js/jsFooter.js"></script>
 </head>
 
 <body>

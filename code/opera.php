@@ -3,10 +3,12 @@
 <head>
   <title>Opera</title>
   <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
   <script type="text/javascript" src="./js/jsOpera.js"></script>
+  <script type="text/javascript" src="./js/jsFooter.js"></script>
 </head>
 
 <body>
@@ -43,7 +45,7 @@
         <div class="filterScroll">
           <li class="filterItem">
             <input id="opera" class="input" name="opera" type="text" oninput="controllaOpera()"/>
-            <label class="placeHolder">ID Opera</label>
+            <label class="placeHolder">Codice</label>
           </li>
           <li class="filterItem">
             <input id="titolo" class="input" name="titolo" type="text"/>
@@ -51,7 +53,7 @@
           </li>
           <li class="filterItem">
             <input id="autore" class="input" name="autore" type="text"/>
-            <label class="placeHolder">ID Autore</label>
+            <label class="placeHolder">Codice Autore</label>
           </li>
           <li class="filterItem">
             <input id="nome" class="input" name="nome" type="text"/>
@@ -140,7 +142,7 @@
     <table>
       <thead>
         <tr>
-          <th>ID OPERA
+          <th>CODICE 
             <button class="iconArrow" onclick="window.location.href='?sort_by=opera&sort_order=<?php echo $sort_by === 'opera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
               <img src="./img/freccia.png">
             </button>
@@ -150,7 +152,7 @@
               <img src="./img/freccia.png">
             </button>
           </th>
-          <th>ID AUTORE
+          <th>CODICE AUTORE
             <button class="iconArrow" onclick="window.location.href='?sort_by=autore&sort_order=<?php echo $sort_by === 'autore' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
               <img src="./img/freccia.png">
             </button>

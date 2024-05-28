@@ -486,7 +486,7 @@ tbody tr {
 td {
   background-color: white;
   padding: 0;
-  min-width: 120px;
+  width: auto;
   vertical-align: middle;
   text-align: center;
   font-family: "Open sans";
@@ -630,7 +630,7 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   box-shadow: 0 0 0px 1000px #FEF0E7 inset;
 }
 
-.input:autofill {
+.inputModify:autofill {
   background-color: #FEF0E7 !important;
   color:  #F76E11 !important;
   box-shadow: 0 0 0px 1000px #FEF0E7 inset;
@@ -792,7 +792,7 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   box-shadow: 0 0 0px 1000px white inset;
 }
 
-.input:autofill {
+.inputPop:autofill {
   background-color: white !important;
   color:  #F76E11 !important;
   box-shadow: 0 0 0px 1000px white inset;

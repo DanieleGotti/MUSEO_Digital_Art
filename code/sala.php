@@ -3,10 +3,12 @@
 <head>
   <title>Sale</title>
   <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
   <script type="text/javascript" src="./js/jsSala.js"></script>
+  <script type="text/javascript" src="./js/jsFooter.js"></script>
 </head>
 
 <body>
@@ -44,7 +46,7 @@
         <div class="filterScroll">
           <li class="filterItem">
             <input id="numero" class="input" name="numero" type="text" oninput="controllaNumero()"/>
-            <label class="placeHolder">ID Sala</label>
+            <label class="placeHolder">Numero</label>
           </li>
           <li class="filterItem">
             <input id="nome" class="input" name="nome" type="text"/>
@@ -136,7 +138,7 @@
 <table>
 <thead>
   <tr>
-    <th>NUMERO SALA
+    <th>NUMERO
       <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
         <img src="./img/freccia.png">
       </button>
@@ -195,7 +197,7 @@
         <tr <?php	echo $classRiga; ?> >
           <td > <?php echo $numero; ?> </td>
           <td > <?php echo $nome; ?> </td>
-          <td > <?php echo $superficie; ?> </td>
+          <td > <?php echo $superficie; ?> m² </td>
           <td>
             <a href="opera.php?espostaInSala=<?php echo urlencode($numero); ?>">
               <?php echo $numeroOpere; ?>
@@ -219,7 +221,7 @@
 <table>
 <thead>
 <tr>
-  <th>NUMERO SALA
+  <th>NUMERO
     <button class="iconArrow" onclick="window.location.href='?sort_by=numero&sort_order=<?php echo $sort_by === 'numero' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&numero=<?php echo $numero; ?>&nome=<?php echo $nome; ?>&superficie=<?php echo $superficie; ?>&numeroOpere=<?php echo $numeroOpere; ?>&temaSala=<?php echo $temaSala; ?>&descrizione=<?php echo $descrizione; ?>&nomeopera=<?php echo $nomeopera; ?>'">
       <img src="./img/freccia.png">
     </button>
