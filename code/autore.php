@@ -17,7 +17,6 @@
   $page='Autori';
   include 'header.php';
   include 'nav.html';
-  include 'footer.html';
 ?>
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()">
@@ -523,6 +522,8 @@
 
       <?php } ?>
     </div>
-
+    <?php
+    include 'footer.html';
+     ?>
 </body>
 </html>

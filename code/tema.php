@@ -3,7 +3,7 @@
 <head>
   <title>Temi</title>
   <link rel="stylesheet" href="./css/cssPage.css">
-  <link rel="stylesheet" href="./css/cssHeader.css">  
+  <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
@@ -17,7 +17,6 @@
   $page = 'Temi';
   include 'header.php';
   include 'nav.html';
-  include 'footer.html';
 ?>
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()" onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
@@ -143,5 +142,8 @@
       </table>
 <?php }  ?>
   </div>
+  <?php
+  include 'footer.html';
+   ?>
 </body>
 </html>

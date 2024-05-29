@@ -14,7 +14,6 @@
   $page = 'Home';
   include 'header.php';
   include 'nav.html';
-  include 'footer.html';
   ?>
 
   <div class="indexIntro">
@@ -262,5 +261,8 @@
             </div>
           </div>
         </div>
+        <?php
+        include 'footer.html';
+         ?>
 </body>
 </html>
