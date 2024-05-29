@@ -3,6 +3,7 @@
 <head>
   <title>Temi</title>
   <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="./css/cssHeader.css">  
   <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
@@ -98,7 +99,7 @@
     <table>
       <thead>
         <tr>
-          <th>CODICE 
+          <th>CODICE
             <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codice' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
               <img src="./img/freccia.png">
               </button>

@@ -3,8 +3,8 @@
 <head>
   <title>Museo - Digital Art</title>
   <link rel="stylesheet" href="./css/cssHome.css">
+  <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
-  <!--<script src="jsIndex.js"></script>-->
   <script type="text/javascript" src="./js/jsFooter.js"></script>
 </head>
 
@@ -186,8 +186,7 @@
 
                 ?>
                 <div class="card">
-                  <img src="" alt="">
-                  <p>Codice Opera: <?php echo $opera; ?></p>
+                  <p class="">Codice Opera: <?php echo $opera; ?></p>
                   <p>Titolo: <a href="opera.php?=<?php echo urlencode($opera); ?>"><?php echo $titolo; ?></a></p>
                   <p>Autore: <?php echo $nome; ?>  <?php echo $cognome; ?> </p>
                 </div>

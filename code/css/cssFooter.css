@@ -16,12 +16,12 @@
   place-items: center;
   justify-content: center;
   padding: 0px 10px;
-  position: fixed;
+  position: static;
   bottom: 0;
 }
 
-.footer.nonFixed {
-  position: static;
+.footer.fixed {
+  position: fixed;
 }
 
 .footer ul {
@@ -45,7 +45,7 @@
     margin-bottom: 0;
 }
 
-.footer ul li a:hover{
+.footer ul li a:hover {
     color: #FFB68D;
 }
 
