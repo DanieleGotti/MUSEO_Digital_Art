@@ -3,6 +3,7 @@
 <head>
   <title>Autori</title>
   <link rel="stylesheet" href="./css/cssPage.css">
+  <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
@@ -411,7 +412,7 @@
             <tr>
               <th>Modifica</th>
               <th>Elimina</th>
-              <th>CODICE 
+              <th>CODICE
                 <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codicee' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
                   <img src="./img/freccia.png">
                 </button>
@@ -534,8 +535,3 @@
 
 </body>
 </html>
-
-
-<?php
-include 'footer.html';
-?>

@@ -151,3 +151,7 @@ body {
 .card:hover {
   border-color: #FFB68D;
 }
+
+.card p {
+
+}
