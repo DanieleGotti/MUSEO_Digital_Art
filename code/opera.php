@@ -142,7 +142,7 @@
     <table>
       <thead>
         <tr>
-          <th>CODICE 
+          <th>CODICE
             <button class="iconArrow" onclick="window.location.href='?sort_by=opera&sort_order=<?php echo $sort_by === 'opera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
               <img src="./img/freccia.png">
             </button>
@@ -212,7 +212,7 @@
               <td><?php echo $opera; ?></td>
               <td><?php echo $titolo; ?></td>
               <td>
-                <a href="autore.php?codice=<?php echo urlencode($autore); ?>&nome=<?php echo urlencode($nome); ?>&cognome=<?php echo urlencode($cognome); ?>">
+                <a href="autore.php?codice=<?php echo urlencode($autore); ?>">
                   <?php echo $autore; ?>
                 </a>
               </td>

@@ -163,15 +163,6 @@
       include 'autoreManager.php';
       $error = false;
 
-      $codice = sanitizeInput($_POST['codice']);
-      $nome = sanitizeInput($_POST['nome']);
-      $cognome = sanitizeInput($_POST['cognome']);
-      $nazione = sanitizeInput($_POST['nazione']);
-      $dataNascita = sanitizeInput($_POST['dataNascita']);
-      $dataMorte = sanitizeInput($_POST['dataMorte']);
-      $tipo = sanitizeInput($_POST['tipo']);
-      $numeroOpere = sanitizeInput($_POST['numeroOpere']);
-      $nomeopera = sanitizeInput($_POST['nomeopera']);
 
       require_once 'connDb.php';
       $query = getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera, $sort_by, $sort_order);
@@ -411,7 +402,7 @@
             <tr>
               <th>Modifica</th>
               <th>Elimina</th>
-              <th>CODICE 
+              <th>CODICE
                 <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codicee' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&nazione=<?php echo $nazione; ?>&dataNascita=<?php echo $dataNascita; ?>&dataMorte=<?php echo $dataMorte; ?>&tipo=<?php echo $tipo; ?>&numeroOpere=<?php echo $numeroOpere; ?>&nomeopera=<?php echo $nomeopera; ?>'">
                   <img src="./img/freccia.png">
                 </button>
