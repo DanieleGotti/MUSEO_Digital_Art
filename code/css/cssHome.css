@@ -139,19 +139,71 @@ body {
   background: #FFB68D;
 }
 
-.card {
+.card, .card1 {
   background-color: white;
   height: 200px;
   width: 350px;
-  margin-bottom: 5%;
   border-radius: 10px;
   border: 2px solid #F76E11;
+  margin-bottom: 5%;
+  text-align: center;
 }
 
-.card:hover {
+.card:hover, .card1:hover {
   border-color: #FFB68D;
 }
 
-.card p {
+.card p, .card1 p {
+  height: calc(200px / 3);
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-line;
+  margin: 0;
+  font-family: "Open sans";
+  font-weight: 400;
+  font-size: 12px;
+}
 
+.card1 p {
+  height: 100px;
+}
+
+.card p:first-child {
+  justify-content: flex-end;
+}
+
+.card p:last-child, .card1 p:last-child {
+  justify-content: start;
+}
+
+.card span, .card1 span {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  line-height: normal;
+  text-decoration: none;
+  margin-top: -10px;
+  font-family: "Open sans";
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.card a, .card1 a {
+  color: #F76E11;
+  text-decoration: none;
+  font-family: "Open sans";
+  font-weight: 700;
+  font-size: 14px;
+  transition: 200ms;
+}
+
+.card a:hover, .card1 a:hover {
+  font-size: 18px;
+  white-space: pre-line;
+  color: #FFB68D;
 }

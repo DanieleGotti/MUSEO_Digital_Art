@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
   <script type="text/javascript" src="./js/jsFooter.js"></script>
+  <script type="text/javascript" src="./js/jsHomeMove.js"></script>
 </head>
 
 <body>
@@ -40,9 +41,9 @@
         // Genera 8 card
         for ($j = 0; $j < 8; $j++) {
           do {
-            $randomCode = rand(1, 12);
+            $randomCode = rand(1, 10);
           } while (in_array($randomCode, $usedCodes)); // Continua a generare fino a trovare un codice non usato
-
+          $usedCodes[] = $randomCode;
           $query = "SELECT TEMA.descrizione, TEMA.codice FROM TEMA WHERE TEMA.codice = $randomCode";
 
           try {
@@ -63,13 +64,15 @@
               $codice = $riga["codice"];
               $descrizione = $riga["descrizione"];
               ?>
-              <div class="card">
-                <img src="" alt="">
-                <p>Codice Tema: <?php echo $codice; ?></p>
-                <p> <a href="tema.php?codice=<?php echo urlencode($codice); ?>"><?php echo $descrizione; ?></a></p>
-
-
-
+              <div class="card1">
+                <p>Codice Tema:
+                  <span>
+                    <?php echo $codice; ?>
+                  </span>
+                </p>
+                <p>Descrizione:
+                  <a href="tema.php?codice=<?php echo urlencode($codice); ?>"><?php echo $descrizione; ?></a>
+                </p>
               </div>
               <?php
             }
@@ -77,9 +80,7 @@
             echo "<div class='card'><p>Nessun tema trovato per codice: $randomCode</p></div>";
           }
         }
-
         ?>
-
       </div>
     </div>
   </div>
@@ -102,7 +103,7 @@
           do {
             $randomCodeS = rand(1, 30);
           } while (in_array($randomCodeS, $usedCodesS)); // Continua a generare fino a trovare un codice non usato
-
+          $usedCodesS[] = $randomCodeS;
           $query = "SELECT SALA.numero, SALA.nome, SALA.numeroOpere FROM SALA WHERE SALA.numero = $randomCodeS";
 
           try {
@@ -126,10 +127,18 @@
 
               ?>
               <div class="card">
-                <img src="" alt="">
-                <p>Numero Sala: <?php echo $numero; ?></p>
-                <p>Nome Sala: <a href="sala.php?numero=<?php echo urlencode($numero); ?>"><?php echo $nome; ?></a></p>
-                <p>Opere esposte: <?php echo $numeroOpere; ?></p>
+                <p>Numero sala:
+                  <span>
+                    <?php echo $numero; ?>
+                  </span>
+                </p>
+                <p>Nome sala:
+                  <a href="sala.php?numero=<?php echo urlencode($numero); ?>"><?php echo $nome; ?></a>
+                </p>
+                <p>Opere esposte:
+                  <span>
+                    <?php echo $numeroOpere; ?></p>
+                  </span>
               </div>
               <?php
             }
@@ -161,7 +170,7 @@
             do {
               $randomCodeO = rand(1, 1000);
             } while (in_array($randomCodeO, $usedCodesO)); // Continua a generare fino a trovare un codice non usato
-
+            $usedCodesO[] = $randomCodeO;
             $query = "SELECT OPERA.opera, OPERA.titolo, AUTORE.nome, AUTORE.cognome FROM OPERA JOIN AUTORE ON OPERA.autore = AUTORE.codice WHERE OPERA.opera = $randomCodeO";
 
             try {
@@ -185,11 +194,21 @@
 
                 ?>
                 <div class="card">
-                  <p class="">Codice Opera: <?php echo $opera; ?></p>
-                  <p>Titolo: <a href="opera.php?=<?php echo urlencode($opera); ?>"><?php echo $titolo; ?></a></p>
-                  <p>Autore: <?php echo $nome; ?>  <?php echo $cognome; ?> </p>
+                  <p>Codice Opera:
+                    <span>
+                      <?php echo $opera; ?>
+                    </span>
+                  </p>
+                  <p>Titolo:
+                    <a href="opera.php?=<?php echo urlencode($opera); ?>"><?php echo $titolo; ?></a>
+                  </p>
+                  <p>Autore:
+                    <span>
+                      <?php echo $nome; ?>  <?php echo $cognome; ?>
+                    </span>
+                  </p>
                 </div>
-                <?php
+              <?php
               }
             } else {
               echo "<div class='card'><p>Nessuna opera trovato per codice: $randomCodeO</p></div>";
@@ -219,7 +238,7 @@
               do {
                 $randomCodeA = rand(1, 100);
               } while (in_array($randomCodeA, $usedCodesA)); // Continua a generare fino a trovare un codice non usato
-
+              $usedCodesA[] = $randomCodeA;
               $query = "SELECT AUTORE.codice, AUTORE.nome, AUTORE.cognome, AUTORE.nazione FROM AUTORE WHERE AUTORE.codice = $randomCodeA";
 
               try {
@@ -244,11 +263,19 @@
 
                   ?>
                   <div class="card">
-                    <img src="" alt="">
-
-                    <td>Codice:<?php echo $codice; ?></td>
-                    <td>Autore:<a href="autore.php?codice=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a></td>
-                    <td>Nazione:<?php echo $nazione; ?></td>
+                    <p>Codice:
+                      <span>
+                        <?php echo $codice; ?>
+                      </span>
+                    </p>
+                    <p>Autore:
+                      <a href="autore.php?codice=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a>
+                    </p>
+                    <p>Nazione:
+                      <span>
+                        <?php echo $nazione; ?>
+                      </span>
+                    </p>
                   </div>
                   <?php
                 }
