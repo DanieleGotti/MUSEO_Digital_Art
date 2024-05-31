@@ -74,5 +74,4 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
 
     return $qry;
 }
-s
 ?>

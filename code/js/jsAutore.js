@@ -32,15 +32,7 @@ function handleBackButton() {
 
 function showCreateForm() {
   document.getElementById("createForm").classList.toggle("active");
-  /*
-  var createFormDiv = document.getElementById("createForm");
-  if (createFormDiv.style.display === "none") {
-    createFormDiv.style.display = "block";
-  }
-  */
 }
-
-
 
 
 function salvaModifiche(codice) {
@@ -133,11 +125,11 @@ function cancellaAutore(codice) {
     }
 }
 
-    function showEditForm(codice) {
-      var formRow = document.getElementById('editFormRow' + codice);
-      if (formRow.style.display === 'none' || formRow.style.display === '') {
-        formRow.style.display = 'table-row';
-      } else {
-        formRow.style.display = 'none';
-      }
+  function showEditForm(codice) {
+    var formRow = document.getElementById('editFormRow' + codice);
+    if (formRow.style.display === 'none' || formRow.style.display === '') {
+      formRow.style.display = 'table-row';
+    } else {
+      formRow.style.display = 'none';
     }
+  }

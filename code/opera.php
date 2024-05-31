@@ -50,7 +50,7 @@
         </li>
         <div class="filterScroll">
           <li class="filterItem">
-            <input id="opera" class="input" name="opera" type="text" oninput="controllaOpera()"/>
+            <input id="opera" class="input" name="opera" type="text" oninput="controllaCodice()">
             <label class="placeHolder">Codice</label>
           </li>
           <li class="filterItem">
