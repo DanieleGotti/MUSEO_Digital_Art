@@ -20,7 +20,7 @@
   ?>
 
   <div class="caricamento">
-    <span>Loading...</span>
+    <span>...</span>
   </div>
 
   <div class="indexIntro">

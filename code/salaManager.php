@@ -2,7 +2,7 @@
 
 require_once 'connDb.php';
 
-function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descrizione, $nomeopera, $sort_by = 'numero', $sort_order = 'asc' ): string {
+function getSalaQry($numero, $nome, $superficie, $numeroOpere, $temaSala, $descrizione, $nomeopera, $sort_by = 'numero', $sort_order = 'asc' ): string {
     global $conn;
 
     $qry = "SELECT DISTINCT
@@ -42,6 +42,7 @@ function getSalaQry($numero, $nome, $superficie,$numeroOpere, $temaSala, $descri
                     SALA.numero,
                     SALA.nome,
                     SALA.superficie,
+                    SALA.numeroOpere,
                     SALA.temaSala,
                     TEMA.descrizione,
                     OPERA.titolo AS nomeopera

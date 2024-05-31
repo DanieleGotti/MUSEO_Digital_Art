@@ -15,7 +15,7 @@
 </head>
 
 <div class="caricamento">
-  <span>Loading...</span>
+  <span>...</span>
 </div>
 
 <body>
@@ -138,7 +138,7 @@
       }
 
 
-  if(!$error&& $nomeopera!="") {
+  if(!$error && $nomeopera!="") {
 ?>
 
 <table>
@@ -199,6 +199,7 @@
   $temaSala = $riga["temaSala"];
   $descrizione = $riga["descrizione"];
   $nomeopera = $riga["nomeopera"];
+
 ?>
         <tr <?php	echo $classRiga; ?> >
           <td > <?php echo $numero; ?> </td>
