@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="./css/cssHome.css">
   <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
+  <link rel="stylesheet" href="./css/cssLoading.css">
+  <script type="text/javascript" src="./js/jsLoading.js"></script>
   <script type="text/javascript" src="./js/jsFooter.js"></script>
   <script type="text/javascript" src="./js/jsHomeMove.js"></script>
 </head>
@@ -16,6 +18,10 @@
   include 'header.php';
   include 'nav.html';
   ?>
+
+  <div class="caricamento">
+    <span>Loading...</span>
+  </div>
 
   <div class="indexIntro">
     <div class="indexLogo">

@@ -5,8 +5,10 @@
   <link rel="stylesheet" href="./css/cssPage.css">
   <link rel="stylesheet" href="./css/cssHeader.css">
   <link rel="stylesheet" href="./css/cssFooter.css">
+  <link rel="stylesheet" href="./css/cssLoading.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <script type="text/javascript" src="./js/jquery-2.0.0.js"></script>
+  <script type="text/javascript" src="./js/jsLoading.js"></script>
   <script type="text/javascript" src="./js/jsFiltersMove.js"></script>
   <script type="text/javascript" src="./js/jsAutore.js"></script>
   <script type="text/javascript" src="./js/jsFooter.js"></script>
@@ -18,6 +20,11 @@
   include 'header.php';
   include 'nav.html';
 ?>
+
+<div class="caricamento">
+  <span>Loading...</span>
+</div>
+
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()">
     <img src="../img/filtroStatica.png">
