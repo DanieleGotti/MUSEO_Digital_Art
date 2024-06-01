@@ -21,9 +21,10 @@
   include 'nav.html';
 ?>
 
-  <div class="caricamento">
-    <span>...</span>
-  </div>
+<div class="caricamento">
+  <span>...</span>
+</div>
+
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()">
     <img src="../img/filtroStatica.png">
@@ -131,23 +132,13 @@
       $dataNascita  = "";
       $dataMorte = "";
       $tipo = "";
-      $numeroOpere = "";
-      $nomeopera = "";
+      $numeroOpere  = "";
+      $nomeopera="";
       $mostra = false;
-
 
       $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'codice';
       $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'asc';
 
-
-      if (isset($_POST['CRUD']) && $_POST['CRUD'] === 'CRUD') {
-        echo "true";
-        $mostra = true;
-      }
-      else {
-        echo "false";
-        $mostra = false;
-      }
 
       if(count($_POST) > 0) {
         $codice = $_POST["codice"];
@@ -171,8 +162,16 @@
         $nomeopera  = $_GET["nomeopera"];
       }
 
+      if ($_POST['CRUD'] === 'CRUD') {
+        $mostra = true;
+      } else {
+        $mostra = false;
+      }
+
+
       include 'autoreManager.php';
       $error = false;
+
 
       require_once 'connDb.php';
       $query = getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera, $sort_by, $sort_order);
@@ -184,7 +183,7 @@
           $error = true;
       }
 
-      if(!$mostra && !$error) {
+      if(!$mostra && !$error && $result->rowCount() > 0) {
 
         if($nomeopera==""){
           ?>
@@ -349,7 +348,7 @@
         </table>
     <?php
       }
-    } else if($mostra && !$error) { ?>
+    } else if($mostra && !$error && $result->rowCount() > 0) { ?>
           <div>
             <button id="createButton" class="buttonCrea" onclick="showCreateForm()">
               <span class="buttonText">Inserisci Autore</span>
