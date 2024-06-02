@@ -9,7 +9,7 @@ Il database ([_my_museodigitalart.ods_](https://github.com/DanieleGotti/MUSEO_Di
 - Temi: 10 tuple
 - Sale: 30 tuple
 - Opere: 1000 tuple
-- Autori: 100 tuple
+- Autori: 100 tuple \
 Per il popolamento con grandi quantità di dati è stato utilizzato [Mockaroo.com](https://www.mockaroo.com), generatore online di fake e test data, resi poi il più realistici possibile attraverso query sql direttamente in Altervista. Inoltre i elementi di una tabella hanno corrispondenze in altre tabelle.
 \
 (Fede: aggiugere magari qualcosa di più su come hai lavorato sui dati? Tipo le query con le date)
