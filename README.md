@@ -33,12 +33,14 @@ Ognuna di queste pagine ha una tabella contenente le relative tuple. E' possibil
 \
 (Fede, scrivi dei filtri)
 
+#### Gestione Autori (CRUD)
+(Fede, crud)
+
 ### GUI
 Il sito utilizza palette arancio. Tutte le icone ([_icons_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/icons)), compresa quella del logo ([_logos_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/logos)), e le animazioni ([_animations_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/animations)) sono state scaricate dall'archivio di icone digitali [Flaticon.com](https://www.flaticon.com/).
 L'immagine principale della schermata home ([_images_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/images)) è stata creata utilizzando l'AI di [Canva.com](https://www.canva.com/it_it/generatore-immagini-ai/), strumento web di progettazione grafica.
-
-#### Gestione Autori (CRUD)
-(Fede, crud)
+\
+(Fede, qua può bastare giusto?)
 
 ## Compatibilità browser
 Il sito è stato progettato per versioni PC di Chrome. Nonostante siano state implementate soluzioni per il suo utilizzo in altri browser, si consiglia di utilizzare Chrome per una migliore esperienza (animazioni e altri elementi GUI potrebbero funzionare diversamente su altri browser).
