@@ -5,7 +5,7 @@
 Il progetto è stato realizzato con la piattaforma web [Altervista.org](https://it.altervista.org) e scritto in codice html, php e css.
 
 ## Database
-Il database ([_my_museodigitalart.ods_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/database/my_museodigitalart.ods)) è stato realizzato rispettando il modello ER (figura seguente) ed è composto da quattro tabelle:
+Il database ([_my_museodigitalart.ods_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/database/my_museodigitalart.ods)) è stato costruito rispettando il modello ER dato (figura seguente) ed è composto da quattro tabelle:
 - Temi: 10 tuple
 - Sale: 30 tuple
 - Opere: 1000 tuple
@@ -14,24 +14,25 @@ Per il popolamento con grandi quantità di dati è stato utilizzato [Mockaroo.co
 \
 (Fede: aggiugere magari qualcosa di più su come hai lavorato sui dati? Tipo le query con le date)
 \
+\
 ![Fig. 1: ER](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/models/ER.png)
-
+\
 ## Struttura
 Il sito è suddiviso in cinque pagine: _Home_, _Temi_, _Sale_, _Opere_ e _Autori_, ognuna facilmente raggiungibile dalla _Navbar_ sulla destra. 
 L'_Header_, in alto, contiene il nome della pagina visualizzata, mentre con il _footer_, in basso, è possibile raggiungere il [GitHub](https://github.com/DanieleGotti/MUSEO_Digital_Art).
 
-### Home 
+#### Home 
 Nella prima pagina è presente una sezione "consigliati", contenente quattro sezioni (una per tabella) in cui vengono estratte per ciascuna otto tuple random.
 Cliccando si passa alla loro visualizzazzione nella rispettiva pagina. 
 \
 (Fede qua spieghiamo in breve la logica dei random?)
 
-### Temi, Sale, Opere, Autori
+#### Temi, Sale, Opere, Autori
 Ognuna di queste pagine ha una tabella contenente le relative tuple. E' possibile ordinare in modo crescente e decrescente cliccando sulla freccia accanto al nome della colonna. I dati hanno delle corrispondenze in altre tabelle, perciò selezionado i link nelle righe è possibile spostarsi tra le pagine.
 \
 (Fede, scrivi dei filtri)
 
-### Gestione Autori (CRUD)
+#### Gestione Autori (CRUD)
 (Fede, crud)
 
 ## Compatibilità browser
