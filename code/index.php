@@ -27,7 +27,7 @@
     <div class="indexLogo">
       <img class="logoImage" src="./img/logo.png">
     </div>
-    <img class="indexImage" src="./img/prova.jpg">
+    <img class="indexImage" src="./img/intro.jpg">
   </div>
 
   <div class="indexContent">
