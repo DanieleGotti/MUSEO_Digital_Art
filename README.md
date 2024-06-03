@@ -16,8 +16,8 @@ Per il popolamento con grandi quantità di dati è stato utilizzato [Mockaroo.co
 Per la consistenza dei dati si è lavorato poi successivamente direttamente da MySql, andando a fare delle verifiche e, successivamente, degli Update sulle date; ad esempio è stato verificato se la data di Realizzazione dell'opera (dataRealizzazione nella tabella OPERA) fosse coerente don le date di nascita ed eventualmente di morte con l'autore.
 
 Sempre tramite MySql sono state aggiunte ove necessario delle colonne:
-- in corrispondenza di associazioni (0:n) è stata aggiunta una colonna col numero di tuple ad essa asoociate: ad esempio in SALA è stata aggiunta la colonna numeroOpere con all'interno il nuero di opere presente nella sala
--in corrispondenza di associazioni sono state aggiunte delle colonne relativamente alle informazioni principali presenti nella tabella connessa 1:1, ad esempio in OPERA oltre all'id di autore è possibile trovare delle informazioni riguardanti la tabella AUTORE, come il nome ed il cognome
+- in corrispondenza di associazioni (0:n) o (1:n) è stata aggiunta una colonna col numero di entità ad essa associate: ad esempio in SALA è stata aggiunta la colonna numeroOpere con all'interno il numero di opere presente nella sala
+-in corrispondenza di associazioni (0:1) o (1:1) sono state aggiunte delle colonne relativamente alle informazioni principali presenti nella tabella connessa 1:1, ad esempio in OPERA oltre all'id di autore è possibile trovare delle informazioni riguardanti la tabella AUTORE, come il nome ed il cognome
 
 ![Fig. 1: ER](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/models/ER.png)  
 
