@@ -523,7 +523,7 @@
                             </td>
                             <td></td>
                           </form>
-                      <!--</td>-->
+                    
                   </tr>
               <?php } ?>
               </tbody>

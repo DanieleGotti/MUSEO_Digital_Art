@@ -206,7 +206,7 @@
                     </span>
                   </p>
                   <p>Titolo:
-                    <a href="opera.php?=<?php echo urlencode($opera); ?>"><?php echo $titolo; ?></a>
+                    <a href="opera.php?opera=<?php echo urlencode($opera); ?>"><?php echo $titolo; ?></a>
                   </p>
                   <p>Autore:
                     <span>
