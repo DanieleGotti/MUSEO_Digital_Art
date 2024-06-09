@@ -5,12 +5,8 @@
 Il progetto è stato realizzato con la piattaforma web [Altervista.org](https://it.altervista.org) e scritto in codice html, php e css.
 
 ## Database
-Il database ([_my_museodigitalart.ods_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/database/my_museodigitalart.ods)) è stato costruito rispettando il modello ER dato (figura seguente) ed è composto da quattro tabelle:
-- _TEMA_: 10 tuple;
-- _SALA_: 30 tuple;
-- _OPERA_: 1000 tuple;
-- _AUTORE_: 100 tuple.
-
+Il database ([_my_museodigitalart.ods_](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/database/my_museodigitalart.ods)) è stato costruito rispettando il modello ER dato (figura seguente) ed è composto da quattro tabelle: _TEMA_, _SALA_, _OPERA_, _AUTORE_.
+\
 Per il popolamento con grandi quantità di dati è stato utilizzato [Mockaroo.com](https://www.mockaroo.com), generatore online di fake e test data, resi poi il più realistici possibile attraverso query sql in Altervista. Inoltre gli elementi di una tabella hanno corrispondenze in altre tabelle.
 \
 Per la consistenza dei dati si è lavorato direttamente da MySql, andando a fare delle verifiche e, successivamente, degli Update sulle date; ad esempio è stato verificato se la data di realizzazione dell'opera (_dataRealizzazione_ nella tabella _OPERA_) fosse coerente con le date di nascita ed eventualmente di morte dell'autore.
