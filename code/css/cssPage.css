@@ -97,9 +97,8 @@ body {
 }
 
 .filterTitle {
-  padding: 10px 0px;
   padding-left: 20px;
-  height: 16px;
+  height: 2rem;
   display: flex;
   align-items: center;
   color: white;
