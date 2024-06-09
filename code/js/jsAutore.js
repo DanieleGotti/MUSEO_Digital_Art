@@ -1,4 +1,4 @@
-z// Funzione per mostrare il pulsante "Creare"
+// Funzione per mostrare il pulsante "Creare"
 function showCreateButton() {
   var createButton = document.getElementById("createButton");
   createButton.style.display = "block";
