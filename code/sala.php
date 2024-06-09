@@ -137,9 +137,8 @@
       $error = true;
     }
 
-
     if(!$error && $nomeopera!="") {
-      ?>
+    ?>
 
       <table>
         <thead>
@@ -183,7 +182,6 @@
         </thead>
         <tbody>
 
-
           <?php
           $i=0;
           foreach($result as $riga) {
@@ -224,7 +222,7 @@
     <?php }
 
     if(!$error && $nomeopera=="") {
-      ?>
+    ?>
       <table>
         <thead>
           <tr>
@@ -258,7 +256,6 @@
                 <img src="./img/freccia.png">
               </button>
             </th>
-
           </tr>
         </thead>
         <tbody>

@@ -19,11 +19,11 @@
 </div>
 
 <body>
-<?php
+  <?php
   $page = 'Temi';
   include 'header.php';
   include 'nav.html';
-?>
+  ?>
 
   <button id="bottoneFiltri" class="filterButton" onclick="moveFilters()" onmouseenter="animateIcon(this)" onmouseleave="animateIcon(this)">
     <img src="../img/filtroStatica.png">
@@ -64,92 +64,92 @@
   </div>
 
   <div id="result" class="tableBody">
-<?php
-  $codice = "";
-  $descrizione = "";
-  $numeroSale  = "";
-  $sort_by = "codice";
-  $sort_order = "asc";
+    <?php
+    $codice = "";
+    $descrizione = "";
+    $numeroSale  = "";
+    $sort_by = "codice";
+    $sort_order = "asc";
 
-  if(count($_POST)>0) {
-    $codice = $_POST["codice"];
-    $descrizione = $_POST["descrizione"];
-    $numeroSale  = $_POST["numeroSale"];
-  }
-  else if(count($_GET)>0) {
-    $codice = $_GET["codice"];
-    $descrizione = $_GET["descrizione"];
-    $numeroSale  = $_GET["numeroSale"];
-    if (isset($_GET["sort_by"])) {
-      $sort_by = $_GET["sort_by"];
-      $sort_order = $_GET["sort_order"];
+    if(count($_POST)>0) {
+      $codice = $_POST["codice"];
+      $descrizione = $_POST["descrizione"];
+      $numeroSale  = $_POST["numeroSale"];
     }
-  }
+    else if(count($_GET)>0) {
+      $codice = $_GET["codice"];
+      $descrizione = $_GET["descrizione"];
+      $numeroSale  = $_GET["numeroSale"];
+      if (isset($_GET["sort_by"])) {
+        $sort_by = $_GET["sort_by"];
+        $sort_order = $_GET["sort_order"];
+      }
+    }
 
-  include 'temaManager.php';
-  $error = false;
+    include 'temaManager.php';
+    $error = false;
 
-  require_once 'connDb.php';
+    require_once 'connDb.php';
 
-  $query = getTemaQry($codice, $descrizione, $numeroSale, $sort_by, $sort_order);
+    $query = getTemaQry($codice, $descrizione, $numeroSale, $sort_by, $sort_order);
 
-  try {
-    $result = $conn->query($query);
-  } catch(PDOException $e) {
-    echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-    $error = true;
-  }
-  if(!$error) {
-?>
-    <table>
-      <thead>
-        <tr>
-          <th>CODICE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codice' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
-              <img src="./img/freccia.png">
+    try {
+      $result = $conn->query($query);
+    } catch(PDOException $e) {
+      echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+      $error = true;
+    }
+    if(!$error) {
+    ?>
+      <table>
+        <thead>
+          <tr>
+            <th>CODICE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=codice&sort_order=<?php echo $sort_by === 'codice' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+                <img src="./img/freccia.png">
               </button>
             </th>
-          <th>DESCRIZIONE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>NUMERO SALE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=numeroSale&sort_order=<?php echo $sort_by === 'numeroSale' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-<?php
-  $i=0;
-  foreach($result as $riga) {
-    $i=$i+1;
-    $classRiga='class="rowOdd"';
-    if($i%2==0) {
-      $classRiga='class="rowEven"';
-    }
-    $codice = $riga["codice"];
-    $descrizione = $riga["descrizione"];
-    $numeroSale  = $riga["numeroSale"];
-?>
-          <tr <?php echo $classRiga; ?> >
-            <td > <?php echo $codice; ?> </td>
-            <td > <?php echo $descrizione; ?> </td>
-            <td>
-              <a href="sala.php?temaSala=<?php echo urlencode($codice); ?>">
-                <?php echo $numeroSale; ?>
-              </a>
-            </td>
+            <th>DESCRIZIONE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=descrizione&sort_order=<?php echo $sort_by === 'descrizione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>NUMERO SALE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=numeroSale&sort_order=<?php echo $sort_by === 'numeroSale' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&codice=<?php echo $codice; ?>&descrizione=<?php echo $descrizione; ?>&numeroSale=<?php echo $numeroSale; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
           </tr>
-<?php } ?>
+        </thead>
+        <tbody>
+          <?php
+          $i=0;
+          foreach($result as $riga) {
+            $i=$i+1;
+            $classRiga='class="rowOdd"';
+            if($i%2==0) {
+              $classRiga='class="rowEven"';
+            }
+            $codice = $riga["codice"];
+            $descrizione = $riga["descrizione"];
+            $numeroSale  = $riga["numeroSale"];
+            ?>
+            <tr <?php echo $classRiga; ?> >
+              <td > <?php echo $codice; ?> </td>
+              <td > <?php echo $descrizione; ?> </td>
+              <td>
+                <a href="sala.php?temaSala=<?php echo urlencode($codice); ?>">
+                  <?php echo $numeroSale; ?>
+                </a>
+              </td>
+            </tr>
+          <?php } ?>
         </tbody>
       </table>
-<?php }  ?>
+    <?php }  ?>
   </div>
   <?php
   include 'footer.html';
-   ?>
+  ?>
 </body>
 </html>

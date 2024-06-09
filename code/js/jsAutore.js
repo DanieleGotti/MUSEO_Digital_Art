@@ -28,12 +28,9 @@ function handleBackButton() {
   hideCreateButton(); // Nasconde il pulsante "Creare" quando viene premuto il pulsante "Back"
 }
 
-
-
 function showCreateForm() {
   document.getElementById("createForm").classList.toggle("active");
 }
-
 
 function salvaModifiche(codice) {
     var editForm = document.getElementById('editForm' + codice);
@@ -47,8 +44,6 @@ function hideCreateForm() {
   var createFormDiv = document.getElementById("createForm");
   createFormDiv.style.display = "none";
 }
-
-
 
 function cancellaAutore(codice) {
     if (confirm("Sei sicuro di voler cancellare questo autore?")) {
@@ -71,65 +66,63 @@ function cancellaAutore(codice) {
     }
 }
 
+function validateForm() {
+    var codicecreate = document.getElementById("codicecreate").value.trim();
+    var nomecreate = document.getElementById("nomecreate").value.trim();
+    var cognomecreate = document.getElementById("cognomecreate").value.trim();
+    var nazionecreate = document.getElementById("nazionecreate").value.trim();
+    var dataNascitacreate = document.getElementById("dataNascitacreate").value.trim();
+    var dataMortecreate = document.getElementById("dataMortecreate").value.trim();
 
-  function validateForm() {
-      var codicecreate = document.getElementById("codicecreate").value.trim();
-      var nomecreate = document.getElementById("nomecreate").value.trim();
-      var cognomecreate = document.getElementById("cognomecreate").value.trim();
-      var nazionecreate = document.getElementById("nazionecreate").value.trim();
-      var dataNascitacreate = document.getElementById("dataNascitacreate").value.trim();
-      var dataMortecreate = document.getElementById("dataMortecreate").value.trim();
-
-      if (codicreate === "" || nomecreate === "" || cognomecreate === "" || nazionecraete === "" || dataNascitacreate === "" ) {
-          alert("Per favore, compila tutti i campi.");
-          return false;
-      }
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-              if (this.status == 200) {
-                  console.log("Inserimento completato con successo.");
-              } else {
-                  console.error("Si è verificato un errore durante l'inserimento.");
-              }
-          }
-      };
-
-      xhttp.open("POST", "insertAuthor.php", true);
-      xhttp.setRequestHeader("Content-Type", "application/json");
-
-      var data = {
-          codicecreate: codicecreate,
-          nomecreate: nomecreate,
-          cognomecreate: cognomecreate,
-          nazionecreate: nazionecreate,
-          dataNascitacreate: dataNascitacreate,
-          dataMortecreate: dataMortecreate
-      };
-
-      var jsonData = JSON.stringify(data);
-      xhttp.send(jsonData);
-
-      return true;
-  }
-
-  function controllaCodice() {
-    var codice = document.getElementById("codice").value;
-    // Verifica se il codice contiene solo numeri
-    if (!/^\d+$/.test(codice)) {
-        // Se il codice non contiene solo numeri, mostra un alert
-        alert("I codici devono essere numerici!");
-        // Pulisci il campo del codice
-        document.getElementById("codice").value = "";
+    if (codicreate === "" || nomecreate === "" || cognomecreate === "" || nazionecraete === "" || dataNascitacreate === "" ) {
+        alert("Per favore, compila tutti i campi.");
+        return false;
     }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                console.log("Inserimento completato con successo.");
+            } else {
+                console.error("Si è verificato un errore durante l'inserimento.");
+            }
+        }
+    };
+
+    xhttp.open("POST", "insertAuthor.php", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+
+    var data = {
+        codicecreate: codicecreate,
+        nomecreate: nomecreate,
+        cognomecreate: cognomecreate,
+        nazionecreate: nazionecreate,
+        dataNascitacreate: dataNascitacreate,
+        dataMortecreate: dataMortecreate
+    };
+
+    var jsonData = JSON.stringify(data);
+    xhttp.send(jsonData);
+    return true;
 }
 
-  function showEditForm(codice) {
-    var formRow = document.getElementById('editFormRow' + codice);
-    if (formRow.style.display === 'none' || formRow.style.display === '') {
-      formRow.style.display = 'table-row';
-    } else {
-      formRow.style.display = 'none';
-    }
+function controllaCodice() {
+  var codice = document.getElementById("codice").value;
+  // Verifica se il codice contiene solo numeri
+  if (!/^\d+$/.test(codice)) {
+    // Se il codice non contiene solo numeri, mostra un alert
+    alert("I codici devono essere numerici!");
+    // Pulisci il campo del codice
+    document.getElementById("codice").value = "";
   }
+}
+
+function showEditForm(codice) {
+  var formRow = document.getElementById('editFormRow' + codice);
+  if (formRow.style.display === 'none' || formRow.style.display === '') {
+    formRow.style.display = 'table-row';
+  } else {
+    formRow.style.display = 'none';
+  }
+}

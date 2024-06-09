@@ -145,75 +145,75 @@
     }
     if (!$error) {
     ?>
-    <table>
-      <thead>
-        <tr>
-          <th>CODICE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=opera&sort_order=<?php echo $sort_by === 'opera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>TITOLO
-            <button class="iconArrow" onclick="window.location.href='?sort_by=titolo&sort_order=<?php echo $sort_by === 'titolo' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome;  ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>CODICE AUTORE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=autore&sort_order=<?php echo $sort_by === 'autore' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>NOME AUTORE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>COGNOME AUTORE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=cognome&sort_order=<?php echo $sort_by === 'cognome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>ANNO ACQUISIZIONE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=annoAcquisto&sort_order=<?php echo $sort_by === 'annoAcquisto' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>ANNO REALIZZAZIONE
-            <button class="iconArrow" onclick="window.location.href='?sort_by=annoRealizzazione&sort_order=<?php echo $sort_by === 'annoRealizzazione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>TIPO
-            <button class="iconArrow" onclick="window.location.href='?sort_by=tipo&sort_order=<?php echo $sort_by === 'tipo' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&titolo=<?php echo $titolo; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-          <th>ESPOSTA IN SALA
-            <button class="iconArrow" onclick="window.location.href='?sort_by=espostaInSala&sort_order=<?php echo $sort_by === 'espostaInSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
-              <img src="./img/freccia.png">
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-    $i = 0;
-    foreach ($result as $riga) {
-      $i++;
-      $classRiga = 'class="rowOdd"';
-      if ($i % 2 == 0) {
-        $classRiga = 'class="rowEven"';
-      }
-      $opera = $riga["opera"];
-      $autore = $riga["autore"];
-      $nome = $riga["nome"];
-      $cognome  = $riga["cognome"];
-      $titolo  = $riga["titolo"];
-      $annoAcquisto = $riga["annoAcquisto"];
-      $annoRealizzazione  = $riga["annoRealizzazione"];
-      $tipo = $riga["tipo"];
-      $espostaInSala  = $riga["espostaInSala"];
-    ?>
+      <table>
+        <thead>
+          <tr>
+            <th>CODICE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=opera&sort_order=<?php echo $sort_by === 'opera' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>TITOLO
+              <button class="iconArrow" onclick="window.location.href='?sort_by=titolo&sort_order=<?php echo $sort_by === 'titolo' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome;  ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>CODICE AUTORE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=autore&sort_order=<?php echo $sort_by === 'autore' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>NOME AUTORE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=nome&sort_order=<?php echo $sort_by === 'nome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>COGNOME AUTORE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=cognome&sort_order=<?php echo $sort_by === 'cognome' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>ANNO ACQUISIZIONE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=annoAcquisto&sort_order=<?php echo $sort_by === 'annoAcquisto' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>ANNO REALIZZAZIONE
+              <button class="iconArrow" onclick="window.location.href='?sort_by=annoRealizzazione&sort_order=<?php echo $sort_by === 'annoRealizzazione' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>TIPO
+              <button class="iconArrow" onclick="window.location.href='?sort_by=tipo&sort_order=<?php echo $sort_by === 'tipo' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&titolo=<?php echo $titolo; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+            <th>ESPOSTA IN SALA
+              <button class="iconArrow" onclick="window.location.href='?sort_by=espostaInSala&sort_order=<?php echo $sort_by === 'espostaInSala' && $sort_order === 'asc' ? 'desc' : 'asc'; ?>&opera=<?php echo $opera; ?>&titolo=<?php echo $titolo; ?>&autore=<?php echo $autore; ?>&nome=<?php echo $nome; ?>&cognome=<?php echo $cognome; ?>&annoAcquisto=<?php echo $annoAcquisto; ?>&annoRealizzazione=<?php echo $annoRealizzazione; ?>&tipo=<?php echo $tipo; ?>&espostaInSala=<?php echo $espostaInSala; ?>'">
+                <img src="./img/freccia.png">
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $i = 0;
+          foreach ($result as $riga) {
+            $i++;
+            $classRiga = 'class="rowOdd"';
+            if ($i % 2 == 0) {
+              $classRiga = 'class="rowEven"';
+            }
+            $opera = $riga["opera"];
+            $autore = $riga["autore"];
+            $nome = $riga["nome"];
+            $cognome  = $riga["cognome"];
+            $titolo  = $riga["titolo"];
+            $annoAcquisto = $riga["annoAcquisto"];
+            $annoRealizzazione  = $riga["annoRealizzazione"];
+            $tipo = $riga["tipo"];
+            $espostaInSala  = $riga["espostaInSala"];
+            ?>
             <tr <?php echo $classRiga; ?> >
               <td><?php echo $opera; ?></td>
               <td><?php echo $titolo; ?></td>
@@ -233,13 +233,13 @@
                 </a>
               </td>
             </tr>
-  <?php } ?>
-          </tbody>
-        </table>
-  <?php } ?>
-    </div>
-    <?php
-    include 'footer.html';
-     ?>
-  </body>
-  </html>
+          <?php } ?>
+        </tbody>
+      </table>
+    <?php } ?>
+  </div>
+  <?php
+  include 'footer.html';
+  ?>
+</body>
+</html>

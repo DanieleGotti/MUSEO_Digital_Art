@@ -1,5 +1,7 @@
+// Inizialmente i filtri sono visibili a sinistra
 let isExpanded = true;
 
+// Se premuto il bottone filtri si sparisce, se ripremuto riappare
 function moveFilters() {
   const box = document.getElementById('filtri');
   const table = document.getElementById('result');
@@ -14,6 +16,7 @@ function moveFilters() {
   isExpanded = !isExpanded;
 }
 
+// Cambia classe agli input in modo che il placeHolder cambi posizione
 document.addEventListener('DOMContentLoaded', function () {
   const inputs = document.querySelectorAll('.input');
 
@@ -28,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// Cambia classe agli input in modo che il placeHolder cambi posizione
 document.addEventListener('DOMContentLoaded', function () {
   const inputs = document.querySelectorAll('.inputPop');
 

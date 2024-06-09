@@ -145,15 +145,15 @@
                   <span>
                     <?php echo $numeroOpere; ?></p>
                   </span>
-              </div>
-              <?php
+                </div>
+                <?php
+              }
+            } else {
+              echo "<div class='card'><p>Nessun tema trovato per codice: $randomCode</p></div>";
             }
-          } else {
-            echo "<div class='card'><p>Nessun tema trovato per codice: $randomCode</p></div>";
           }
-        }
 
-        ?>
+          ?>
         </div>
       </div>
     </div>
@@ -214,88 +214,85 @@
                     </span>
                   </p>
                 </div>
-              <?php
+                <?php
               }
             } else {
               echo "<div class='card'><p>Nessuna opera trovato per codice: $randomCodeO</p></div>";
             }
           }
-
           ?>
-          </div>
         </div>
       </div>
+    </div>
 
-      <div class="indexContent">
-        <div class="panel">
-          <div class="panelTitle">
-            <h3>Risali agli autori</h3>
-            <a href="./autore.php">Scopri di più</a>
-          </div>
-          <div class="horizontalScroll">
-            <?php
-            $error = false;
-            require_once 'connDb.php';
+    <div class="indexContent">
+      <div class="panel">
+        <div class="panelTitle">
+          <h3>Risali agli autori</h3>
+          <a href="./autore.php">Scopri di più</a>
+        </div>
+        <div class="horizontalScroll">
+          <?php
+          $error = false;
+          require_once 'connDb.php';
 
-            $usedCodesA = [];
+          $usedCodesA = [];
 
-            // Genera 8 card
-            for ($j = 0; $j < 8; $j++) {
-              do {
-                $randomCodeA = rand(1, 100);
-              } while (in_array($randomCodeA, $usedCodesA)); // Continua a generare fino a trovare un codice non usato
-              $usedCodesA[] = $randomCodeA;
-              $query = "SELECT AUTORE.codice, AUTORE.nome, AUTORE.cognome, AUTORE.nazione FROM AUTORE WHERE AUTORE.codice = $randomCodeA";
+          // Genera 8 card
+          for ($j = 0; $j < 8; $j++) {
+            do {
+              $randomCodeA = rand(1, 100);
+            } while (in_array($randomCodeA, $usedCodesA)); // Continua a generare fino a trovare un codice non usato
+            $usedCodesA[] = $randomCodeA;
+            $query = "SELECT AUTORE.codice, AUTORE.nome, AUTORE.cognome, AUTORE.nazione FROM AUTORE WHERE AUTORE.codice = $randomCodeA";
 
-              try {
-                $result = $conn->query($query);
-              } catch (PDOException $e) {
-                echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
-                $error = true;
-              }
-
-              if (!$error) {
-                foreach ($result as $riga) {
-                  $i++;
-                  $classRiga = 'class="rowOdd"';
-                  if ($i % 2 == 0) {
-                    $classRiga = 'class="rowEven"';
-                  }
-                  $codice = $riga["codice"];
-                  $nome = $riga["nome"];
-                  $cognome  = $riga["cognome"];
-                  $nazione = $riga["nazione"];
-
-
-                  ?>
-                  <div class="card">
-                    <p>Codice:
-                      <span>
-                        <?php echo $codice; ?>
-                      </span>
-                    </p>
-                    <p>Autore:
-                      <a href="autore.php?codice=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a>
-                    </p>
-                    <p>Nazione:
-                      <span>
-                        <?php echo $nazione; ?>
-                      </span>
-                    </p>
-                  </div>
-                  <?php
-                }
-              } else {
-                echo "<div class='card'><p>Nessuna opera trovato per codice: $randomCodeO</p></div>";
-              }
+            try {
+              $result = $conn->query($query);
+            } catch (PDOException $e) {
+              echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
+              $error = true;
             }
 
-            ?>
-            </div>
-          </div>
+            if (!$error) {
+              foreach ($result as $riga) {
+                $i++;
+                $classRiga = 'class="rowOdd"';
+                if ($i % 2 == 0) {
+                  $classRiga = 'class="rowEven"';
+                }
+                $codice = $riga["codice"];
+                $nome = $riga["nome"];
+                $cognome  = $riga["cognome"];
+                $nazione = $riga["nazione"];
+
+                ?>
+                <div class="card">
+                  <p>Codice:
+                    <span>
+                      <?php echo $codice; ?>
+                    </span>
+                  </p>
+                  <p>Autore:
+                    <a href="autore.php?codice=<?php echo urlencode($codice); ?>"><?php echo $nome; ?>  <?php echo $cognome; ?></a>
+                  </p>
+                  <p>Nazione:
+                    <span>
+                      <?php echo $nazione; ?>
+                    </span>
+                  </p>
+                </div>
+                <?php
+              }
+            } else {
+              echo "<div class='card'><p>Nessuna opera trovato per codice: $randomCodeO</p></div>";
+            }
+          }
+          ?>
         </div>
-        <?php
-        include 'footer.html';
-         ?>
-</body>
-</html>
+      </div>
+    </div>
+    <?php
+    include 'footer.html';
+    ?>
+  </body>
+  </html>

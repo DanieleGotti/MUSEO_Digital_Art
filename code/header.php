@@ -6,7 +6,7 @@
     <ul class="headerLinks">
       <a>
         <li>
-<?php echo htmlspecialchars($page); ?>
+          <?php echo htmlspecialchars($page); ?>
         </li>
       </a>
     </ul>
