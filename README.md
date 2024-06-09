@@ -1,4 +1,5 @@
-# Progetto Programmazione Web 23/24
+# Progetto 1 Programmazione Web 23/24
+versione 1.0
 ![logo](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/logos/logo.png)
 
 [Museo - Digital Art](https://museodigitalart.altervista.org) è un sito web per la visualizzazione di temi, sale, opere e autori di un museo.
