@@ -45,7 +45,7 @@ function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $a
 
   if ($espostaInSala != "")
   $qry .= " AND OPERA.espostaInSala = $espostaInSala";
-
+ //per quando viene usata la funzione di ordinamento in alto alle colonne 
   if (!empty($sort_by) && !empty($sort_order)) {
     $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
   }

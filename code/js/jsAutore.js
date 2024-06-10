@@ -40,17 +40,19 @@ function salvaModifiche(codice) {
     // Qui dovresti usare AJAX o un metodo simile per inviare i dati al server
 }
 
+//Funzione per nasconde il form di create
 function hideCreateForm() {
   var createFormDiv = document.getElementById("createForm");
   createFormDiv.style.display = "none";
 }
 
+//Funzione per eliminazione autore
 function cancellaAutore(codice) {
     if (confirm("Sei sicuro di voler cancellare questo autore?")) {
         // Se l'utente conferma, invia una richiesta AJAX per cancellare l'autore dal database
         $.ajax({
             type: "POST",
-            url: "deleteAuthor.php", // Sostituisci con il percorso del tuo script PHP per eliminare l'autore
+            url: "deleteAuthor.php",
             data: { codice: codice },
             success: function(response) {
                 // Gestisci la risposta qui, ad esempio aggiornando la tabella dei risultati
@@ -66,6 +68,7 @@ function cancellaAutore(codice) {
     }
 }
 
+//Funzione per il controllo dell'inserimento dei dati per la creazione di un autore
 function validateForm() {
     var codicecreate = document.getElementById("codicecreate").value.trim();
     var nomecreate = document.getElementById("nomecreate").value.trim();
@@ -107,6 +110,7 @@ function validateForm() {
     return true;
 }
 
+//Funzione per la verifica del codice nel suo formato
 function controllaCodice() {
   var codice = document.getElementById("codice").value;
   // Verifica se il codice contiene solo numeri
@@ -118,6 +122,7 @@ function controllaCodice() {
   }
 }
 
+//Funzione per mostrare il form di modifica
 function showEditForm(codice) {
   var formRow = document.getElementById('editFormRow' + codice);
   if (formRow.style.display === 'none' || formRow.style.display === '') {

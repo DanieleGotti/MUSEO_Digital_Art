@@ -29,6 +29,7 @@
     <img src="../img/filtroStatica.png">
   </button>
 
+
   <div id="filtri" class="filters">
     <form name="myform" class="form" method="POST">
       <ul class="filterContainer">
@@ -122,6 +123,7 @@
     <button id="createButton" class="button" onclick="showCreateForm()">Creare</button>
   </div>
 
+ <!--inizializzazione dei campi per gli inserimenti -->
   <div id="result" class="tableBody">
     <?php
     $codice = "";
@@ -138,6 +140,7 @@
     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'codice';
     $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'asc';
 
+     //metodo Post per ottenimento dati
     if(count($_POST) > 0) {
       $codice = $_POST["codice"];
       $nome = $_POST["nome"];
@@ -160,6 +163,7 @@
       $nomeopera  = $_GET["nomeopera"];
     }
 
+    //imposto la variabile mostra a true se viene premuto CRUD
     if ($_POST['CRUD'] === 'CRUD') {
       $mostra = true;
     } else {
@@ -169,6 +173,7 @@
     include 'autoreManager.php';
     $error = false;
 
+    //query al database
     require_once 'connDb.php';
     $query = getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMorte, $tipo, $numeroOpere, $nomeopera, $sort_by, $sort_order);
 
@@ -178,7 +183,7 @@
       echo "<p>DB Error on Query: " . $e->getMessage() . "</p>";
       $error = true;
     }
-
+    //se non è stato premuto il tasto di crud (non mostro le colonne per modifica e eliminazione)
     if(!$mostra && !$error && $result->rowCount() > 0) {
 
       if($nomeopera==""){
@@ -261,6 +266,8 @@
           </tbody>
         </table>
       <?php }
+
+      //se è stato inserito qualcosa nel filtro di ricerca del nome opera
       elseif ($nomeopera!="") {
         ?>
         <table>
@@ -343,6 +350,8 @@
         </table>
         <?php
       }
+
+      // se è stato premuto il bottone di CRUD
     } else if($mostra && !$error && $result->rowCount() > 0) { ?>
       <div>
         <button id="createButton" class="buttonCrea" onclick="showCreateForm()">

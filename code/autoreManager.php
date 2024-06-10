@@ -42,6 +42,7 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
   if ($numeroOpere != "")
   $qry.= " AND AUTORE.numeroOpere = $numeroOpere";
 
+  //usato per quando viene premuto il tasto di riordino nella colonna in alto
   if (!empty($sort_by) && !empty($sort_order)) {
     if ($sort_by == 'dataNascita' || $sort_by == 'dataMorte') {
       $qry .= " ORDER BY STR_TO_DATE(AUTORE." . $sort_by . ", '%d/%m/%Y') " . $sort_order;
@@ -52,7 +53,7 @@ function getAutoreQry($codice, $nome, $cognome, $nazione, $dataNascita, $dataMor
     }
   }
 
-
+ // per la ricerca per nome opera
   if ($nomeopera != "")
   $qry = "SELECT
   AUTORE.codice,

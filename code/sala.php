@@ -137,6 +137,7 @@
       $error = true;
     }
 
+    // se viene inserito un input nel campo di nomeopera aggiungo una colonna quindi uso questo
     if(!$error && $nomeopera!="") {
     ?>
 
@@ -221,6 +222,7 @@
       </table>
     <?php }
 
+    //se nome opera non contiene input
     if(!$error && $nomeopera=="") {
     ?>
       <table>

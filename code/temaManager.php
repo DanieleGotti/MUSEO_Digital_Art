@@ -19,7 +19,7 @@ function getTemaQry($codice, $descrizione, $numeroSale,$sort_by = 'codice', $sor
 
   if ($descrizione != "")
   $qry .= " AND TEMA.descrizione  LIKE '%" . $descrizione . "%'" ;
-
+  //ordinamento 
   if (!empty($sort_by) && !empty($sort_order)) {
     $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
   }
