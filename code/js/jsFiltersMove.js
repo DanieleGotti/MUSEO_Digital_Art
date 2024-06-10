@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Cambia classe agli input in modo che il placeHolder cambi posizione
+// Cambia classe agli inputPop in modo che il placeHolder cambi posizione
 document.addEventListener('DOMContentLoaded', function () {
   const inputs = document.querySelectorAll('.inputPop');
 
