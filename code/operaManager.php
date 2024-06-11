@@ -40,12 +40,13 @@ function getOperaQry($opera, $autore,$nome, $cognome, $titolo, $annoAcquisto, $a
   if ($annoRealizzazione != "")
   $qry .= " AND OPERA.annoRealizzazione LIKE '%" . $annoRealizzazione . "%'";
 
+  
   if ($tipo != "")
   $qry .= " AND OPERA.tipo LIKE '%" . $tipo . "%'"; // Aggiungi apici singoli intorno al valore
 
   if ($espostaInSala != "")
   $qry .= " AND OPERA.espostaInSala = $espostaInSala";
- //per quando viene usata la funzione di ordinamento in alto alle colonne 
+ //per quando viene usata la funzione di ordinamento in alto alle colonne
   if (!empty($sort_by) && !empty($sort_order)) {
     $qry .= " ORDER BY " . $sort_by . " " . $sort_order;
   }
