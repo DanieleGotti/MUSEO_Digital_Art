@@ -366,11 +366,8 @@ body {
   overflow-y: auto;
   overflow-x: auto;
   border-radius: 10px;
-  border: 2px solid #FEF0E7;
+  border: 1px solid #FEF0E7;
   background-color: #FEF0E7;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
 }
 
 .tableBody thead {
@@ -443,57 +440,48 @@ table {
   height: calc(100vh - 10rem);
   background-color: #FEF0E7;
   border-collapse: collapse;
-  flex: 1;
-  table-layout: auto;
-  overflow-x: auto;
+  table-layout: fixed;
+  min-width: 800px;
 }
 
-thead {
-  width: 100%;
-  height: 2rem;
-  padding: 10px 0px;
-  background-color: #FEF0E7;
-  flex: 0 0 auto;
-}
-
-th {
-  min-width: 120px;
+th, td {
+  min-width: 200px;
   background-color: #F76E11;
-  height: 2rem;
   vertical-align: middle;
   text-align: center;
   padding: 0px 10px;
+  font-family: "Open sans";
+  box-sizing: border-box;
+}
+
+th {
+  background-color: #F76E11;
+  height: 2rem;
   color: white;
   line-height: 2rem;
-  align-items: center;
-  justify-content: center;
-  font-family: "Open sans";
   font-weight: 800;
   font-size: 10px;
-  box-sizing: border-box;
 }
 
 tbody {
   display: table-row-group;
-  flex: 1;
+  width: 100%;
 }
 
 tbody tr {
   height: 4rem;
+  width: 100%;
 }
 
 td {
   background-color: white;
-  padding: 0;
-  width: auto;
-  vertical-align: middle;
-  text-align: center;
-  font-family: "Open sans";
+  height: 4rem;
   font-weight: 600;
   font-size: 12px;
-  border-top: 2px solid #FEF0E7;
-  border-bottom: 2px solid #FEF0E7;
-  box-sizing: border-box;
+}
+
+table, tbody, tr, td {
+  height: auto;
 }
 
 tbody tr:hover td {
@@ -512,30 +500,6 @@ td a:hover {
 
 td a:visited {
   color: #8B1E3F;
-}
-
-@media (max-width: 1200px) {
-  th:nth-child(5), td:nth-child(5) {
-    min-width: 0;
-  }
-}
-
-@media (max-width: 992px) {
-  th:nth-child(4), td:nth-child(4) {
-    min-width: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  th:nth-child(3), td:nth-child(3) {
-    min-width: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  th:nth-child(2), td:nth-child(2) {
-    min-width: 0;
-  }
 }
 
 .iconArrow {

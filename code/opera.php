@@ -214,7 +214,7 @@
             $tipo = $riga["tipo"];
             $espostaInSala  = $riga["espostaInSala"];
 
-        
+
             ?>
             <tr <?php echo $classRiga; ?> >
               <td><?php echo $opera; ?></td>
