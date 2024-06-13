@@ -471,6 +471,7 @@ tbody {
 tbody tr {
   height: 4rem;
   width: 100%;
+  border: 2px solid #FEF0E7;
 }
 
 td {

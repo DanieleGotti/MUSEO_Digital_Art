@@ -54,7 +54,7 @@
           <span class="filterTitle">Filtri</span>
         </li>
         <li class="filterItem">
-          <button type="submit" class="button">
+          <button type="submit" id="cerca" name="cerca" class="button" value="cerca">
             <span class="buttonText">Cerca</span>
             <span class="buttonIcon">
               <img src="../img/cerca.png">
@@ -140,6 +140,7 @@
     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'codice';
     $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'asc';
 
+
      //metodo Post per ottenimento dati
     if(count($_POST) > 0) {
       $codice = $_POST["codice"];
@@ -164,11 +165,14 @@
     }
 
     //imposto la variabile mostra a true se viene premuto CRUD
-    if ($_POST['CRUD'] === 'CRUD') {
-      $mostra = true;
-    } else {
-      $mostra = false;
+
+    if (isset($_POST['CRUD']) && $_POST['CRUD'] === 'CRUD') {
+       $mostra = true;
     }
+
+    if (isset($_POST['cerca']) && $_POST['cerca'] === 'cerca') {
+       $mostra = true;
+     }
 
     include 'autoreManager.php';
     $error = false;
