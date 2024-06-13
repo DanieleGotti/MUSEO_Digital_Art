@@ -449,9 +449,10 @@ th, td {
   background-color: #F76E11;
   vertical-align: middle;
   text-align: center;
-  padding: 0px 10px;
+  padding: 0;
   font-family: "Open sans";
   box-sizing: border-box;
+  justify-content: center;
 }
 
 th {
@@ -553,23 +554,25 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
 }
 
 .inputModify {
-  margin-left: 10px;
-  margin-right: 10px;
-  width: auto;
+  padding: 0;
+  width: calc(100% - 8px);
   height: 2rem;
   box-sizing: border-box;
   outline: none;
   border-radius: 10px;
   border: none;
   background-color: #FEF0E7;
-  color:  black;
-  caret-color:  #F76E11;
-  margin: center;
+  color: black;
+  caret-color: #F76E11;
+  margin: 0px 4px;
   font-family: "Open sans";
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inputModify::placeholder {
@@ -599,6 +602,47 @@ tbody tr:hover td .modifica-button, tbody tr:hover td .cancella-button{
   background-color: #FEF0E7 !important;
   color:  #F76E11 !important;
   box-shadow: 0 0 0px 1000px #FEF0E7 inset;
+}
+
+.buttonModify {
+  padding: 0;
+  width: calc(100% - 8px);
+  margin: 0px 4px;
+  height: 2rem;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: #F76E11;
+  font-family: "Open sans";
+  font-weight: 800;
+  font-size: 11px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonModify:hover {
+  background-color: #FFB68D;
+  border: 2px solid white;
+}
+
+.buttonModifyText {
+  height: 14px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.buttonModifyIcon {
+  margin-left: auto;
+}
+
+.buttonModifyIcon img {
+  height: 12px;
+  transform: scale(1.5);
+  filter: contrast(0%) brightness(200%);
 }
 
 .popup .overlay {

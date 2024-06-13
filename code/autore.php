@@ -188,7 +188,7 @@
       $error = true;
     }
     //se non è stato premuto il tasto di crud (non mostro le colonne per modifica e eliminazione)
-    if(!$mostra && !$error && $result->rowCount() > 0) {
+    if(!$mostra && !$error) {
 
       if($nomeopera==""){
         ?>
@@ -356,7 +356,7 @@
       }
 
       // se è stato premuto il bottone di CRUD
-    } else if($mostra && !$error && $result->rowCount() > 0) { ?>
+    } else if($mostra && !$error) { ?>
       <div>
         <button id="createButton" class="buttonCrea" onclick="showCreateForm()">
           <span class="buttonText">Inserisci Autore</span>
@@ -519,11 +519,8 @@
                   <input id="dataMortecreate" class="inputModify" name="dataMortecreate" type="text" placeholder="Data Morte">
                 </td>
                 <td>
-                  <button type="submit" class="button" name="edit" value="Modifica">
-                    <span class="buttonText">Conferma</span>
-                    <span class="buttonIcon">
-                      <img src="../img/conferma.png">
-                    </span>
+                  <button type="submit" class="buttonModify" name="edit" value="Modifica">
+                    <span class="buttonModifyText">Conferma</span>
                   </button>
                 </td>
                 <td></td>
