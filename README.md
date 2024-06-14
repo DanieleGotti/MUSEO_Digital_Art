@@ -23,13 +23,13 @@ Il sito è suddiviso in cinque pagine: _Home_, _Temi_, _Sale_, _Opere_ e _Autori
 L'_header_, in alto, contiene il nome della pagina visualizzata, mentre con il _footer_, in basso, è possibile raggiungere il [GitHub](https://github.com/DanieleGotti/MUSEO_Digital_Art).
 
 #### Home 
-Nella prima pagina è presente una sezione dei contenuti consigliati, contenente quattro sezioni (una per tabella) in cui vengono estratte per ciascuna otto tuple random. 
+Nella prima pagina è presente una sezione dei contenuti consigliati, divisa in quattro parti (una per tabella) in cui vengono estratte per ciascuna otto tuple random. 
 Cliccando si passa alla loro visualizzazzione nella rispettiva pagina. 
 
 #### Temi, Sale, Opere, Autori
 Ognuna di queste pagine ha una tabella contenente le relative tuple. E' possibile ordinare in modo crescente e decrescente cliccando sulla freccia accanto al nome della colonna. I dati hanno delle corrispondenze in altre tabelle, perciò selezionado i link nelle righe è possibile spostarsi tra le pagine: selezionando su _numeroOpere_ di un autore è possibile passare nella tabella di _Opere_ filtrata con le opere relative all'autore.
 
-I filtri sono relativi ad ogni colonna, ed è possibile effettuare delle ricerche su più colonne insieme. I filtri sono tutti tramite inserimento di testo tranne due, che sono di tipo radio, e specificano i tipi di tupla che si vuole cercare (_Scultura/Quadro_ in _Opere_ e _Vivo/Morto_ in _Autore_).
+I filtri sono relativi ad ogni colonna, ed è possibile effettuare delle ricerche su più colonne insieme. I filtri sono tutti tramite inserimento (_input_) di testo tranne due, che sono di tipo checkbox (_radio_), e specificano i tipi di tupla che si vuole cercare (_Scultura/Quadro_ in _Opere_ e _Vivo/Morto_ in _Autore_).
 Nel caso di inserimenti non corretti viene lanciato un alert per permettere all'utente di meglio comprendere il database (ad esempio se si inserisce un carattere alfabetico nella ricerca del codice quando i codici sono tutti numerici).
 Oltre che ai filtri relativi alla tabella nella quale ci si trova è possibile effettuare delle ricerche riferite a colonne di altre tabelle. Sia in _Sale_ che in _Autori_ è infatti possibile effettuare un "_Cerca per opera_". Cercando nell'apposito spazio il titolo dell'opera è possibile ricondursi alle informazioni relative all'autore o alla sala relativi, ovviamente i risultati mostrano tutte le possibili corrispondenze relative all'input inserito (la stessa ricerca in realtà è possibile andando sulla tabella _OPERA_ e cliccando sul link relativo alla colonna _Esposta In Sala_ ed _Autore_,  ma in questo modo la navigabilità tra le schede è più immediata e offre più possibilità).
 Si noti che per gestire il fatto che alcune opere possano non essere esposte ma in magazzino è stata aggiunta una sala "0" denominata _Magazzino_.
