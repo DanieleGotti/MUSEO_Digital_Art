@@ -19,8 +19,8 @@ Sempre tramite MySql sono state aggiunte ove necessario delle colonne:
 ![Fig. 1: ER](https://github.com/DanieleGotti/MUSEO_Digital_Art/blob/main/img/models/ER.png)  
 
 ## Struttura
-Il sito è suddiviso in cinque pagine: _Home_, _Temi_, _Sale_, _Opere_ e _Autori_, ognuna facilmente raggiungibile dalla _Navbar_ sulla destra. 
-L'_Header_, in alto, contiene il nome della pagina visualizzata, mentre con il _footer_, in basso, è possibile raggiungere il [GitHub](https://github.com/DanieleGotti/MUSEO_Digital_Art).
+Il sito è suddiviso in cinque pagine: _Home_, _Temi_, _Sale_, _Opere_ e _Autori_, ognuna facilmente raggiungibile dalla _navbar_ sulla destra. 
+L'_header_, in alto, contiene il nome della pagina visualizzata, mentre con il _footer_, in basso, è possibile raggiungere il [GitHub](https://github.com/DanieleGotti/MUSEO_Digital_Art).
 
 #### Home 
 Nella prima pagina è presente una sezione dei contenuti consigliati, contenente quattro sezioni (una per tabella) in cui vengono estratte per ciascuna otto tuple random. 
